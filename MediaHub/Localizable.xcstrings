@@ -101,6 +101,16 @@
         }
       }
     },
+    "%lld episode%@ · %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 集 · %@"
+          }
+        }
+      }
+    },
     "%lld episodes": {
       "localizations": {
         "zh-Hans": {

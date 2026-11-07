@@ -146,7 +146,7 @@ struct DownloadsView: View {
 
     private func showHeader(_ show: Show) -> some View {
         let n = show.records.count
-        let sub = show.isSeries ? "\(n) episode\(n == 1 ? "" : "s") · \(DownloadFiles.sizeString(show.bytes))"
+        let sub = show.isSeries ? String(localized: "\(n) episode\(n == 1 ? "" : "s") · \(DownloadFiles.sizeString(show.bytes))")
                                 : DownloadFiles.sizeString(show.bytes)
         return HStack(spacing: 12) {
             RemoteImage(url: show.item.posterURL, size: 60).frame(width: 40, height: 60)
