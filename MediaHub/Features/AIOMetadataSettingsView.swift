@@ -164,8 +164,8 @@ struct AIOMetadataSettingsView: View {
         reloading.insert(addon.id)
         Task {
             defer { reloading.remove(addon.id) }
-            do { try await store.reload(addon); note = "\(addon.manifest.name) reloaded." }
-            catch { note = "Couldn't reach \(addon.manifest.name)." }
+            do { try await store.reload(addon); note = String(localized: "\(addon.manifest.name) reloaded.") }
+            catch { note = String(localized: "Couldn't reach \(addon.manifest.name).") }
         }
     }
 
@@ -177,10 +177,10 @@ struct AIOMetadataSettingsView: View {
                 urlText = ""; error = nil; addNote = nil
                 // Added, but under a name we don't recognise: it behaves like any other add-on until switched on below.
                 if let last = store.addons.last, !store.usesCatalogPicker(last) {
-                    addNote = "Added \(last.manifest.name), but it doesn't identify itself as AIOMetadata. Switch it on under Other add-ons."
+                    addNote = String(localized: "Added \(last.manifest.name), but it doesn't identify itself as AIOMetadata. Switch it on under Other add-ons.")
                 }
             } catch {
-                self.error = "Couldn't load that manifest. Check the URL and try again."
+                self.error = String(localized: "Couldn't load that manifest. Check the URL and try again.")
             }
         }
     }

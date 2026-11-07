@@ -128,8 +128,8 @@ struct AddonsSettingsView: View {
         reloading.insert(a.id)
         Task {
             defer { reloading.remove(a.id) }
-            do { try await store.reload(a); note = "\(a.manifest.name) reloaded." }
-            catch { note = "Couldn't reach \(a.manifest.name)." }
+            do { try await store.reload(a); note = String(localized: "\(a.manifest.name) reloaded.") }
+            catch { note = String(localized: "Couldn't reach \(a.manifest.name).") }
         }
     }
 
@@ -138,7 +138,7 @@ struct AddonsSettingsView: View {
             reloading = Set(store.addons.map(\.id))
             let failed = await store.reloadAll()
             reloading = []
-            note = failed == 0 ? "Add-ons reloaded." : "\(failed) add-on(s) couldn't be reached and were left as they were."
+            note = failed == 0 ? String(localized: "Add-ons reloaded.") : String(localized: "\(failed) add-on(s) couldn't be reached and were left as they were.")
         }
     }
 
