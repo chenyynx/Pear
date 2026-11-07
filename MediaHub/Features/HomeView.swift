@@ -217,7 +217,7 @@ final class HomeModel {
                     guard !raw.isEmpty else { return (i, nil, false) }
                     let items = await TitleClassifier.shared.filter(raw, rules: rules)
                     guard !items.isEmpty else { return (i, nil, false) }
-                    let kind = cat.type == "movie" ? "Movies" : cat.type == "series" ? "Series" : cat.type.capitalized
+                    let kind = cat.type == "movie" ? String(localized: "Movies") : cat.type == "series" ? String(localized: "Series") : cat.type.capitalized
                     return (i, CatalogRow(id: "\(addon.id)/\(cat.type)/\(cat.id)",
                                           title: "\(cat.name ?? cat.id) \(kind)", items: items,
                                           source: .addon(addon, cat), symbol: "film.stack",

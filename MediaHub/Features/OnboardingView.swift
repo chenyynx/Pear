@@ -378,7 +378,7 @@ struct OnboardingView: View {
             ForEach(Array(all.prefix(60)), id: \.self) { cat in
                 let key = ContentRules.rowKey(a, cat)
                 Toggle(isOn: Binding(get: { rules.isRowAdded(key) }, set: { prefs.setRowAdded(key, $0) })) {
-                    Text("\(cat.name ?? cat.id) · \(cat.type == "movie" ? "Movies" : cat.type == "series" ? "Series" : cat.type.capitalized)")
+                    Text("\(cat.name ?? cat.id) · \(cat.type == "movie" ? String(localized: "Movies") : cat.type == "series" ? String(localized: "Series") : cat.type.capitalized)")
                         .font(.subheadline)
                 }
             }

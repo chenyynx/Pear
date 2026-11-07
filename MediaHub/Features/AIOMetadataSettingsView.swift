@@ -157,7 +157,7 @@ struct AIOMetadataSettingsView: View {
     // MARK: Actions
 
     private static func kind(_ type: String) -> String {
-        type == "movie" ? "Movies" : type == "series" ? "Series" : type.capitalized
+        type == "movie" ? String(localized: "Movies") : type == "series" ? String(localized: "Series") : type.capitalized
     }
 
     private func reload(_ addon: Addon) {
