@@ -11,14 +11,14 @@ enum PillItem: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .speed: "Speed"
-        case .episodes: "Episodes"
-        case .sources: "Sources"
-        case .volume: "Volume"
-        case .pip: "Picture in Picture"
-        case .subtitles: "Subtitles"
-        case .audio: "Audio track"
-        case .next: "Next episode"
+        case .speed: String(localized: "Speed")
+        case .episodes: String(localized: "Episodes")
+        case .sources: String(localized: "Sources")
+        case .volume: String(localized: "Volume")
+        case .pip: String(localized: "Picture in Picture")
+        case .subtitles: String(localized: "Subtitles")
+        case .audio: String(localized: "Audio track")
+        case .next: String(localized: "Next episode")
         }
     }
 

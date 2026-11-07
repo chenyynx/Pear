@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 /// The profile page: connected services, library counts, total watch time and a read on your taste.
@@ -68,8 +69,9 @@ struct ProfileDetailView: View {
 
     private var headerSubtitle: String {
         let n = stats.titles.filter { $0.status != .planned }.count
-        if !model.loaded { return "Crunching your numbers…" }
-        return n == 0 ? "Nothing watched yet" : "\(n) title\(n == 1 ? "" : "s") watched or in progress"
+        if !model.loaded { return String(localized: "Crunching your numbers…") }
+        if n == 0 { return String(localized: "Nothing watched yet") }
+        return String(localized: "\(n) title\(n == 1 ? "" : "s") watched or in progress")
     }
 
     private var analysing: some View {
@@ -85,7 +87,7 @@ struct ProfileDetailView: View {
 
     private func card<C: View>(_ title: String, symbol: String, @ViewBuilder content: () -> C) -> some View {
         VStack(alignment: .leading, spacing: 14) {
-            Label(title, systemImage: symbol).font(.headline).foregroundStyle(.primary)
+            Label(L(title), systemImage: symbol).font(.headline).foregroundStyle(.primary)
             content()
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -116,8 +118,8 @@ struct ProfileDetailView: View {
     private var downloadsCard: some View {
         card("Downloads", symbol: "arrow.down.circle.fill") {
             HStack {
-                Text(downloads.records.isEmpty ? "Nothing downloaded yet"
-                     : "\(downloads.records.count) saved · \(DownloadFiles.sizeString(downloads.usedBytes)) used")
+                Text(downloads.records.isEmpty ? String(localized: "Nothing downloaded yet")
+                     : String(localized: "\(downloads.records.count) saved · \(DownloadFiles.sizeString(downloads.usedBytes)) used"))
                     .font(.footnote).foregroundStyle(.secondary)
                 Spacer()
                 NavigationLink { DownloadsView() } label: { Text("Open").font(.footnote.weight(.semibold)) }
@@ -142,7 +144,7 @@ struct ProfileDetailView: View {
                     .padding(.horizontal, 12).padding(.vertical, 10)
                     .background(Color.white.opacity(0.06), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                     .accessibilityElement(children: .ignore)
-                    .accessibilityLabel("\(i.name), \(i.on ? "connected" : "not set up")")
+                    .accessibilityLabel("\(i.name), \(i.on ? String(localized: "connected") : String(localized: "not set up"))")
                 }
             }
             HStack {
@@ -166,12 +168,12 @@ struct ProfileDetailView: View {
     }
 
     private func split(_ s: StatTitle.Status) -> String {
-        "\(stats.count(s, .shows)) shows · \(stats.count(s, .movies)) movies"
+        String(localized: "\(stats.count(s, .shows)) shows · \(stats.count(s, .movies)) movies")
     }
 
     private var episodeCaption: String {
         let shows = stats.titles.filter { $0.isSeries && $0.episodes > 0 }.count
-        return "across \(shows) show\(shows == 1 ? "" : "s")"
+        return String(localized: "across \(shows) show\(shows == 1 ? "" : "s")")
     }
 
     private func tile(_ title: String, _ symbol: String, _ value: Int, _ caption: String) -> some View {
@@ -179,8 +181,8 @@ struct ProfileDetailView: View {
             Image(systemName: symbol).font(.system(size: 15, weight: .bold)).foregroundStyle(theme.accent)
             Text(value.formatted()).font(.system(size: 34, weight: .bold, design: .rounded)).monospacedDigit()
                 .contentTransition(.numericText())
-            Text(title).font(.subheadline.weight(.semibold))
-            Text(caption).font(.caption).foregroundStyle(.secondary).lineLimit(1).minimumScaleFactor(0.8)
+            Text(L(title)).font(.subheadline.weight(.semibold))
+            Text(L(caption)).font(.caption).foregroundStyle(.secondary).lineLimit(1).minimumScaleFactor(0.8)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)
@@ -208,7 +210,7 @@ struct ProfileDetailView: View {
             Label("Total watch time", systemImage: "clock.fill").font(.headline)
             HStack(alignment: .firstTextBaseline, spacing: 8) {
                 Text(number).font(.system(size: 56, weight: .heavy, design: .rounded)).monospacedDigit()
-                Text(abs(days - 1) < 0.005 ? "day" : "days").font(.title3.weight(.semibold)).foregroundStyle(.white.opacity(0.8))
+                Text(abs(days - 1) < 0.005 ? String(localized: "day") : String(localized: "days")).font(.title3.weight(.semibold)).foregroundStyle(.white.opacity(0.8))
             }
             Text("\(Int((minutes / 60).rounded()).formatted()) hours · \(Int(minutes.rounded()).formatted()) minutes")
                 .font(.subheadline).foregroundStyle(.white.opacity(0.75))
@@ -218,12 +220,12 @@ struct ProfileDetailView: View {
                 Spacer()
                 miniStat("Movies", duration(stats.minutes(.movies)))
                 Spacer()
-                miniStat(stats.averageDaily?.tracked == false ? "Avg / day (est.)" : "Avg / day",
+                miniStat(stats.averageDaily?.tracked == false ? String(localized: "Avg / day (est.)") : String(localized: "Avg / day"),
                          stats.averageDaily.map { duration($0.minutes) } ?? "–")
             }
             if let a = stats.averageDaily {
-                Text(a.tracked ? "Average per day over the last 30 days of playback."
-                               : "Estimated from your library. Exact daily averages build up as you watch in the app.")
+                Text(a.tracked ? String(localized: "Average per day over the last 30 days of playback.")
+                               : String(localized: "Estimated from your library. Exact daily averages build up as you watch in the app."))
                     .font(.caption).foregroundStyle(.white.opacity(0.65))
             }
         }
@@ -236,7 +238,7 @@ struct ProfileDetailView: View {
     private func miniStat(_ title: String, _ value: String) -> some View {
         VStack(alignment: .leading, spacing: 2) {
             Text(value).font(.title3.weight(.bold)).monospacedDigit()
-            Text(title).font(.caption).foregroundStyle(.white.opacity(0.7))
+            Text(L(title)).font(.caption).foregroundStyle(.white.opacity(0.7))
         }
     }
 
@@ -298,7 +300,8 @@ struct ProfileDetailView: View {
         let shares = stats.genreShares(kind)
         return card("Favourite genres", symbol: "theatermasks.fill") {
             if shares.isEmpty {
-                Text(tmdbKey.isEmpty && !TMDBClient.hasProxy ? "Needs a TMDB key." : model.loading ? "Working it out…" : "Not enough watched yet.")
+                Text(tmdbKey.isEmpty && !TMDBClient.hasProxy ? String(localized: "Needs a TMDB key.")
+                     : model.loading ? String(localized: "Working it out…") : String(localized: "Not enough watched yet."))
                     .font(.footnote).foregroundStyle(.secondary)
             } else {
                 bars(shares)
@@ -337,17 +340,17 @@ struct ProfileDetailView: View {
     private func verdict(_ era: ProfileStats.Era) -> String {
         guard let m = era.medianYear else { return "" }
         let age = Calendar.current.component(.year, from: .now) - m
-        if age <= 4 { return "You watch what's new" }
-        if age <= 10 { return "Mostly recent releases" }
-        if age <= 20 { return "A mix of modern and older" }
-        return "Drawn to older classics"
+        if age <= 4 { return String(localized: "You watch what's new") }
+        if age <= 10 { return String(localized: "Mostly recent releases") }
+        if age <= 20 { return String(localized: "A mix of modern and older") }
+        return String(localized: "Drawn to older classics")
     }
 
     // MARK: Time of day
 
     private func hourLabel(_ h: Int) -> String {
         let h12 = h % 12 == 0 ? 12 : h % 12
-        return "\(h12) \(h < 12 ? "AM" : "PM")"
+        return "\(h12) \(h < 12 ? String(localized: "AM") : String(localized: "PM"))"
     }
 
     private var whenCard: some View {
@@ -393,8 +396,8 @@ struct ProfileDetailView: View {
                                     in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                     }
                 }
-                Text(stats.hoursSource == .tracked ? "Based on the time you've actually spent playing in the app."
-                                                   : "Based on when you last watched each title. Gets more precise as you watch.")
+                Text(stats.hoursSource == .tracked ? String(localized: "Based on the time you've actually spent playing in the app.")
+                                                   : String(localized: "Based on when you last watched each title. Gets more precise as you watch."))
                     .font(.caption).foregroundStyle(.secondary)
             }
         }

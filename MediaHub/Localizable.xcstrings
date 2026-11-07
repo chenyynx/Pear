@@ -1,0 +1,5836 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    " (add-on is off)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "（插件已停用）"
+          }
+        }
+      }
+    },
+    " Add a TMDB key (Settings → Integrations): without one, titles from add-on catalogues can't be placed, so only TMDB-sourced rows are filtered.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " 添加 TMDB 密钥（设置 → 集成）：没有密钥时无法判断插件目录中的影片来源，因此只会筛选来自 TMDB 的栏目。"
+          }
+        }
+      }
+    },
+    " Without a TMDB key (Settings → Integrations) anime and cartoons can't be told apart, so all animation is hidden while either is off.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " 没有 TMDB 密钥（设置 → 集成）时无法区分动漫和卡通，因此只要其中一项关闭，所有动画都会被隐藏。"
+          }
+        }
+      }
+    },
+    "%@ catalogues": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 目录"
+          }
+        }
+      }
+    },
+    "%@ free on this device": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "本机剩余 %@"
+          }
+        }
+      }
+    },
+    "%@ hours · %@ minutes": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 小时 · %@ 分钟"
+          }
+        }
+      }
+    },
+    "%@ reloaded.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 已重新加载。"
+          }
+        }
+      }
+    },
+    "%@ · On this device": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · 本机"
+          }
+        }
+      }
+    },
+    "%lld add-on(s) couldn't be reached and were left as they were.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 个插件无法连接，已保持原状。"
+          }
+        }
+      }
+    },
+    "%lld episode%@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 集"
+          }
+        }
+      }
+    },
+    "%lld episodes": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 集"
+          }
+        }
+      }
+    },
+    "%lld hidden": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已隐藏 %lld 个"
+          }
+        }
+      }
+    },
+    "%lld hours · %lld minutes": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 小时 · %lld 分钟"
+          }
+        }
+      }
+    },
+    "%lld installed": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已安装 %lld 个"
+          }
+        }
+      }
+    },
+    "%lld item%@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 个项目"
+          }
+        }
+      }
+    },
+    "%lld min left": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 分钟剩余"
+          }
+        }
+      }
+    },
+    "%lld more in Settings → Content & catalogues.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还有 %lld 个在「设置 → 内容与目录」中。"
+          }
+        }
+      }
+    },
+    "%lld of %lld active · %lld add-on%@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld / %lld 已启用 · %lld 个插件"
+          }
+        }
+      }
+    },
+    "%lld of %lld on": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld / %lld 已启用"
+          }
+        }
+      }
+    },
+    "%lld of 4 set up": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已设置 %lld / 4"
+          }
+        }
+      }
+    },
+    "%lld on Home": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "首页 %lld 个"
+          }
+        }
+      }
+    },
+    "%lld pinned": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 个已置顶"
+          }
+        }
+      }
+    },
+    "%lld saved · %@ used": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已保存 %lld 个 · 已用 %@"
+          }
+        }
+      }
+    },
+    "%lld shows · %lld movies": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 部剧集 · %lld 部电影"
+          }
+        }
+      }
+    },
+    "%lld title%@ watched or in progress": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 部影片已看或正在看"
+          }
+        }
+      }
+    },
+    "%lld titles": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 部影片"
+          }
+        }
+      }
+    },
+    "%lld torrent source%@ unavailable: P2P is off (Settings → Peer-to-peer)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 个种子片源不可用：P2P 已关闭（设置 → P2P）"
+          }
+        }
+      }
+    },
+    "%lld · %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld · %@"
+          }
+        }
+      }
+    },
+    "%lldh %lldm left": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 小时 %lld 分钟剩余"
+          }
+        }
+      }
+    },
+    "%lldh left": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 小时剩余"
+          }
+        }
+      }
+    },
+    "1. Open this page on any device": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. 在任意设备上打开此页面"
+          }
+        }
+      }
+    },
+    "2. Enter this code": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2. 输入此验证码"
+          }
+        }
+      }
+    },
+    "A mix of modern and older": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新老兼顾"
+          }
+        }
+      }
+    },
+    "AIOMetadata add-on URL": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AIOMetadata 插件地址"
+          }
+        }
+      }
+    },
+    "AIOMetadata catalogues": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AIOMetadata 目录"
+          }
+        }
+      }
+    },
+    "AM": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上午"
+          }
+        }
+      }
+    },
+    "APPEARANCE": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "外观"
+          }
+        }
+      }
+    },
+    "About": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关于"
+          }
+        }
+      }
+    },
+    "About the movie": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关于本片"
+          }
+        }
+      }
+    },
+    "About the series": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关于本剧"
+          }
+        }
+      }
+    },
+    "About the show": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关于本剧"
+          }
+        }
+      }
+    },
+    "Accent colour": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "强调色"
+          }
+        }
+      }
+    },
+    "Account": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "账户"
+          }
+        }
+      }
+    },
+    "Add AIOMetadata": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加 AIOMetadata"
+          }
+        }
+      }
+    },
+    "Add Jellyfin server": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加 Jellyfin 服务器"
+          }
+        }
+      }
+    },
+    "Add Plex account": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加 Plex 账户"
+          }
+        }
+      }
+    },
+    "Add Profile": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加用户"
+          }
+        }
+      }
+    },
+    "Add a TMDB key under Integrations to unlock genre insights and exact episode counts and runtimes. Until then, runtimes are estimated.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在「集成」中添加 TMDB 密钥，即可解锁类型洞察以及精确的集数和时长。在此之前，时长均为估算。"
+          }
+        }
+      }
+    },
+    "Add a free TMDB API key in Settings → Integrations to browse trending titles and filter by genre and year.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在「设置 → 集成」中添加免费的 TMDB API 密钥，即可浏览热门影片并按类型和年份筛选。"
+          }
+        }
+      }
+    },
+    "Add a stream add-on or connect a media server in Settings.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在设置中添加流媒体插件，或连接媒体服务器。"
+          }
+        }
+      }
+    },
+    "Add add-on": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加插件"
+          }
+        }
+      }
+    },
+    "Add an add-on": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加插件"
+          }
+        }
+      }
+    },
+    "Add selected": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加所选"
+          }
+        }
+      }
+    },
+    "Add to Library": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加入媒体库"
+          }
+        }
+      }
+    },
+    "Add to watchlist": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加入待看清单"
+          }
+        }
+      }
+    },
+    "Add your API keys": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加你的 API 密钥"
+          }
+        }
+      }
+    },
+    "Add, reorder, switch off and configure your Stremio add-ons.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加、排序、停用和配置你的 Stremio 插件。"
+          }
+        }
+      }
+    },
+    "Add-on": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "插件"
+          }
+        }
+      }
+    },
+    "Add-on URL": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "插件地址"
+          }
+        }
+      }
+    },
+    "Add-on link (https:// or stremio://)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "插件链接（https:// 或 stremio://）"
+          }
+        }
+      }
+    },
+    "Add-ons": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "插件"
+          }
+        }
+      }
+    },
+    "Add-ons are used from top to bottom. That sets the order of Home rows, search results and sources, so put the ones you prefer first. Switch an add-on off to skip it without removing it. Tap Edit to drag them into order; swipe left to remove one.\n\nThe gear opens an add-on's setup page in your browser. After changing settings there, copy the new add-on link it gives you, add it below, then remove the old one.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "插件按从上到下的顺序使用，这决定了首页栏目、搜索结果和片源的排序，所以把你偏好的放在最前面。停用插件可以跳过它而不删除。点「编辑」可拖动排序；左滑可删除。\n\n齿轮图标会在浏览器中打开插件的设置页。在那里改完设置后，复制它给出的新插件链接，在下方添加，然后删除旧的。"
+          }
+        }
+      }
+    },
+    "Add-ons reloaded.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "插件已重新加载。"
+          }
+        }
+      }
+    },
+    "Added": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已添加"
+          }
+        }
+      }
+    },
+    "Added %@, but it doesn't identify itself as AIOMetadata. Switch it on under Other add-ons.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已添加 %@，但它未标明自己是 AIOMetadata。请在「其他插件」中启用它。"
+          }
+        }
+      }
+    },
+    "Adding…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加中…"
+          }
+        }
+      }
+    },
+    "Adds an OpenSubtitles list to the player's subtitle panel (no account needed). If your default language isn't in the file, the best match is loaded automatically.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在播放器的字幕面板中添加 OpenSubtitles 列表（无需账户）。如果文件里没有你的默认语言，会自动加载最匹配的字幕。"
+          }
+        }
+      }
+    },
+    "Airs on %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "播出平台：%@"
+          }
+        }
+      }
+    },
+    "All": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部"
+          }
+        }
+      }
+    },
+    "All add-ons": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部插件"
+          }
+        }
+      }
+    },
+    "All genres": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部类型"
+          }
+        }
+      }
+    },
+    "Also filter search results": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "同时筛选搜索结果"
+          }
+        }
+      }
+    },
+    "Also uses UniFFI (MPL-2.0) for the Swift bridge, plus Tokio and Hyper (MIT).": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还使用 UniFFI（MPL-2.0）作为 Swift 桥接，以及 Tokio 和 Hyper（MIT）。"
+          }
+        }
+      }
+    },
+    "Always visible · %lld of %lld": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "始终显示 · %lld / %lld"
+          }
+        }
+      }
+    },
+    "Analysing your library… %lld/%lld": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在分析媒体库… %lld/%lld"
+          }
+        }
+      }
+    },
+    "Anime": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "动漫"
+          }
+        }
+      }
+    },
+    "Any year": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部年份"
+          }
+        }
+      }
+    },
+    "Appearance": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "外观"
+          }
+        }
+      }
+    },
+    "Artwork": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图片"
+          }
+        }
+      }
+    },
+    "Asian film & TV": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "亚洲影视"
+          }
+        }
+      }
+    },
+    "Audio track": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "音轨"
+          }
+        }
+      }
+    },
+    "Autoplay next episode": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动播放下一集"
+          }
+        }
+      }
+    },
+    "Average per day over the last 30 days of playback.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "过去 30 天播放时长的日均值。"
+          }
+        }
+      }
+    },
+    "Avg / day": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日均"
+          }
+        }
+      }
+    },
+    "Avg / day (est.)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日均（估算）"
+          }
+        }
+      }
+    },
+    "Back": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "返回"
+          }
+        }
+      }
+    },
+    "Background": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "背景"
+          }
+        }
+      }
+    },
+    "Backup": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备份"
+          }
+        }
+      }
+    },
+    "Based on the time you've actually spent playing in the app.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "基于你在 App 内实际播放的时长。"
+          }
+        }
+      }
+    },
+    "Based on when you last watched each title. Gets more precise as you watch.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "基于每部影片的最后观看时间。观看越多越精确。"
+          }
+        }
+      }
+    },
+    "Because you watched": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "因为你看过"
+          }
+        }
+      }
+    },
+    "Because you watched %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "因为你看过%@"
+          }
+        }
+      }
+    },
+    "Bold": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "粗体"
+          }
+        }
+      }
+    },
+    "Box office": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "票房"
+          }
+        }
+      }
+    },
+    "Budget": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "预算"
+          }
+        }
+      }
+    },
+    "Build your Home": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打造你的首页"
+          }
+        }
+      }
+    },
+    "Built in": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "内置"
+          }
+        }
+      }
+    },
+    "Bundled with AetherEngine as dynamic frameworks. Built without GPL or version-3 options.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "作为动态框架随 AetherEngine 一起打包。构建时未启用 GPL 或 version-3 选项。"
+          }
+        }
+      }
+    },
+    "Cancel": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消"
+          }
+        }
+      }
+    },
+    "Cancel Download": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消下载"
+          }
+        }
+      }
+    },
+    "Cartoons & animation": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卡通与动画"
+          }
+        }
+      }
+    },
+    "Cast": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "主演"
+          }
+        }
+      }
+    },
+    "Catalogues": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目录"
+          }
+        }
+      }
+    },
+    "Catalogues are set up on the add-on's own page. After changing them there, copy the new add-on link, add it in Settings → Add-ons and remove the old one, or just reload if the link didn't change.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目录在插件自己的页面上设置。在那里修改后，复制新的插件链接，在「设置 → 插件」中添加并删除旧的；如果链接没变，直接重新加载即可。"
+          }
+        }
+      }
+    },
+    "Catalogues come from your add-ons. Switching one off here hides its row; the add-on itself stays installed.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目录来自你的插件。在这里停用某个目录只会隐藏它的栏目，插件本身仍保持安装。"
+          }
+        }
+      }
+    },
+    "Check your MDBList API key, or create a list on mdblist.com.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请检查你的 MDBList API 密钥，或在 mdblist.com 上创建一个列表。"
+          }
+        }
+      }
+    },
+    "Checking more add-ons…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在检查更多插件…"
+          }
+        }
+      }
+    },
+    "Choose the rows you want, and add Stremio add-ons for more catalogues.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择你想要的栏目，并添加 Stremio 插件以获得更多目录。"
+          }
+        }
+      }
+    },
+    "Choose your colour": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择你的颜色"
+          }
+        }
+      }
+    },
+    "Chosen per profile. A library on this device keeps its own watch history and watch time and never contacts Simkl. Syncing merges both libraries without deleting anything on either side.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按用户分别选择。本机媒体库会保留自己的观看记录和观看时长，绝不会连接 Simkl。同步会合并两边的媒体库，不会删除任何一方的内容。"
+          }
+        }
+      }
+    },
+    "Chosen per profile. Find it again in Settings → Content & catalogues.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按用户分别选择。之后可在「设置 → 内容与目录」中再次找到。"
+          }
+        }
+      }
+    },
+    "Close": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭"
+          }
+        }
+      }
+    },
+    "Collapsed": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已收起"
+          }
+        }
+      }
+    },
+    "Colour": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "颜色"
+          }
+        }
+      }
+    },
+    "Community-verified timestamps for intros, recaps, credits and previews. No account or key needed; titles are matched through TMDB.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "由社区验证的片头、前情提要、片尾和预告时间点。无需账户或密钥，影片通过 TMDB 匹配。"
+          }
+        }
+      }
+    },
+    "Completed": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已完成"
+          }
+        }
+      }
+    },
+    "Configure": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配置"
+          }
+        }
+      }
+    },
+    "Configure %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配置 %@"
+          }
+        }
+      }
+    },
+    "Connect to Simkl": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "连接 Simkl"
+          }
+        }
+      }
+    },
+    "Connect your services": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "连接你的服务"
+          }
+        }
+      }
+    },
+    "Connected": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已连接"
+          }
+        }
+      }
+    },
+    "Connected to Simkl": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已连接 Simkl"
+          }
+        }
+      }
+    },
+    "Connecting…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在连接…"
+          }
+        }
+      }
+    },
+    "Content & catalogues": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "内容与目录"
+          }
+        }
+      }
+    },
+    "Content · %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "内容 · %@"
+          }
+        }
+      }
+    },
+    "Continue": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "继续"
+          }
+        }
+      }
+    },
+    "Continue Watching": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "继续观看"
+          }
+        }
+      }
+    },
+    "Copy failed.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制失败。"
+          }
+        }
+      }
+    },
+    "Copy settings to clipboard": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制设置到剪贴板"
+          }
+        }
+      }
+    },
+    "Couldn't load that manifest. Check the URL and try again.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法加载该 manifest。请检查网址后重试。"
+          }
+        }
+      }
+    },
+    "Couldn't load that manifest. Check the link and try again.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法加载该 manifest。请检查链接后重试。"
+          }
+        }
+      }
+    },
+    "Couldn't load this catalogue": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法加载此目录"
+          }
+        }
+      }
+    },
+    "Couldn't open that file: %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法打开该文件：%@"
+          }
+        }
+      }
+    },
+    "Couldn't play this source": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法播放此片源"
+          }
+        }
+      }
+    },
+    "Couldn't reach %@.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法连接 %@。"
+          }
+        }
+      }
+    },
+    "Couldn't reach %@. Check that the server is on and try again.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法连接 %@。请确认服务器已开启后重试。"
+          }
+        }
+      }
+    },
+    "Couldn't start the player engine: %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法启动播放器引擎：%@"
+          }
+        }
+      }
+    },
+    "Country": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "国家/地区"
+          }
+        }
+      }
+    },
+    "Created by": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "主创"
+          }
+        }
+      }
+    },
+    "Crunching your numbers…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在计算你的数据…"
+          }
+        }
+      }
+    },
+    "Custom colour": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自定义颜色"
+          }
+        }
+      }
+    },
+    "Decide what shows on Home": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "决定首页显示什么"
+          }
+        }
+      }
+    },
+    "Default language": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "默认语言"
+          }
+        }
+      }
+    },
+    "Delete": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除"
+          }
+        }
+      }
+    },
+    "Delete %@?": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除%@？"
+          }
+        }
+      }
+    },
+    "Delete %lld Downloaded Episodes": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除 %lld 集已下载"
+          }
+        }
+      }
+    },
+    "Delete %lld Episodes": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除 %lld 集"
+          }
+        }
+      }
+    },
+    "Delete %lld episode%@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除 %lld 集"
+          }
+        }
+      }
+    },
+    "Delete %lld item%@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除 %lld 个项目"
+          }
+        }
+      }
+    },
+    "Delete 1 Downloaded Episode": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除 1 集已下载"
+          }
+        }
+      }
+    },
+    "Delete All Downloads": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除全部下载"
+          }
+        }
+      }
+    },
+    "Delete Download": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除下载"
+          }
+        }
+      }
+    },
+    "Delete Profile": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除用户"
+          }
+        }
+      }
+    },
+    "Delete all downloads?": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除全部下载？"
+          }
+        }
+      }
+    },
+    "Delete episode?": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除这一集？"
+          }
+        }
+      }
+    },
+    "Deletes this profile's watch history and local library.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除此用户的观看记录和本机媒体库。"
+          }
+        }
+      }
+    },
+    "Details": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "详情"
+          }
+        }
+      }
+    },
+    "Director": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导演"
+          }
+        }
+      }
+    },
+    "Disconnect": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "断开连接"
+          }
+        }
+      }
+    },
+    "Distance from bottom": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "距底部距离"
+          }
+        }
+      }
+    },
+    "Documentaries": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "纪录片"
+          }
+        }
+      }
+    },
+    "Done": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完成"
+          }
+        }
+      }
+    },
+    "Done Editing": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完成编辑"
+          }
+        }
+      }
+    },
+    "Double tap to collapse": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "双击折叠"
+          }
+        }
+      }
+    },
+    "Double tap to expand": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "双击展开"
+          }
+        }
+      }
+    },
+    "Download": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下载"
+          }
+        }
+      }
+    },
+    "Download Season": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下载整季"
+          }
+        }
+      }
+    },
+    "Download failed": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下载失败"
+          }
+        }
+      }
+    },
+    "Download from…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下载自…"
+          }
+        }
+      }
+    },
+    "Downloaded": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已下载"
+          }
+        }
+      }
+    },
+    "Downloaded · %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已下载 · %@"
+          }
+        }
+      }
+    },
+    "Downloading": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下载中"
+          }
+        }
+      }
+    },
+    "Downloads": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下载"
+          }
+        }
+      }
+    },
+    "Drag the handles to rearrange the buttons, left to right. When the pill is unfolded, the buttons that aren't always visible slide out to the left of the others; each group keeps this order.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拖动把手可重新排列按钮，从左到右。胶囊展开时，非「始终显示」的按钮会滑到其他按钮左侧；每组都保持此顺序。"
+          }
+        }
+      }
+    },
+    "Drawn to older classics": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "偏爱经典老片"
+          }
+        }
+      }
+    },
+    "E%lld": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "E%lld"
+          }
+        }
+      }
+    },
+    "EPISODE %lld": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "第 %lld 集"
+          }
+        }
+      }
+    },
+    "Each profile keeps its own watch history and library on this device. Connect Simkl in Settings to sync a library across devices.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每个用户在本机保留自己的观看记录和媒体库。在设置中连接 Simkl 可跨设备同步媒体库。"
+          }
+        }
+      }
+    },
+    "Edge": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "边缘"
+          }
+        }
+      }
+    },
+    "Edit Profile": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "编辑用户"
+          }
+        }
+      }
+    },
+    "Edit profile": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "编辑用户"
+          }
+        }
+      }
+    },
+    "Enable": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启用"
+          }
+        }
+      }
+    },
+    "Enable peer-to-peer?": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启用 P2P？"
+          }
+        }
+      }
+    },
+    "Episode %lld": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "第 %lld 集"
+          }
+        }
+      }
+    },
+    "Episodes": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "集数"
+          }
+        }
+      }
+    },
+    "Episodes seen": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已看集数"
+          }
+        }
+      }
+    },
+    "Estimated from your library. Exact daily averages build up as you watch in the app.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "根据你的媒体库估算。随着你在 App 内观看，日均值会越来越精确。"
+          }
+        }
+      }
+    },
+    "Everything here can be changed in Settings.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这里的一切都可以在设置中更改。"
+          }
+        }
+      }
+    },
+    "Everything shown": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部显示"
+          }
+        }
+      }
+    },
+    "Everything you watch, in one place.\nA minute of setup makes it yours.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你看的一切，都在一处。\n花一分钟设置，它就属于你。"
+          }
+        }
+      }
+    },
+    "Expanded": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已展开"
+          }
+        }
+      }
+    },
+    "Explore": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "发现"
+          }
+        }
+      }
+    },
+    "Explore needs TMDB": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "发现页需要 TMDB"
+          }
+        }
+      }
+    },
+    "Export failed.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导出失败。"
+          }
+        }
+      }
+    },
+    "Export settings": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导出设置"
+          }
+        }
+      }
+    },
+    "Extra episode artwork and title logos.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "额外的剧集剧照和片名台标。"
+          }
+        }
+      }
+    },
+    "Failed": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "失败"
+          }
+        }
+      }
+    },
+    "Favourite genres": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "常看类型"
+          }
+        }
+      }
+    },
+    "Featured %lld of %lld": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "精选 %lld / %lld"
+          }
+        }
+      }
+    },
+    "Fewer controls": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更少控件"
+          }
+        }
+      }
+    },
+    "Fills in missing episode thumbnails and title logos.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "补全缺失的剧集缩略图和片名台标。"
+          }
+        }
+      }
+    },
+    "Fills in missing episode thumbnails and title logos. Metadata provided by TheTVDB. Get a key at thetvdb.com/api-information.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "补全缺失的剧集缩略图和片名台标。元数据由 TheTVDB 提供。可在 thetvdb.com/api-information 获取密钥。"
+          }
+        }
+      }
+    },
+    "Find movies and shows across your add-ons and TMDB.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在你的插件和 TMDB 中搜索电影和剧集。"
+          }
+        }
+      }
+    },
+    "Find subtitles on OpenSubtitles": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在 OpenSubtitles 上查找字幕"
+          }
+        }
+      }
+    },
+    "First aired": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "首播日期"
+          }
+        }
+      }
+    },
+    "Font": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "字体"
+          }
+        }
+      }
+    },
+    "For example 192.168.1.20:8096 or jellyfin.example.com.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "例如 192.168.1.20:8096 或 jellyfin.example.com。"
+          }
+        }
+      }
+    },
+    "Genres": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "类型"
+          }
+        }
+      }
+    },
+    "Get Started": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开始使用"
+          }
+        }
+      }
+    },
+    "Get a free key": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "获取免费密钥"
+          }
+        }
+      }
+    },
+    "Get a key": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "获取密钥"
+          }
+        }
+      }
+    },
+    "Heavy": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "特粗"
+          }
+        }
+      }
+    },
+    "Hidden titles are removed from Home, Explore, recommendations and themed collections.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隐藏的影片会从首页、发现、推荐和主题合集中移除。"
+          }
+        }
+      }
+    },
+    "Hide anime, cartoons and other kinds of titles, or switch off individual Home rows. Chosen per profile.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隐藏动漫、卡通等类型的影片，或停用首页的单个栏目。按用户分别选择。"
+          }
+        }
+      }
+    },
+    "Hide from Home": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从首页隐藏"
+          }
+        }
+      }
+    },
+    "Hide this row": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隐藏此栏目"
+          }
+        }
+      }
+    },
+    "Home": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "首页"
+          }
+        }
+      }
+    },
+    "Home rows": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "首页栏目"
+          }
+        }
+      }
+    },
+    "Horror": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恐怖"
+          }
+        }
+      }
+    },
+    "IMDb, Rotten Tomatoes, Metacritic and Letterboxd ratings, and your lists on Home. Get a key at mdblist.com/preferences.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "IMDb、烂番茄、Metacritic 和 Letterboxd 评分，以及你首页上的列表。可在 mdblist.com/preferences 获取密钥。"
+          }
+        }
+      }
+    },
+    "IMDb, Rotten Tomatoes, Metacritic and Letterboxd ratings, and your lists.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "IMDb、烂番茄、Metacritic 和 Letterboxd 评分，以及你的列表。"
+          }
+        }
+      }
+    },
+    "IMDb, Rotten Tomatoes, Metacritic and Letterboxd ratings, plus your lists on Home.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "IMDb、烂番茄、Metacritic 和 Letterboxd 评分，以及首页上你的列表。"
+          }
+        }
+      }
+    },
+    "Icon": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图标"
+          }
+        }
+      }
+    },
+    "Import failed: %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导入失败：%@"
+          }
+        }
+      }
+    },
+    "Import settings": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导入设置"
+          }
+        }
+      }
+    },
+    "Imported %lld settings.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已导入 %lld 项设置。"
+          }
+        }
+      }
+    },
+    "Include watch history & library": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "包含观看记录与媒体库"
+          }
+        }
+      }
+    },
+    "Indian & South Asian": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "印度与南亚"
+          }
+        }
+      }
+    },
+    "Installed": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已安装"
+          }
+        }
+      }
+    },
+    "Integrations": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "集成"
+          }
+        }
+      }
+    },
+    "Is your AIOMetadata add-on missing above? A copy hosted under another name isn't recognised automatically. Switch it on here to pick its catalogues too. Switching an add-on on removes its catalogues from Home until you add them.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上面的列表里没有你的 AIOMetadata 插件？以其他名称托管的副本不会被自动识别。在这里启用它，就能一并选择它的目录。启用插件会把它的目录从首页移除，直到你重新添加。"
+          }
+        }
+      }
+    },
+    "It tints buttons, progress bars and highlights across the app. Change it any time in Settings.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "它会为整个 App 的按钮、进度条和高亮着色。随时可在设置中更改。"
+          }
+        }
+      }
+    },
+    "Its watch history and local library will be removed. This can't be undone.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "它的观看记录和本机媒体库将被删除，且无法撤销。"
+          }
+        }
+      }
+    },
+    "JUST AIRED": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "刚播出"
+          }
+        }
+      }
+    },
+    "Jellyfin & Plex": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jellyfin 与 Plex"
+          }
+        }
+      }
+    },
+    "Jellyfin · %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jellyfin · %@"
+          }
+        }
+      }
+    },
+    "Just aired": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "刚播出"
+          }
+        }
+      }
+    },
+    "Keep Current Poster": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保留当前海报"
+          }
+        }
+      }
+    },
+    "Keep in sync automatically": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动保持同步"
+          }
+        }
+      }
+    },
+    "Key set": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已设置密钥"
+          }
+        }
+      }
+    },
+    "Kids & family": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "儿童与家庭"
+          }
+        }
+      }
+    },
+    "Kinds of titles": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "影片类型"
+          }
+        }
+      }
+    },
+    "LGPL, with an App Store exception for the engine's own code": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LGPL，引擎自身代码有 App Store 例外条款"
+          }
+        }
+      }
+    },
+    "Landscape layout": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "横屏布局"
+          }
+        }
+      }
+    },
+    "Languages": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "语言"
+          }
+        }
+      }
+    },
+    "Last aired": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "终播日期"
+          }
+        }
+      }
+    },
+    "Last synced %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上次同步：%@"
+          }
+        }
+      }
+    },
+    "Library": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "媒体库"
+          }
+        }
+      }
+    },
+    "Library · %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "媒体库 · %@"
+          }
+        }
+      }
+    },
+    "Liquid Glass controls": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "液态玻璃控件"
+          }
+        }
+      }
+    },
+    "Loading…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加载中…"
+          }
+        }
+      }
+    },
+    "Log in to or manage your Simkl account": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录或管理你的 Simkl 账户"
+          }
+        }
+      }
+    },
+    "Log in to sync your library": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录以同步媒体库"
+          }
+        }
+      }
+    },
+    "Logos instead of title text": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用台标代替片名文字"
+          }
+        }
+      }
+    },
+    "Long-press an episode, a season or a movie's Play button and choose Download.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "长按某一集、某一季或电影的播放按钮，然后选择「下载」。"
+          }
+        }
+      }
+    },
+    "MDBList API key": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MDBList API 密钥"
+          }
+        }
+      }
+    },
+    "MDBList key": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MDBList 密钥"
+          }
+        }
+      }
+    },
+    "Manage": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "管理"
+          }
+        }
+      }
+    },
+    "Manage Profiles": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "管理用户"
+          }
+        }
+      }
+    },
+    "Manual skip button: %lld s": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "手动跳过按钮：%lld 秒"
+          }
+        }
+      }
+    },
+    "Manual skip button: off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "手动跳过按钮：关闭"
+          }
+        }
+      }
+    },
+    "Mark Episodes Until Here as Watched": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将此前的剧集标记为已看"
+          }
+        }
+      }
+    },
+    "Mark Season as Watched": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将本季标记为已看"
+          }
+        }
+      }
+    },
+    "Mark as Watched": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "标记为已看"
+          }
+        }
+      }
+    },
+    "Mark as watched": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "标记为已看"
+          }
+        }
+      }
+    },
+    "Med": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中等"
+          }
+        }
+      }
+    },
+    "Media servers": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "媒体服务器"
+          }
+        }
+      }
+    },
+    "Metadata provided by TheTVDB. Pear. is not affiliated with TheTVDB.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "元数据由 TheTVDB 提供。Pear. 与 TheTVDB 无关联。"
+          }
+        }
+      }
+    },
+    "Metadata, posters, trending, recommendations, trailers and logos.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "元数据、海报、热门、推荐、预告片和台标。"
+          }
+        }
+      }
+    },
+    "Metadata, trending, Explore, recommendations, episode thumbnails, title logos and matching skip-intro timestamps. A TMDB key is built in, so you don't need one. If TMDB content ever fails to load, add your own free key from themoviedb.org/settings/api. This product uses the TMDB API but is not endorsed or certified by TMDB.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "元数据、热门、发现、推荐、剧集缩略图、片名台标以及跳过片头的匹配时间点。已内置 TMDB 密钥，你无需自备。如果 TMDB 内容加载失败，可在 themoviedb.org/settings/api 添加你自己的免费密钥。本产品使用 TMDB API，但未获得 TMDB 的认可或认证。"
+          }
+        }
+      }
+    },
+    "Metadata, trending, Explore, recommendations, episode thumbnails, title logos and matching skip-intro timestamps. Free key at themoviedb.org/settings/api. This product uses the TMDB API but is not endorsed or certified by TMDB.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "元数据、热门、发现、推荐、剧集缩略图、片名台标以及跳过片头的匹配时间点。免费密钥见 themoviedb.org/settings/api。本产品使用 TMDB API，但未获得 TMDB 的认可或认证。"
+          }
+        }
+      }
+    },
+    "Mono": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等宽"
+          }
+        }
+      }
+    },
+    "More controls": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更多控件"
+          }
+        }
+      }
+    },
+    "More like this": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更多类似内容"
+          }
+        }
+      }
+    },
+    "Mostly recent releases": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "以近年作品为主"
+          }
+        }
+      }
+    },
+    "Movie": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电影"
+          }
+        }
+      }
+    },
+    "Movies": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电影"
+          }
+        }
+      }
+    },
+    "Movies and shows": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电影和剧集"
+          }
+        }
+      }
+    },
+    "Music & musicals": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "音乐与歌舞"
+          }
+        }
+      }
+    },
+    "Mute": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "静音"
+          }
+        }
+      }
+    },
+    "NEW": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新"
+          }
+        }
+      }
+    },
+    "Name": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "名称"
+          }
+        }
+      }
+    },
+    "Needs a TMDB key.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要 TMDB 密钥。"
+          }
+        }
+      }
+    },
+    "Needs setup": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要设置"
+          }
+        }
+      }
+    },
+    "Network": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "播出平台"
+          }
+        }
+      }
+    },
+    "Network icons make one small request per visible poster. Logos come from TMDB, TheTVDB and Metahub and are cached after the first lookup.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "网络图标会为每张可见海报发起一次小请求。台标来自 TMDB、TheTVDB 和 Metahub，首次查询后会缓存。"
+          }
+        }
+      }
+    },
+    "Network icons make one small request per visible poster. Logos come from TMDB, TheTVDB and Metahub and are cached after the first lookup. Landscape layout turns the app sideways into the iPad-style sidebar layout when you rotate your iPhone. Off keeps the app portrait-only.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "网络图标会为每张可见海报发起一次小请求。台标来自 TMDB、TheTVDB 和 Metahub，首次查询后会缓存。横屏布局会在你旋转 iPhone 时把 App 变成 iPad 风格的侧边栏布局。关闭后 App 保持竖屏。"
+          }
+        }
+      }
+    },
+    "Network icons on posters": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "海报上的台标图标"
+          }
+        }
+      }
+    },
+    "New": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新"
+          }
+        }
+      }
+    },
+    "New Profile": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新建用户"
+          }
+        }
+      }
+    },
+    "Next Episode": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下一集"
+          }
+        }
+      }
+    },
+    "Next episode": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下一集"
+          }
+        }
+      }
+    },
+    "No add-ons installed.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚未安装插件。"
+          }
+        }
+      }
+    },
+    "No downloads": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有下载"
+          }
+        }
+      }
+    },
+    "No episode list available for this season": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "本季暂无剧集列表"
+          }
+        }
+      }
+    },
+    "No lists found": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未找到列表"
+          }
+        }
+      }
+    },
+    "No password needed; you approve the sign-in from another device. Quick Connect has to be switched on in the server's dashboard.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无需密码，你在另一台设备上批准登录。需先在服务器仪表盘中开启「快速连接」。"
+          }
+        }
+      }
+    },
+    "No playable source found for that episode": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有找到该集的可播放片源"
+          }
+        }
+      }
+    },
+    "No playable sources found for this title.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有找到此影片的可播放片源。"
+          }
+        }
+      }
+    },
+    "No sources": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有片源"
+          }
+        }
+      }
+    },
+    "No synopsis available yet.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂无简介。"
+          }
+        }
+      }
+    },
+    "None": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无"
+          }
+        }
+      }
+    },
+    "None on Home": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "首页无栏目"
+          }
+        }
+      }
+    },
+    "Not added": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未添加"
+          }
+        }
+      }
+    },
+    "Not connected": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未连接"
+          }
+        }
+      }
+    },
+    "Not enough watched yet.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "观看记录还不够。"
+          }
+        }
+      }
+    },
+    "Not set up": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未设置"
+          }
+        }
+      }
+    },
+    "Nothing downloaded yet": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还没有下载"
+          }
+        }
+      }
+    },
+    "Nothing found": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有找到内容"
+          }
+        }
+      }
+    },
+    "Nothing here yet": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这里还没有内容"
+          }
+        }
+      }
+    },
+    "Nothing to show": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂无内容"
+          }
+        }
+      }
+    },
+    "Nothing watched yet": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还没看过内容"
+          }
+        }
+      }
+    },
+    "Off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭"
+          }
+        }
+      }
+    },
+    "Off by default. When off, torrent sources are hidden and nothing P2P is started. Debrid and direct links are never affected.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "默认关闭。关闭时种子片源会被隐藏，也不会启动任何 P2P 连接。Debrid 和直链不受影响。"
+          }
+        }
+      }
+    },
+    "Off by default: a search names exactly what you're after. Turn it on to apply the categories above to search too. Titles you added yourself (Continue Watching, your library) are never hidden.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "默认关闭：搜索会精确命中你要找的内容。开启后，上方的分类也会应用于搜索。你自己添加的影片（继续观看、媒体库）永远不会被隐藏。"
+          }
+        }
+      }
+    },
+    "Older or newer?": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "老片还是新片？"
+          }
+        }
+      }
+    },
+    "On a device that is already signed in to Jellyfin, open the user menu, choose Quick Connect and enter this code.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在已登录 Jellyfin 的设备上，打开用户菜单，选择「快速连接」并输入此验证码。"
+          }
+        }
+      }
+    },
+    "Open": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开"
+          }
+        }
+      }
+    },
+    "Open App": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开 App"
+          }
+        }
+      }
+    },
+    "Open Pear": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开 Pear"
+          }
+        }
+      }
+    },
+    "Open Plex": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开 Plex"
+          }
+        }
+      }
+    },
+    "Open Simkl": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开 Simkl"
+          }
+        }
+      }
+    },
+    "Open configuration page": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开配置页"
+          }
+        }
+      }
+    },
+    "Open in Infuse": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在 Infuse 中打开"
+          }
+        }
+      }
+    },
+    "Open in VLC": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在 VLC 中打开"
+          }
+        }
+      }
+    },
+    "Open setup page": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开设置页"
+          }
+        }
+      }
+    },
+    "Open the full app whenever you like.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "随时可以打开完整 App。"
+          }
+        }
+      }
+    },
+    "Open your AIOMetadata page, choose the catalogues you want it to offer, then paste the add-on link it gives you (https:// or stremio://). You then pick which of them appear on Home.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开你的 AIOMetadata 页面，选择你想让它提供的目录，然后粘贴它给出的插件链接（https:// 或 stremio://）。之后你可以挑选哪些目录显示在首页。"
+          }
+        }
+      }
+    },
+    "Open-source components": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开源组件"
+          }
+        }
+      }
+    },
+    "Optional while your Simkl name is in use. It is kept as a fallback.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用 Simkl 名称期间可选填。它会作为备用保留。"
+          }
+        }
+      }
+    },
+    "Order": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顺序"
+          }
+        }
+      }
+    },
+    "Other add-ons": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他插件"
+          }
+        }
+      }
+    },
+    "Other foreign-language": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他外语片"
+          }
+        }
+      }
+    },
+    "Outline": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "描边"
+          }
+        }
+      }
+    },
+    "P2P is off, so torrent sources can't be played. Turn it on in Settings → Peer-to-peer.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "P2P 已关闭，种子片源无法播放。请在「设置 → P2P」中开启。"
+          }
+        }
+      }
+    },
+    "P2P off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "P2P 已关闭"
+          }
+        }
+      }
+    },
+    "PIN (subscriber keys only)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PIN（仅限订阅者密钥）"
+          }
+        }
+      }
+    },
+    "PM": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下午"
+          }
+        }
+      }
+    },
+    "Password": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "密码"
+          }
+        }
+      }
+    },
+    "Paste an add-on's manifest link (https:// or stremio://).": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "粘贴插件的 manifest 链接（https:// 或 stremio://）。"
+          }
+        }
+      }
+    },
+    "Paste an add-on's manifest link, for example your AIOMetadata. Catalogues from AIOMetadata only show on Home once you pick them below.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "粘贴插件的 manifest 链接，例如你的 AIOMetadata。AIOMetadata 的目录只会在你于下方选中后显示在首页。"
+          }
+        }
+      }
+    },
+    "Paste settings from clipboard": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从剪贴板粘贴设置"
+          }
+        }
+      }
+    },
+    "Pause": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂停"
+          }
+        }
+      }
+    },
+    "Pause All": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部暂停"
+          }
+        }
+      }
+    },
+    "Pause Download": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂停下载"
+          }
+        }
+      }
+    },
+    "Pause download": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂停下载"
+          }
+        }
+      }
+    },
+    "Paused": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已暂停"
+          }
+        }
+      }
+    },
+    "Paused · tap to resume": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已暂停 · 点按继续"
+          }
+        }
+      }
+    },
+    "Peak hour: %@ – %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "高峰时段：%@ – %@"
+          }
+        }
+      }
+    },
+    "Pear uses your own free API keys. They stay on this device, and you can add or change them later in Settings → Integrations.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pear 使用你自己的免费 API 密钥。它们会留在本机，之后可在「设置 → 集成」中添加或更改。"
+          }
+        }
+      }
+    },
+    "Pear. brings what you watch into one place: your library and watch history, trending and Explore pages, recommendations, and the streams from the add-ons you install, all in a native iOS player with Picture in Picture, subtitles and skip-intro buttons. Everything is saved per profile and stays on your device unless you connect a service.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pear. 把你看的内容集中到一处：媒体库与观看记录、热门与发现页、推荐，以及你安装的插件提供的片源，全部在一个原生 iOS 播放器中呈现，支持画中画、字幕和跳过片头按钮。所有内容按用户分别保存，除非你连接服务，否则都留在本机。"
+          }
+        }
+      }
+    },
+    "Pear. doesn't host, provide or index any media. Sources come only from the add-ons and links you choose to add.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pear. 不托管、不提供也不索引任何媒体。片源只来自你选择添加的插件和链接。"
+          }
+        }
+      }
+    },
+    "Pear. is not affiliated with MDBList.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pear. 与 MDBList 无关联。"
+          }
+        }
+      }
+    },
+    "Pear. is not affiliated with or endorsed by Simkl.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pear. 与 Simkl 无关联，也未获其认可。"
+          }
+        }
+      }
+    },
+    "Pear. uses FFmpeg. Full licence texts and the source of the exact build are in the FFmpegBuild repository.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pear. 使用 FFmpeg。完整许可证文本和确切构建源码见 FFmpegBuild 仓库。"
+          }
+        }
+      }
+    },
+    "Peer-to-peer": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "P2P"
+          }
+        }
+      }
+    },
+    "Peer-to-peer streams": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "P2P 片源"
+          }
+        }
+      }
+    },
+    "Pick a name": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取个名字"
+          }
+        }
+      }
+    },
+    "Pick which AIOMetadata catalogues get a row on Home. None show until you add them.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择哪些 AIOMetadata 目录在首页显示栏目。在你添加之前都不会显示。"
+          }
+        }
+      }
+    },
+    "Pick your colour": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择你的颜色"
+          }
+        }
+      }
+    },
+    "Picked automatically when a video starts and the file has a matching track. Forced and hearing-impaired tracks are used only if nothing else matches.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "视频开始播放且文件中有匹配轨道时自动选择。仅在无其他匹配时才会使用强制字幕和听障字幕。"
+          }
+        }
+      }
+    },
+    "Picture in Picture": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "画中画"
+          }
+        }
+      }
+    },
+    "Picture in Picture isn't available right now": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前无法使用画中画"
+          }
+        }
+      }
+    },
+    "Pin": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "置顶"
+          }
+        }
+      }
+    },
+    "Pinned · %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已置顶 · %@"
+          }
+        }
+      }
+    },
+    "Plan to Watch": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "计划观看"
+          }
+        }
+      }
+    },
+    "Play": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "播放"
+          }
+        }
+      }
+    },
+    "Play S%lld:E%lld": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "播放 S%lld:E%lld"
+          }
+        }
+      }
+    },
+    "Play what is already in your own libraries. Matching titles appear as sources on their detail page, and recently added titles can show on Home and in search.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "播放你自己媒体库中已有的内容。匹配的影片会作为片源显示在其详情页，最近添加的影片也会出现在首页和搜索中。"
+          }
+        }
+      }
+    },
+    "Playback": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "播放"
+          }
+        }
+      }
+    },
+    "Playback failed (%@).": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "播放失败（%@）。"
+          }
+        }
+      }
+    },
+    "Playback speed": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "播放速度"
+          }
+        }
+      }
+    },
+    "Player controls": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "播放器控件"
+          }
+        }
+      }
+    },
+    "Playing": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在播放"
+          }
+        }
+      }
+    },
+    "Playing in Picture in Picture": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在画中画中播放"
+          }
+        }
+      }
+    },
+    "Preview": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "预览"
+          }
+        }
+      }
+    },
+    "Profile": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用户"
+          }
+        }
+      }
+    },
+    "Quick Connect": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "快速连接"
+          }
+        }
+      }
+    },
+    "Quick Connect timed out. Try again.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "快速连接超时，请重试。"
+          }
+        }
+      }
+    },
+    "Reality TV": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "真人秀"
+          }
+        }
+      }
+    },
+    "Recommended": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "推荐"
+          }
+        }
+      }
+    },
+    "Reg": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "常规"
+          }
+        }
+      }
+    },
+    "Released": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上映日期"
+          }
+        }
+      }
+    },
+    "Reload": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新加载"
+          }
+        }
+      }
+    },
+    "Reload all add-ons": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新加载全部插件"
+          }
+        }
+      }
+    },
+    "Reload catalogues": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新加载目录"
+          }
+        }
+      }
+    },
+    "Remove": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除"
+          }
+        }
+      }
+    },
+    "Remove all from Home": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从首页全部移除"
+          }
+        }
+      }
+    },
+    "Remove from Continue Watching": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从继续观看中移除"
+          }
+        }
+      }
+    },
+    "Remove from Home": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从首页移除"
+          }
+        }
+      }
+    },
+    "Remove from Library": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从媒体库移除"
+          }
+        }
+      }
+    },
+    "Remove from watchlist": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从待看清单移除"
+          }
+        }
+      }
+    },
+    "Reset": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重置"
+          }
+        }
+      }
+    },
+    "Reset to 1×": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重置为 1×"
+          }
+        }
+      }
+    },
+    "Reset to default": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复默认"
+          }
+        }
+      }
+    },
+    "Reset to defaults": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复默认"
+          }
+        }
+      }
+    },
+    "Resume": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "继续"
+          }
+        }
+      }
+    },
+    "Resume All": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部继续"
+          }
+        }
+      }
+    },
+    "Resume Download": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "继续下载"
+          }
+        }
+      }
+    },
+    "Resume Poster Rotation": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复海报轮换"
+          }
+        }
+      }
+    },
+    "Resume download": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "继续下载"
+          }
+        }
+      }
+    },
+    "Retry": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重试"
+          }
+        }
+      }
+    },
+    "Retry Download": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重试下载"
+          }
+        }
+      }
+    },
+    "Romance": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "爱情"
+          }
+        }
+      }
+    },
+    "Rounded": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "圆体"
+          }
+        }
+      }
+    },
+    "Runtime": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "时长"
+          }
+        }
+      }
+    },
+    "Rust BitTorrent engine behind optional peer-to-peer streams (off by default).": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可选 P2P 片源背后的 Rust BitTorrent 引擎（默认关闭）。"
+          }
+        }
+      }
+    },
+    "S%lld · E%lld · %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "S%lld · E%lld · %@"
+          }
+        }
+      }
+    },
+    "Save": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存"
+          }
+        }
+      }
+    },
+    "Saved": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已保存"
+          }
+        }
+      }
+    },
+    "Search": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜索"
+          }
+        }
+      }
+    },
+    "Search catalogues": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜索目录"
+          }
+        }
+      }
+    },
+    "Season %lld": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "第 %lld 季"
+          }
+        }
+      }
+    },
+    "Seasons": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "季数"
+          }
+        }
+      }
+    },
+    "See all": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查看全部"
+          }
+        }
+      }
+    },
+    "Semi": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "半粗"
+          }
+        }
+      }
+    },
+    "Series": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "剧集"
+          }
+        }
+      }
+    },
+    "Serif": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "衬线"
+          }
+        }
+      }
+    },
+    "Server": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "服务器"
+          }
+        }
+      }
+    },
+    "Server address": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "服务器地址"
+          }
+        }
+      }
+    },
+    "Servers": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "服务器"
+          }
+        }
+      }
+    },
+    "Service names and logos belong to their owners. These services are not open source: they're accessed through their public APIs, under their own terms.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "服务名称和标志归其所有者所有。这些服务并非开源：我们按照各自的条款，通过其公开 API 访问。"
+          }
+        }
+      }
+    },
+    "Services": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "服务"
+          }
+        }
+      }
+    },
+    "Settings": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置"
+          }
+        }
+      }
+    },
+    "Settings copied. Paste them on the other install within 5 minutes.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置已复制。请在 5 分钟内粘贴到另一台设备。"
+          }
+        }
+      }
+    },
+    "Settings exported.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置已导出。"
+          }
+        }
+      }
+    },
+    "Shadow": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "阴影"
+          }
+        }
+      }
+    },
+    "Shared with you": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "与你共享"
+          }
+        }
+      }
+    },
+    "Show": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "剧集"
+          }
+        }
+      }
+    },
+    "Show everything again": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新显示全部"
+          }
+        }
+      }
+    },
+    "Show full description": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示完整简介"
+          }
+        }
+      }
+    },
+    "Show less": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收起"
+          }
+        }
+      }
+    },
+    "Show on Home": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在首页显示"
+          }
+        }
+      }
+    },
+    "Show poster": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示海报"
+          }
+        }
+      }
+    },
+    "Showing what's saved on this device.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在显示本机保存的内容。"
+          }
+        }
+      }
+    },
+    "Shows": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "剧集"
+          }
+        }
+      }
+    },
+    "Shows watch statistics for this profile": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示此用户的观看统计"
+          }
+        }
+      }
+    },
+    "Shows your Simkl account's name and photo for this profile. Disconnecting Simkl brings back the name and icon below.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "为此用户显示你 Simkl 账户的名称和头像。断开 Simkl 后会恢复下方的名称和图标。"
+          }
+        }
+      }
+    },
+    "Sign in": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录"
+          }
+        }
+      }
+    },
+    "Sign in or pick a name": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录或取个名字"
+          }
+        }
+      }
+    },
+    "Sign in with Plex": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用 Plex 登录"
+          }
+        }
+      }
+    },
+    "Sign in with Simkl": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用 Simkl 登录"
+          }
+        }
+      }
+    },
+    "Sign in with Simkl to bring your name, picture and library, or just pick a name.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用 Simkl 登录可带入你的名称、头像和媒体库，或者直接取个名字。"
+          }
+        }
+      }
+    },
+    "Sign-in timed out. Try again.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录超时，请重试。"
+          }
+        }
+      }
+    },
+    "Sign-in, library, watch history and sync.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录、媒体库、观看记录和同步。"
+          }
+        }
+      }
+    },
+    "Signing in…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在登录…"
+          }
+        }
+      }
+    },
+    "Simkl's lists are your library, and what you watch is scrobbled to Simkl.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simkl 的列表就是你的媒体库，观看内容会同步到 Simkl。"
+          }
+        }
+      }
+    },
+    "Size": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "大小"
+          }
+        }
+      }
+    },
+    "Skip %llds": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跳过 %lld 秒"
+          }
+        }
+      }
+    },
+    "Skip Credits": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跳过片尾"
+          }
+        }
+      }
+    },
+    "Skip Intro": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跳过片头"
+          }
+        }
+      }
+    },
+    "Skip Recap": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跳过前情提要"
+          }
+        }
+      }
+    },
+    "Skip buttons use community timestamps from TheIntroDB. When a show has none, the manual button jumps ahead by the chosen time. It's off by default; set a time above 0 to turn it on. Turn Liquid Glass off if playback ever feels heavy on an older device. Turning Picture in Picture off removes its button and stops videos from floating when you leave the app.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跳过按钮使用 TheIntroDB 的社区时间点。剧集没有时间点时，手动按钮会按所选时长快进。该功能默认关闭；将时长设为大于 0 即可开启。如果在旧设备上播放感觉卡顿，可关闭液态玻璃。关闭画中画会移除其按钮，离开 App 时视频也不再悬浮。"
+          }
+        }
+      }
+    },
+    "Skip for now": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂时跳过"
+          }
+        }
+      }
+    },
+    "Skip intro / recap / credits": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跳过片头 / 前情提要 / 片尾"
+          }
+        }
+      }
+    },
+    "Skip intro, recap and credits": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跳过片头、前情提要和片尾"
+          }
+        }
+      }
+    },
+    "Skip setup": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跳过设置"
+          }
+        }
+      }
+    },
+    "Soap operas": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "肥皂剧"
+          }
+        }
+      }
+    },
+    "Sort": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "排序"
+          }
+        }
+      }
+    },
+    "Sources": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "片源"
+          }
+        }
+      }
+    },
+    "Specials": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "特别篇"
+          }
+        }
+      }
+    },
+    "Speed": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "速度"
+          }
+        }
+      }
+    },
+    "Stalled": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已停滞"
+          }
+        }
+      }
+    },
+    "Start Watching": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开始观看"
+          }
+        }
+      }
+    },
+    "Starting…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在启动…"
+          }
+        }
+      }
+    },
+    "Stats, integrations and taste": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "统计、集成与偏好"
+          }
+        }
+      }
+    },
+    "Status": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "状态"
+          }
+        }
+      }
+    },
+    "Stream": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "片源"
+          }
+        }
+      }
+    },
+    "Studio": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "制作公司"
+          }
+        }
+      }
+    },
+    "Subtitles": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "字幕"
+          }
+        }
+      }
+    },
+    "Swipe a source to pin it to the top for this show.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左滑某个片源，可为该剧集置顶。"
+          }
+        }
+      }
+    },
+    "Switch off anything you don't want suggested. It is hidden from Home, Explore and recommendations.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭你不想被推荐的内容，它会从首页、发现和推荐中隐藏。"
+          }
+        }
+      }
+    },
+    "Switch off the regions you don't want suggested. They only affect live-action: anime and cartoons are handled below. English-language titles are never hidden by these.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭你不想被推荐的地区。它们只影响真人内容，动漫和卡通在下方单独处理。英语影片永远不会被这些设置隐藏。"
+          }
+        }
+      }
+    },
+    "Switch to this profile": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换到此用户"
+          }
+        }
+      }
+    },
+    "Sync now": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "立即同步"
+          }
+        }
+      }
+    },
+    "Synced with Simkl": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已与 Simkl 同步"
+          }
+        }
+      }
+    },
+    "Syncing…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在同步…"
+          }
+        }
+      }
+    },
+    "Syncs your library and watch history, and uses your Simkl name and picture. You enter a code on simkl.com/pin; no account setup needed.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "同步你的媒体库和观看记录，并使用你的 Simkl 名称和头像。你在 simkl.com/pin 输入验证码，无需注册。"
+          }
+        }
+      }
+    },
+    "Synopsis": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "简介"
+          }
+        }
+      }
+    },
+    "System": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统"
+          }
+        }
+      }
+    },
+    "System (no accent)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统（无强调色）"
+          }
+        }
+      }
+    },
+    "TMDB API key": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB API 密钥"
+          }
+        }
+      }
+    },
+    "TMDB is already built in. MDBList and TheTVDB use your own free API keys, which stay on this device. You can add or change any of them later in Settings → Integrations.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB 已内置。MDBList 和 TheTVDB 使用你自己的免费 API 密钥，密钥会留在本机。之后可在「设置 → 集成」中添加或更改。"
+          }
+        }
+      }
+    },
+    "TMDB key": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB 密钥"
+          }
+        }
+      }
+    },
+    "TMDB, TheTVDB, MDBList and Simkl: API keys, logins and metadata sources.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB、TheTVDB、MDBList 和 Simkl：API 密钥、登录和元数据来源。"
+          }
+        }
+      }
+    },
+    "TV Show": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "剧集"
+          }
+        }
+      }
+    },
+    "TV movies": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电视电影"
+          }
+        }
+      }
+    },
+    "TVDB API key": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TVDB API 密钥"
+          }
+        }
+      }
+    },
+    "Talk shows & news": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "脱口秀与新闻"
+          }
+        }
+      }
+    },
+    "Tap Add to Watchlist on any title to save it to %@'s library. Connect Simkl in Settings to sync across devices.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在任意影片上点「加入待看清单」，即可保存到 %@ 的媒体库。在设置中连接 Simkl 可跨设备同步。"
+          }
+        }
+      }
+    },
+    "Tap Connect to Simkl, then enter the code at simkl.com/pin. No account setup, keys or redirects needed. Your library syncs when the app opens and only downloads what changed.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点「连接 Simkl」，然后在 simkl.com/pin 输入验证码。无需注册、密钥或重定向。App 打开时会同步媒体库，且只下载有变化的部分。"
+          }
+        }
+      }
+    },
+    "The clipboard has no settings text.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "剪贴板中没有设置文本。"
+          }
+        }
+      }
+    },
+    "The file contains your API keys and add-on URLs, so keep it private. The clipboard options are a fallback if the file picker won't open a backup: the copied text includes your keys too, and is removed from the clipboard after 5 minutes. The Simkl login isn't included; reconnect it after importing.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此文件包含你的 API 密钥和插件地址，请妥善保管。如果文件选择器无法打开备份，可用剪贴板方式作为备选：复制的文本同样包含密钥，并会在 5 分钟后从剪贴板清除。Simkl 登录不包含在内，导入后需重新连接。"
+          }
+        }
+      }
+    },
+    "The link may have expired or the server may be refusing the request. Try another source, or open this one in another player.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "链接可能已过期，或服务器拒绝了请求。试试其他片源，或用其他播放器打开这个。"
+          }
+        }
+      }
+    },
+    "TheTVDB key": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TheTVDB 密钥"
+          }
+        }
+      }
+    },
+    "Themed collections": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "主题合集"
+          }
+        }
+      }
+    },
+    "These stay in the pill while it is folded. Everything else slides out to the left when you tap the arrow, and folds back after 5 seconds. A button only shows when it applies: Episodes for shows, Next for series, Audio when there is more than one track.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "胶囊折叠时这些按钮保留在外面。点箭头后其余按钮向左滑出，5 秒后自动收回。按钮只在其适用时显示：剧集显示「剧集」，连续剧显示「下一集」，音轨多于一条时显示「音频」。"
+          }
+        }
+      }
+    },
+    "This account has no Plex servers.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此账户没有 Plex 服务器。"
+          }
+        }
+      }
+    },
+    "This add-on offers no catalogues that can sit on Home. Add some on its setup page, then reload.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此插件没有可放在首页的目录。请在其设置页添加一些，然后重新加载。"
+          }
+        }
+      }
+    },
+    "This device": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "本机"
+          }
+        }
+      }
+    },
+    "This is how your profile is shown. You can add more profiles later.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这是你的用户显示方式。之后可以添加更多用户。"
+          }
+        }
+      }
+    },
+    "This product uses the TMDB API but is not endorsed or certified by TMDB.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "本产品使用 TMDB API，但未获得 TMDB 的认可或认证。"
+          }
+        }
+      }
+    },
+    "Titles in your own libraries show up as sources, ahead of your add-ons, whenever you open a movie or episode they have. Switch a server off to stop using it without signing out; touch and hold it to hide its rows from Home or remove it.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开某部电影或剧集时，你自有媒体库中匹配的影片会作为片源排在所有插件之前。停用服务器可以在不登出的情况下停止使用；长按可隐藏它在首页的栏目或将其移除。"
+          }
+        }
+      }
+    },
+    "Titles you add on Simkl show up here.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你在 Simkl 上添加的影片会显示在这里。"
+          }
+        }
+      }
+    },
+    "Torrent streams connect directly to other peers, so your IP address is visible to them. A VPN is recommended. Nothing runs until you play a P2P stream.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "种子片源会直接连接其他节点，因此对方能看到你的 IP 地址。建议使用 VPN。在你播放 P2P 片源之前，不会启动任何连接。"
+          }
+        }
+      }
+    },
+    "Torrents can't be downloaded": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "种子无法下载"
+          }
+        }
+      }
+    },
+    "Total watch time": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "总观看时长"
+          }
+        }
+      }
+    },
+    "Trailers & Extras": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "预告片与花絮"
+          }
+        }
+      }
+    },
+    "Trending %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "热门%@"
+          }
+        }
+      }
+    },
+    "Trending Movies": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "热门电影"
+          }
+        }
+      }
+    },
+    "Trending Shows": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "热门剧集"
+          }
+        }
+      }
+    },
+    "Trending, Explore, recommendations, episode thumbnails, title logos and skip-intro matching. Without it, most of the app stays empty.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "热门、发现、推荐、剧集缩略图、片名台标和跳过片头匹配。没有它，App 的大部分内容都会是空的。"
+          }
+        }
+      }
+    },
+    "Try a different genre or year.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "试试其他类型或年份。"
+          }
+        }
+      }
+    },
+    "Turn off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停用"
+          }
+        }
+      }
+    },
+    "Turn on": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启用"
+          }
+        }
+      }
+    },
+    "Type": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "类型"
+          }
+        }
+      }
+    },
+    "UP NEXT": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "接下来"
+          }
+        }
+      }
+    },
+    "Unmark Season as Watched": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消本季的已看标记"
+          }
+        }
+      }
+    },
+    "Unmark as Watched": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消已看标记"
+          }
+        }
+      }
+    },
+    "Unmark as watched": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消已看标记"
+          }
+        }
+      }
+    },
+    "Unmute": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消静音"
+          }
+        }
+      }
+    },
+    "Unpin": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消置顶"
+          }
+        }
+      }
+    },
+    "Use %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用 %@"
+          }
+        }
+      }
+    },
+    "Use Quick Connect instead": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "改用快速连接"
+          }
+        }
+      }
+    },
+    "Use my Simkl name and picture": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用我的 Simkl 名称和头像"
+          }
+        }
+      }
+    },
+    "Use my own TMDB key": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用我自己的 TMDB 密钥"
+          }
+        }
+      }
+    },
+    "Used under the MDBList terms of service": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "依据 MDBList 服务条款使用"
+          }
+        }
+      }
+    },
+    "Used under the Simkl API terms of use": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "依据 Simkl API 使用条款使用"
+          }
+        }
+      }
+    },
+    "Used under the TMDB API terms of use": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "依据 TMDB API 使用条款使用"
+          }
+        }
+      }
+    },
+    "Used under the TheTVDB API terms of use": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "依据 TheTVDB API 使用条款使用"
+          }
+        }
+      }
+    },
+    "Username": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用户名"
+          }
+        }
+      }
+    },
+    "Using the library on this device. Connect Simkl in Integrations to use it as your library or to sync with it.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在使用本机媒体库。在「集成」中连接 Simkl，即可将其作为媒体库或与之同步。"
+          }
+        }
+      }
+    },
+    "Using your key": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用你的密钥"
+          }
+        }
+      }
+    },
+    "Video player engine (FFmpeg demuxing, VideoToolbox decoding).": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "视频播放引擎（FFmpeg 解封装、VideoToolbox 解码）。"
+          }
+        }
+      }
+    },
+    "View %@'s profile": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查看 %@ 的用户资料"
+          }
+        }
+      }
+    },
+    "Volume": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "音量"
+          }
+        }
+      }
+    },
+    "Waiting for approval…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等待批准…"
+          }
+        }
+      }
+    },
+    "Waiting for authorisation…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等待授权…"
+          }
+        }
+      }
+    },
+    "Waiting for connection": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等待连接"
+          }
+        }
+      }
+    },
+    "Waiting for you to sign in…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等待你登录…"
+          }
+        }
+      }
+    },
+    "Waiting to download": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等待下载"
+          }
+        }
+      }
+    },
+    "Waiting…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等待中…"
+          }
+        }
+      }
+    },
+    "Watch history and Continue Watching are kept separately for each profile. This profile's library comes from Simkl, so profiles set to Simkl share it. Switch a profile to its own library in Settings.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "观看记录和「继续观看」按用户分别保存。此用户的媒体库来自 Simkl，因此设置为 Simkl 的用户会共享它。可在设置中将某个用户切换为独立的媒体库。"
+          }
+        }
+      }
+    },
+    "Watch offline": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "离线观看"
+          }
+        }
+      }
+    },
+    "Watch something and your favourite times of day will show up here.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "看点什么之后，你最喜欢的时段会显示在这里。"
+          }
+        }
+      }
+    },
+    "Watched": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已看"
+          }
+        }
+      }
+    },
+    "Watching": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "观看中"
+          }
+        }
+      }
+    },
+    "Weight": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "字重"
+          }
+        }
+      }
+    },
+    "Weighted by time spent, so a long series counts for more than a short film.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按时长加权，所以长篇剧集比短片更有分量。"
+          }
+        }
+      }
+    },
+    "What Pear. is, and the open-source components and services it uses.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pear. 是什么，以及它使用的开源组件和服务。"
+          }
+        }
+      }
+    },
+    "What do you want to see?": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你想看什么？"
+          }
+        }
+      }
+    },
+    "When you watch": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "观看时段"
+          }
+        }
+      }
+    },
+    "Where it's from": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来源"
+          }
+        }
+      }
+    },
+    "Where it's from · %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来源 · %@"
+          }
+        }
+      }
+    },
+    "Who's watching?": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "谁在看？"
+          }
+        }
+      }
+    },
+    "Wi-Fi only": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅 Wi-Fi"
+          }
+        }
+      }
+    },
+    "Working it out…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在计算…"
+          }
+        }
+      }
+    },
+    "Year": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "年份"
+          }
+        }
+      }
+    },
+    "You can also touch and hold a row's title on Home and choose Hide this row.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你也可以在首页长按栏目标题并选择「隐藏此栏目」。"
+          }
+        }
+      }
+    },
+    "You don't need to provide a key. Pear. already includes one, so trending, Explore, recommendations, episode thumbnails, title logos and skip-intro matching work out of the box. If something doesn't load, turn on the switch below and add your own free key.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你无需提供密钥。Pear. 已内置一个，因此热门、发现、推荐、剧集缩略图、片名台标和跳过片头匹配都可直接使用。如果有内容加载不出来，请打开下方的开关并添加你自己的免费密钥。"
+          }
+        }
+      }
+    },
+    "You sign in on Plex's own page, so your password never goes through this app. Come back here afterwards and your servers are listed.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你在 Plex 自己的页面上登录，密码绝不会经过此 App。完成后回到这里，你的服务器就会列出。"
+          }
+        }
+      }
+    },
+    "You watch what's new": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你看的都是新片"
+          }
+        }
+      }
+    },
+    "You're all set, %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "都设置好了，%@"
+          }
+        }
+      }
+    },
+    "You're back online": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已恢复联网"
+          }
+        }
+      }
+    },
+    "You're offline": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前离线"
+          }
+        }
+      }
+    },
+    "Your content settings are hiding everything here. Change them in Settings → Content & catalogues.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你的内容设置隐藏了这里的所有内容。请在「设置 → 内容与目录」中修改。"
+          }
+        }
+      }
+    },
+    "Your library is empty": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你的媒体库是空的"
+          }
+        }
+      }
+    },
+    "Your own TMDB key (optional)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你自己的 TMDB 密钥（可选）"
+          }
+        }
+      }
+    },
+    "Your own library and watch tracking on this device. Nothing is sent to Simkl.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在本机使用你自己的媒体库和观看记录，不会向 Simkl 发送任何内容。"
+          }
+        }
+      }
+    },
+    "Your taste": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你的偏好"
+          }
+        }
+      }
+    },
+    "Yours": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你的"
+          }
+        }
+      }
+    },
+    "across %lld show%@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "共 %lld 部剧集"
+          }
+        }
+      }
+    },
+    "collapse": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "折叠"
+          }
+        }
+      }
+    },
+    "connected": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已连接"
+          }
+        }
+      }
+    },
+    "day": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "天"
+          }
+        }
+      }
+    },
+    "days": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "天"
+          }
+        }
+      }
+    },
+    "expand": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "展开"
+          }
+        }
+      }
+    },
+    "less": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收起"
+          }
+        }
+      }
+    },
+    "median year": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中位年份"
+          }
+        }
+      }
+    },
+    "more": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更多"
+          }
+        }
+      }
+    },
+    "not set up": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未设置"
+          }
+        }
+      }
+    },
+    "this profile": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此用户"
+          }
+        }
+      }
+    },
+    "used": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已用"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

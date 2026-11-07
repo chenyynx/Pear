@@ -116,7 +116,7 @@ actor TMDBClient {
         var posterURL: URL? { posterPath.flatMap { URL(string: TMDBClient.img + "w342" + $0) } }
         var title: String {
             if let n = name, !n.isEmpty { return n }
-            return seasonNumber == 0 ? "Specials" : "Season \(seasonNumber)"
+            return seasonNumber == 0 ? String(localized: "Specials") : String(localized: "Season \(seasonNumber)")
         }
     }
 

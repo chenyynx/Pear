@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 // MARK: - When is the wide layout used?
@@ -77,11 +78,11 @@ enum AppTab: Hashable, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .search: "Search"
-        case .home: "Home"
-        case .explore: "Explore"
-        case .settings: "Settings"
-        case .library: "Library"
+        case .search: String(localized: "Search")
+        case .home: String(localized: "Home")
+        case .explore: String(localized: "Explore")
+        case .settings: String(localized: "Settings")
+        case .library: String(localized: "Library")
         }
     }
     var symbol: String {
@@ -101,7 +102,7 @@ struct CatalogueRef: Identifiable {
     let def: AddonManifest.CatalogDef
     var id: String { "\(addon.id)/\(def.type)/\(def.id)" }
     var title: String {
-        let kind = def.type == "movie" ? "Movies" : def.type == "series" ? "Series" : def.type.capitalized
+        let kind = def.type == "movie" ? String(localized: "Movies") : def.type == "series" ? String(localized: "Series") : def.type.capitalized
         return "\(def.name ?? def.id) \(kind)"
     }
 }

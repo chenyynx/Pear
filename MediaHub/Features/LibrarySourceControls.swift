@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 /// The profile's library switch: this device or Simkl, plus syncing the two. Used on the profile page and in Settings.
@@ -20,8 +21,8 @@ struct LibrarySourceControls: View {
 
         if connected {
             Text(source == .local
-                 ? "Your own library and watch tracking on this device. Nothing is sent to Simkl."
-                 : "Simkl's lists are your library, and what you watch is scrobbled to Simkl.")
+                 ? String(localized: "Your own library and watch tracking on this device. Nothing is sent to Simkl.")
+                 : String(localized: "Simkl's lists are your library, and what you watch is scrobbled to Simkl."))
                 .font(.footnote).foregroundStyle(.secondary)
 
             Toggle("Keep in sync automatically", isOn: Binding(get: { prefs.autoSync }, set: { prefs.setAutoSync($0) }))

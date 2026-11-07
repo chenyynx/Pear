@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 import UniformTypeIdentifiers
 
@@ -38,14 +39,14 @@ struct SettingsView: View {
     }
 
     private var addonSummary: String {
-        if store.addons.isEmpty { return "None" }
+        if store.addons.isEmpty { return String(localized: "None") }
         let on = store.addons.filter { store.isEnabled($0) }.count
-        return on == store.addons.count ? "\(on) installed" : "\(on) of \(store.addons.count) on"
+        return on == store.addons.count ? String(localized: "\(on) installed") : String(localized: "\(on) of \(store.addons.count) on")
     }
 
     private var contentSummary: String {
         let n = contentPrefs.rules.hiddenCategories.count + contentPrefs.rules.hiddenRows.count
-        return n == 0 ? "Everything shown" : "\(n) hidden"
+        return n == 0 ? String(localized: "Everything shown") : String(localized: "\(n) hidden")
     }
 
     var body: some View {
@@ -142,7 +143,9 @@ struct SettingsView: View {
                             .onChange(of: landscapeLayout) { _, _ in OrientationLock.set(OrientationLock.appMask) }
                     }
                 } header: { Text("Appearance") } footer: {
-                    Text("Network icons make one small request per visible poster. Logos come from TMDB, TheTVDB and Metahub and are cached after the first lookup.\(WideLayout.isPad ? "" : " Landscape layout turns the app sideways into the iPad-style sidebar layout when you rotate your iPhone. Off keeps the app portrait-only.")")
+                    Text(WideLayout.isPad
+                         ? String(localized: "Network icons make one small request per visible poster. Logos come from TMDB, TheTVDB and Metahub and are cached after the first lookup.")
+                         : String(localized: "Network icons make one small request per visible poster. Logos come from TMDB, TheTVDB and Metahub and are cached after the first lookup. Landscape layout turns the app sideways into the iPad-style sidebar layout when you rotate your iPhone. Off keeps the app portrait-only."))
                 }
 
                 Section {
@@ -170,7 +173,7 @@ struct SettingsView: View {
                     Toggle("Picture in Picture", isOn: $pipEnabled)
                     Toggle("Skip intro / recap / credits", isOn: $skipEnabled)
                     if skipEnabled {
-                        Stepper(fallbackSkip == 0 ? "Manual skip button: off" : "Manual skip button: \(fallbackSkip) s",
+                        Stepper(fallbackSkip == 0 ? String(localized: "Manual skip button: off") : String(localized: "Manual skip button: \(fallbackSkip) s"),
                                 value: $fallbackSkip, in: 0...180, step: 5)
                     }
                 } header: { Text("Playback") } footer: {
@@ -200,7 +203,7 @@ struct SettingsView: View {
                     Button { export() } label: { Label("Export settings", systemImage: "square.and.arrow.up") }
                         .fileExporter(isPresented: $showExporter, document: exportDoc ?? BackupDocument(),
                                       contentType: .propertyList, defaultFilename: "Pear-Settings") { r in
-                            if case .failure = r { backupNote = "Export failed." } else { backupNote = "Settings exported." }
+                            if case .failure = r { backupNote = String(localized: "Export failed.") } else { backupNote = String(localized: "Settings exported.") }
                         }
                     // Any file can be picked (a backup that was renamed or re-saved isn't greyed out); the content is
                     // checked when it is read. The picker copies the file first, which also works in sideloaded installs.
@@ -242,7 +245,7 @@ struct SettingsView: View {
         do {
             exportDoc = BackupDocument(data: try SettingsBackup.export(includeData: includeData))
             showExporter = true
-        } catch { backupNote = "Export failed." }
+        } catch { backupNote = String(localized: "Export failed.") }
     }
 
     private func pickBackup() {
@@ -255,16 +258,16 @@ struct SettingsView: View {
     private func copyBackup() {
         do {
             let data = try SettingsBackup.export(includeData: includeData)
-            guard let text = String(data: data, encoding: .utf8) else { backupNote = "Copy failed."; return }
+            guard let text = String(data: data, encoding: .utf8) else { backupNote = String(localized: "Copy failed."); return }
             UIPasteboard.general.setItems([[UTType.plainText.identifier: text]],
                                           options: [.expirationDate: Date().addingTimeInterval(300)])
-            backupNote = "Settings copied. Paste them on the other install within 5 minutes."
-        } catch { backupNote = "Copy failed." }
+            backupNote = String(localized: "Settings copied. Paste them on the other install within 5 minutes.")
+        } catch { backupNote = String(localized: "Copy failed.") }
     }
 
     private func pasteBackup() {
         guard let text = UIPasteboard.general.string, let data = text.data(using: .utf8), !text.isEmpty else {
-            backupNote = "The clipboard has no settings text."
+            backupNote = String(localized: "The clipboard has no settings text.")
             return
         }
         applyBackup(data)
@@ -276,7 +279,7 @@ struct SettingsView: View {
         case .failure(let error):
             // Closing the picker isn't an error; anything else used to vanish silently.
             if (error as? CocoaError)?.code != .userCancelled {
-                backupNote = "Couldn't open that file: \(error.localizedDescription)"
+                backupNote = String(localized: "Couldn't open that file: \(error.localizedDescription)")
             }
             return
         case .success(let picked):
@@ -286,7 +289,7 @@ struct SettingsView: View {
         defer { if scoped { url.stopAccessingSecurityScopedResource() } }
         let data: Data
         do { data = try SettingsBackup.read(url) } catch {
-            backupNote = "Couldn't open that file: \(error.localizedDescription)"
+            backupNote = String(localized: "Couldn't open that file: \(error.localizedDescription)")
             return
         }
         applyBackup(data)
@@ -298,9 +301,9 @@ struct SettingsView: View {
             theme.reload(); profiles.reload(); history.reload(); library.reload(); watchLog.reload(); pins.reload(); libraryPrefs.reload()
             contentPrefs.reload()
             Task { await store.reloadFromDefaults() }
-            backupNote = "Imported \(n) settings."
+            backupNote = String(localized: "Imported \(n) settings.")
         } catch {
-            backupNote = (error as? LocalizedError)?.errorDescription ?? "Import failed: \(error.localizedDescription)"
+            backupNote = (error as? LocalizedError)?.errorDescription ?? String(localized: "Import failed: \(error.localizedDescription)")
         }
     }
 }

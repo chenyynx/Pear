@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 /// Appearance controls for subtitles: used inside the player (compact, over video) and on the Settings page.
@@ -61,7 +62,7 @@ struct SubtitleStyleControls: View {
                 .pickerStyle(.segmented)
             }
 
-            row("Background", value: style.boxOpacity < 0.01 ? "Off" : "\(Int(style.boxOpacity * 100))%") {
+            row("Background", value: style.boxOpacity < 0.01 ? String(localized: "Off") : "\(Int(style.boxOpacity * 100))%") {
                 Slider(value: binding(\.boxOpacity), in: 0...0.9, step: 0.05)
             }
 
@@ -78,9 +79,9 @@ struct SubtitleStyleControls: View {
     private func row<C: View>(_ title: String, value: String? = nil, @ViewBuilder content: () -> C) -> some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack {
-                Text(title).font(.footnote.weight(.semibold)).foregroundStyle(.secondary)
+                Text(L(title)).font(.footnote.weight(.semibold)).foregroundStyle(.secondary)
                 Spacer()
-                if let value { Text(value).font(.footnote.monospacedDigit()).foregroundStyle(.secondary) }
+                if let value { Text(L(value)).font(.footnote.monospacedDigit()).foregroundStyle(.secondary) }
             }
             content()
         }

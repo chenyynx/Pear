@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 @MainActor @Observable
@@ -197,8 +198,8 @@ struct ExploreView: View {
     }
 
     private var heading: String {
-        let noun = model.kind == "tv" ? "Shows" : "Movies"
-        if model.isTrending { return "Trending \(noun)" }
+        let noun = model.kind == "tv" ? String(localized: "Shows") : String(localized: "Movies")
+        if model.isTrending { return String(localized: "Trending \(noun)") }
         var parts: [String] = []
         if let g = model.genres.first(where: { $0.id == model.genre }) { parts.append(g.name) }
         if let y = model.year { parts.append(String(y)) }
@@ -257,7 +258,7 @@ struct ExploreView: View {
 
     private func chip(_ title: String, on: Bool, action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            Text(title).font(.footnote.weight(.semibold))
+            Text(L(title)).font(.footnote.weight(.semibold))
                 .padding(.horizontal, 14).padding(.vertical, 8)
                 .background(on ? Color.accentColor : Color.white.opacity(0.1), in: Capsule())
                 .foregroundStyle(on ? theme.onAccent : Color.primary)
@@ -267,7 +268,7 @@ struct ExploreView: View {
     }
 
     private func menuLabel(_ title: String, symbol: String, on: Bool) -> some View {
-        Label(title, systemImage: symbol)
+        Label(L(title), systemImage: symbol)
             .font(.footnote.weight(.semibold))
             .padding(.horizontal, 12).padding(.vertical, 8)
             .background(on ? Color.accentColor.opacity(0.25) : Color.white.opacity(0.1), in: Capsule())

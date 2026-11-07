@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 extension DownloadFiles {
@@ -23,7 +24,7 @@ struct DownloadSpeedText: View {
         if let s = downloads.speeds[id] {
             TimelineView(.periodic(from: .now, by: 2)) { ctx in
                 let stalled = ctx.date.timeIntervalSince(s.at) > 5 || s.bytesPerSecond < 1
-                Text(prefix + (stalled ? "Stalled" : DownloadFiles.speedString(s.bytesPerSecond)))
+                Text(prefix + (stalled ? String(localized: "Stalled") : DownloadFiles.speedString(s.bytesPerSecond)))
                     .monospacedDigit()
             }
         }
@@ -134,7 +135,7 @@ struct DownloadsView: View {
                 Button("Resume All", systemImage: "play.circle") { downloads.resumeAll() }
             }
             Button("Delete All Downloads", systemImage: "trash", role: .destructive) {
-                pending = Pending(title: "Delete all downloads?", button: "Delete \(count) item\(count == 1 ? "" : "s")",
+                pending = Pending(title: String(localized: "Delete all downloads?"), button: String(localized: "Delete \(count) item\(count == 1 ? "" : "s")"),
                                   message: "Frees \(DownloadFiles.sizeString(used)). Anything still downloading is cancelled.",
                                   run: { downloads.deleteAll() })
             }
@@ -170,7 +171,7 @@ struct DownloadsView: View {
         let n = sn.records.count
         return HStack {
             VStack(alignment: .leading, spacing: 2) {
-                Text(sn.number == 0 ? "Specials" : "Season \(sn.number)").font(.headline)
+                Text(sn.number == 0 ? String(localized: "Specials") : String(localized: "Season \(sn.number)")).font(.headline)
                 Text("\(n) episode\(n == 1 ? "" : "s") · \(DownloadFiles.sizeString(sn.bytes))")
                     .font(.caption).foregroundStyle(.secondary)
             }
@@ -212,14 +213,14 @@ struct DownloadsView: View {
             transferControl(r)
         }
         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-            Button(r.state == .done ? "Delete" : "Remove", systemImage: "trash", role: .destructive) { downloads.delete(r.id) }
+            Button(r.state == .done ? String(localized: "Delete") : String(localized: "Remove"), systemImage: "trash", role: .destructive) { downloads.delete(r.id) }
         }
         .contextMenu {
             if r.state == .done { Button("Play", systemImage: "play.fill") { play(r) } }
             if r.state == .failed { Button("Retry", systemImage: "arrow.clockwise") { downloads.retry(r.id) } }
             if r.state == .queued || r.state == .downloading { Button("Pause", systemImage: "pause.fill") { downloads.pause(r.id) } }
             if r.state == .paused { Button("Resume", systemImage: "play.fill") { downloads.resume(r.id) } }
-            Button(r.state == .done ? "Delete Download" : "Cancel Download",
+            Button(r.state == .done ? String(localized: "Delete Download") : String(localized: "Cancel Download"),
                    systemImage: r.state == .done ? "trash" : "xmark.circle", role: .destructive) { downloads.delete(r.id) }
         }
     }
@@ -285,16 +286,16 @@ struct DownloadsView: View {
             VStack(alignment: .leading, spacing: 4) {
                 if r.progress > 0 { ProgressView(value: r.progress).tint(Color.secondary) }
                 Text(r.progress > 0 && r.expectedBytes > 0
-                     ? "Paused · \(Int(r.progress * 100))% · \(DownloadFiles.sizeString(r.bytes)) of \(DownloadFiles.sizeString(r.expectedBytes))"
-                     : "Paused · tap to resume")
+                     ? String(localized: "Paused") + " · \(Int(r.progress * 100))% · \(DownloadFiles.sizeString(r.bytes)) / \(DownloadFiles.sizeString(r.expectedBytes))"
+                     : String(localized: "Paused · tap to resume"))
                     .font(.caption).monospacedDigit().foregroundStyle(.secondary)
                     .lineLimit(1).minimumScaleFactor(0.8)
             }
         case .queued:
-            Text(connectivity.isOnline == false ? "Waiting for connection" : "Waiting…")
+            Text(connectivity.isOnline == false ? String(localized: "Waiting for connection") : String(localized: "Waiting…"))
                 .font(.caption).foregroundStyle(.secondary)
         case .failed:
-            Text("\(r.error ?? "Failed") · tap to retry").font(.caption).foregroundStyle(.red)
+            Text("\(r.error ?? String(localized: "Failed")) · tap to retry").font(.caption).foregroundStyle(.red)
         }
     }
 
@@ -313,8 +314,9 @@ struct DownloadsView: View {
 
     private func confirm(_ show: Show, _ sn: SeasonGroup) {
         let n = sn.records.count
-        let name = sn.number == 0 ? "Specials" : "Season \(sn.number)"
-        pending = Pending(title: n == 1 ? "Delete episode?" : "Delete \(name)?", button: "Delete \(n) episode\(n == 1 ? "" : "s")",
+        let name = sn.number == 0 ? String(localized: "Specials") : String(localized: "Season \(sn.number)")
+        pending = Pending(title: n == 1 ? String(localized: "Delete episode?") : String(localized: "Delete \(name)?"),
+                          button: String(localized: "Delete \(n) episode\(n == 1 ? "" : "s")"),
                           message: "Frees \(DownloadFiles.sizeString(sn.bytes)).",
                           run: { downloads.delete(imdb: show.id, season: sn.number) })
     }

@@ -148,7 +148,7 @@ struct MetaPreview: Identifiable, Sendable, Hashable {
     }
     /// Which service the `rating` number comes from.
     var ratingLabel: String { id.hasPrefix("tmdb:") ? "TMDB" : "IMDb" }
-    var typeLabel: String { type == "series" ? "Series" : "Movie" }
+    var typeLabel: String { type == "series" ? String(localized: "Series") : String(localized: "Movie") }
     func with(rating r: Double?) -> MetaPreview { var c = self; c.rating = r; return c }
     /// Same title with another logo URL (everything else untouched).
     func with(logo l: String?) -> MetaPreview {

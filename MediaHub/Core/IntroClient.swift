@@ -9,9 +9,9 @@ struct SkipSegment: Equatable, Sendable, Identifiable {
     var id: String { "\(kind.rawValue)-\(Int(start))" }
     var label: String {
         switch kind {
-        case .intro: return "Skip Intro"
-        case .recap: return "Skip Recap"
-        case .credits: return "Skip Credits"
+        case .intro: return String(localized: "Skip Intro")
+        case .recap: return String(localized: "Skip Recap")
+        case .credits: return String(localized: "Skip Credits")
         case .preview: return "Skip Preview"
         }
     }

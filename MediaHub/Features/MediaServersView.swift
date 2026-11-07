@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 private func serverMessage(_ error: Error) -> String {
@@ -35,14 +36,14 @@ struct MediaServersView: View {
             Image(systemName: a.kind.symbol).frame(width: 28).foregroundStyle(.tint)
             VStack(alignment: .leading, spacing: 2) {
                 Text(a.name).font(.body.weight(.semibold))
-                Text(a.kind == .plex ? "Plex" : "Jellyfin · \(a.host)").font(.footnote).foregroundStyle(.secondary)
+                Text(a.kind == .plex ? "Plex" : String(localized: "Jellyfin · \(a.host)")).font(.footnote).foregroundStyle(.secondary)
             }
             Spacer()
             Toggle("Use \(a.name)", isOn: Binding(get: { a.enabled }, set: { servers.setEnabled(a.id, $0) })).labelsHidden()
         }
         .contextMenu {
             Button { servers.setShowOnHome(a.id, !a.showOnHome) } label: {
-                Label(a.showOnHome ? "Hide from Home" : "Show on Home", systemImage: a.showOnHome ? "eye.slash" : "eye")
+                Label(a.showOnHome ? String(localized: "Hide from Home") : String(localized: "Show on Home"), systemImage: a.showOnHome ? "eye.slash" : "eye")
             }
             Button(role: .destructive) { servers.remove(a.id) } label: { Label("Remove", systemImage: "trash") }
         }
@@ -88,7 +89,7 @@ struct AddJellyfinView: View {
                     TextField("Username", text: $user).textInputAutocapitalization(.never).autocorrectionDisabled()
                     SecureField("Password", text: $password)
                     Button { signIn() } label: {
-                        Text(busy ? "Signing in…" : "Sign in").font(.body.weight(.semibold)).foregroundStyle(theme.onAccent)
+                        Text(busy ? String(localized: "Signing in…") : String(localized: "Sign in")).font(.body.weight(.semibold)).foregroundStyle(theme.onAccent)
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.borderedProminent)
@@ -152,7 +153,7 @@ struct AddJellyfinView: View {
                         return
                     }
                 }
-                self.error = "Quick Connect timed out. Try again."
+                self.error = String(localized: "Quick Connect timed out. Try again.")
             } catch is CancellationError {
             } catch { self.error = serverMessage(error) }
         }
@@ -204,7 +205,7 @@ struct AddPlexView: View {
                 Button("Cancel", role: .cancel) { task?.cancel(); self.pin = nil; busy = false }
             } else {
                 Button { signIn() } label: {
-                    Label(busy ? "Starting…" : "Sign in with Plex", systemImage: "link").font(.body.weight(.semibold))
+                    Label(busy ? String(localized: "Starting…") : String(localized: "Sign in with Plex"), systemImage: "link").font(.body.weight(.semibold))
                         .foregroundStyle(theme.onAccent)
                 }
                 .buttonStyle(.borderedProminent)
@@ -225,13 +226,13 @@ struct AddPlexView: View {
                                      set: { on in if on { selected.insert(s.id) } else { selected.remove(s.id) } })) {
                     VStack(alignment: .leading, spacing: 2) {
                         Text(s.name).font(.body.weight(.semibold))
-                        Text(s.owned ? "Yours" : "Shared with you").font(.footnote).foregroundStyle(.secondary)
+                        Text(s.owned ? String(localized: "Yours") : String(localized: "Shared with you")).font(.footnote).foregroundStyle(.secondary)
                     }
                 }
             }
             if !found.isEmpty {
                 Button { addSelected() } label: {
-                    Text(busy ? "Connecting…" : "Add selected").font(.body.weight(.semibold)).foregroundStyle(theme.onAccent)
+                    Text(busy ? String(localized: "Connecting…") : String(localized: "Add selected")).font(.body.weight(.semibold)).foregroundStyle(theme.onAccent)
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
@@ -264,7 +265,7 @@ struct AddPlexView: View {
                         return
                     }
                 }
-                self.error = "Sign-in timed out. Try again."
+                self.error = String(localized: "Sign-in timed out. Try again.")
             } catch is CancellationError {
             } catch { self.error = serverMessage(error) }
         }
@@ -284,7 +285,7 @@ struct AddPlexView: View {
                                 token: s.token ?? accountToken)
             }
             if failed.isEmpty { dismiss() }
-            else { error = "Couldn't reach \(failed.joined(separator: ", ")). Check that the server is on and try again." }
+            else { error = String(localized: "Couldn't reach \(failed.joined(separator: ", ")). Check that the server is on and try again.") }
         }
     }
 }

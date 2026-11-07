@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 /// Library sections (Watching, Completed, Plan to Watch), each ordered by most recent activity.
@@ -79,7 +80,8 @@ struct LibraryView: View {
     }
 
     private var subtitle: String {
-        prefs.usesSimkl(simkl) ? "Synced with Simkl" : "\(simkl.name(for: profiles.active)) · On this device"
+        prefs.usesSimkl(simkl) ? String(localized: "Synced with Simkl")
+            : String(localized: "\(simkl.name(for: profiles.active)) · On this device")
     }
 
     // MARK: View
@@ -198,7 +200,7 @@ struct LibraryView: View {
         .buttonStyle(.plain)
         .disabled(!collapsible)
         .accessibilityLabel("\(sec.title), \(sec.items.count) titles")
-        .accessibilityValue(collapsible ? (open ? "Expanded" : "Collapsed") : "")
-        .accessibilityHint(collapsible ? "Double tap to \(open ? "collapse" : "expand")" : "")
+        .accessibilityValue(collapsible ? (open ? String(localized: "Expanded") : String(localized: "Collapsed")) : "")
+        .accessibilityHint(collapsible ? (open ? String(localized: "Double tap to collapse") : String(localized: "Double tap to expand")) : "")
     }
 }

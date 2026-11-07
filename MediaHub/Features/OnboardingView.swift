@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 /// First-launch setup: sign in with Simkl or pick a name, choose an accent colour, decide what shows up, add API keys.
@@ -94,10 +95,10 @@ struct OnboardingView: View {
 
     private var primaryTitle: String {
         switch step {
-        case .welcome: return "Get Started"
-        case .done: return "Start Watching"
-        case .keys: return tmdbKey.isEmpty && !TMDBClient.hasProxy && tvdbKey.isEmpty && mdbKey.isEmpty ? "Skip for now" : "Continue"
-        default: return "Continue"
+        case .welcome: return String(localized: "Get Started")
+        case .done: return String(localized: "Start Watching")
+        case .keys: return tmdbKey.isEmpty && !TMDBClient.hasProxy && tvdbKey.isEmpty && mdbKey.isEmpty ? String(localized: "Skip for now") : String(localized: "Continue")
+        default: return String(localized: "Continue")
         }
     }
 
@@ -155,8 +156,8 @@ struct OnboardingView: View {
 
     private func header(_ title: String, _ subtitle: String) -> some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(title).font(.system(size: 30, weight: .bold, design: .rounded))
-            Text(subtitle).font(.callout).foregroundStyle(.secondary)
+            Text(L(title)).font(.system(size: 30, weight: .bold, design: .rounded))
+            Text(L(subtitle)).font(.callout).foregroundStyle(.secondary)
         }
         .padding(.bottom, 4)
     }
@@ -190,7 +191,7 @@ struct OnboardingView: View {
     }
 
     private func welcomeRow(_ symbol: String, _ text: String) -> some View {
-        Label { Text(text).font(.body.weight(.medium)) } icon: {
+        Label { Text(L(text)).font(.body.weight(.medium)) } icon: {
             Image(systemName: symbol).foregroundStyle(theme.accent).frame(width: 28)
         }
     }
@@ -249,7 +250,8 @@ struct OnboardingView: View {
                     .padding(12)
                     .background(Color.white.opacity(0.08), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
                     .onChange(of: name) { _, v in if v.count > 20 { name = String(v.prefix(20)) } }
-                Text(simklActive ? "Optional while your Simkl name is in use. It is kept as a fallback." : "This is how your profile is shown. You can add more profiles later.")
+                Text(simklActive ? String(localized: "Optional while your Simkl name is in use. It is kept as a fallback.")
+                     : String(localized: "This is how your profile is shown. You can add more profiles later."))
                     .font(.footnote).foregroundStyle(.secondary)
             }
         }
@@ -351,7 +353,7 @@ struct OnboardingView: View {
                     .onSubmit { addAddon() }
                     .padding(12)
                     .background(Color.white.opacity(0.08), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
-                Button(adding ? "Adding…" : "Add add-on") { addAddon() }
+                Button(adding ? String(localized: "Adding…") : String(localized: "Add add-on")) { addAddon() }
                     .buttonStyle(.bordered).disabled(urlText.isEmpty || adding)
                 if let addError { Text(addError).font(.footnote).foregroundStyle(.red) }
                 else {
@@ -388,7 +390,7 @@ struct OnboardingView: View {
 
     private func rowToggle(_ title: String, _ key: String, _ symbol: String) -> some View {
         Toggle(isOn: Binding(get: { !rules.isRowHidden(key) }, set: { prefs.setRowHidden(key, !$0) })) {
-            Label(title, systemImage: symbol)
+            Label(L(title), systemImage: symbol)
         }
     }
 
@@ -400,7 +402,7 @@ struct OnboardingView: View {
                 try await store.add(urlText)
                 urlText = ""; addError = nil
             } catch {
-                addError = "Couldn't load that manifest. Check the link and try again."
+                addError = String(localized: "Couldn't load that manifest. Check the link and try again.")
             }
         }
     }
@@ -474,20 +476,20 @@ struct OnboardingView: View {
                                           @ViewBuilder extra: () -> Extra) -> some View {
         card {
             HStack(spacing: 8) {
-                Label(title, systemImage: symbol).font(.headline)
+                Label(L(title), systemImage: symbol).font(.headline)
                 if let badge {
-                    Text(badge).font(.system(size: 10, weight: .heavy)).foregroundStyle(theme.onAccent)
+                    Text(L(badge)).font(.system(size: 10, weight: .heavy)).foregroundStyle(theme.onAccent)
                         .padding(.horizontal, 8).padding(.vertical, 3).background(theme.accent, in: Capsule())
                 }
                 Spacer()
                 if !binding.wrappedValue.isEmpty { Image(systemName: "checkmark.circle.fill").foregroundStyle(.green) }
             }
-            Text(text).font(.footnote).foregroundStyle(.secondary)
-            SecureField(placeholder, text: binding)
+            Text(L(text)).font(.footnote).foregroundStyle(.secondary)
+            SecureField(L(placeholder), text: binding)
                 .textInputAutocapitalization(.never).autocorrectionDisabled().submitLabel(.done)
                 .padding(12).background(Color.white.opacity(0.08), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
             extra()
-            if let u = URL(string: link) { Link(linkTitle, destination: u).font(.subheadline.weight(.semibold)) }
+            if let u = URL(string: link) { Link(L(linkTitle), destination: u).font(.subheadline.weight(.semibold)) }
         }
     }
 
@@ -516,9 +518,9 @@ struct OnboardingView: View {
     private func summary(_ title: String, _ value: String, _ on: Bool) -> some View {
         HStack {
             Image(systemName: on ? "checkmark.circle.fill" : "circle.dashed").foregroundStyle(on ? Color.green : Color.secondary)
-            Text(title).font(.subheadline.weight(.semibold))
+            Text(L(title)).font(.subheadline.weight(.semibold))
             Spacer()
-            Text(value).font(.subheadline).foregroundStyle(.secondary)
+            Text(L(value)).font(.subheadline).foregroundStyle(.secondary)
         }
     }
 }

@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 /// Shared actions behind the long-press menus on posters, seasons and episodes.
@@ -59,14 +60,14 @@ struct PosterContextMenu: View {
             if isWatched { TitleActions.unmarkWatched(item, history: history) }
             else { TitleActions.markWatched(item, history: history) }
         } label: {
-            Label(isWatched ? "Unmark as Watched" : "Mark as Watched",
+            Label(isWatched ? String(localized: "Unmark as Watched") : String(localized: "Mark as Watched"),
                   systemImage: isWatched ? "circle" : "checkmark.circle")
         }
         Button {
             if inList { TitleActions.removeFromList(item, library: library) }
             else { library.set(item, status: .planToWatch) }
         } label: {
-            Label(inList ? "Remove from Library" : "Add to Library",
+            Label(inList ? String(localized: "Remove from Library") : String(localized: "Add to Library"),
                   systemImage: inList ? "bookmark.slash" : "bookmark")
         }
         if artwork {
@@ -74,7 +75,7 @@ struct PosterContextMenu: View {
             Button {
                 if kept { ArtworkRotation.shared.unpin(item.id) } else { ArtworkRotation.shared.pinPoster(item) }
             } label: {
-                Label(kept ? "Resume Poster Rotation" : "Keep Current Poster", systemImage: kept ? "pin.slash" : "pin")
+                Label(kept ? String(localized: "Resume Poster Rotation") : String(localized: "Keep Current Poster"), systemImage: kept ? "pin.slash" : "pin")
             }
         }
         NavigationLink(value: item) {

@@ -106,9 +106,9 @@ final class LocalLibrary {
             items.forEach { h.combine($0.id) }
             out.append(CatalogRow(id: "local-\(key)-\(h.finalize())", title: title, items: items, symbol: symbol))
         }
-        add("watching", "Watching", "eye.fill", inProgress)
-        add("plan", "Plan to Watch", "bookmark.fill", entries.filter { $0.status == .planToWatch }.map(\.item))
-        add("watched", "Watched", "checkmark.circle.fill", watched.map(\.item))
+        add("watching", String(localized: "Watching"), "eye.fill", inProgress)
+        add("plan", String(localized: "Plan to Watch"), "bookmark.fill", entries.filter { $0.status == .planToWatch }.map(\.item))
+        add("watched", String(localized: "Watched"), "checkmark.circle.fill", watched.map(\.item))
         return out
     }
 

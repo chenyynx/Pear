@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 import Combine
 import AetherEngine
@@ -103,7 +104,7 @@ final class PlayerModel {
         if engine == nil {
             do { engine = try AetherEngine() }
             catch {
-                self.error = "Couldn't start the player engine: \(error.localizedDescription)"
+                self.error = String(localized: "Couldn't start the player engine: \(error.localizedDescription)")
                 setBuffering(false)
                 return
             }
@@ -185,7 +186,7 @@ final class PlayerModel {
             case .paused: holdPosition = nil; P2PManager.shared.playbackChanged(false); isPlaying = false; isPaused = true; setBuffering(false); rateStale = rate != 1
             case .loading, .seeking: P2PManager.shared.playbackChanged(true); isPaused = false; setBuffering(true); rateStale = rate != 1
             case .ended: holdPosition = nil; P2PManager.shared.playbackChanged(false); isPlaying = false; isPaused = false; setBuffering(false); didEnd = true
-            case .error: holdPosition = nil; P2PManager.shared.playbackChanged(false); isPlaying = false; isPaused = false; setBuffering(false); error = "Playback failed (\(String(describing: s)))."
+            case .error: holdPosition = nil; P2PManager.shared.playbackChanged(false); isPlaying = false; isPaused = false; setBuffering(false); error = String(localized: "Playback failed (\(String(describing: s))).")
             default: break
             }
         }.store(in: &bag)
@@ -664,7 +665,7 @@ struct PlayerScreen: View {
             updateIdleTimer()
             volume.startObserving()
             OrientationLock.set(.landscape)          // landscape only, free to flip 180°
-            pip.onFailure = { flash("Picture in Picture isn't available right now") }
+            pip.onFailure = { flash(String(localized: "Picture in Picture isn't available right now")) }
         }
         .onDisappear {
             UIApplication.shared.isIdleTimerDisabled = false
@@ -886,7 +887,7 @@ struct PlayerScreen: View {
                 .contentShape(Circle())
         }
         .buttonStyle(PressableStyle())
-        .accessibilityLabel(open ? "Fewer controls" : "More controls")
+        .accessibilityLabel(open ? String(localized: "Fewer controls") : String(localized: "More controls"))
     }
 
     private func togglePill() {
@@ -1254,7 +1255,7 @@ struct PlayerScreen: View {
             // A brand-new episode often has no synopsis yet: say so rather than showing nothing.
             if (out.overview ?? "").isEmpty, let d = item.description, !d.isEmpty {
                 out.overview = d
-                out.overviewNote = "About the series"
+                out.overviewNote = String(localized: "About the series")
             }
         } else {
             // Movie: the whole film. Details (release date, runtime, TMDB vote) and MDBList ratings load side by side.
@@ -1487,7 +1488,7 @@ struct PlayerScreen: View {
             let next = await provider.resolve(s, ep, current)
             switching = nil
             guard !closing else { return }
-            guard let next else { flash("No playable source found for that episode"); return }
+            guard let next else { flash(String(localized: "No playable source found for that episode")); return }
             finalizeCurrent()                 // save + scrobble the episode we are leaving
             current = next
             scrobbled = false
@@ -1784,11 +1785,11 @@ private struct SkipOverlay: View {
         guard d > 0 else { return nil }
         let seg = segments.first { p >= $0.start - 0.5 && p < ($0.end ?? d) - 1.5 }
         if hasNext && ((d - p <= 45 && p > 60) || seg?.kind == .credits) {
-            return Choice(title: "Next Episode", symbol: "forward.end.fill", target: nil)
+            return Choice(title: String(localized: "Next Episode"), symbol: "forward.end.fill", target: nil)
         }
         if let seg { return Choice(title: seg.label, symbol: "forward.fill", target: seg.end ?? d) }
         if fallbackEligible, let f = fallback {
-            return Choice(title: "Skip \(Int(f))s", symbol: "goforward", target: p + f, isFallback: true)
+            return Choice(title: String(localized: "Skip \(Int(f))s"), symbol: "goforward", target: p + f, isFallback: true)
         }
         return nil
     }

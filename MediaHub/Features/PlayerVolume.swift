@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 import AVFoundation
 import MediaPlayer
@@ -128,7 +129,7 @@ struct VolumeSliderRow: View {
                     .contentShape(Circle())
             }
             .buttonStyle(PressableStyle())
-            .accessibilityLabel(shown < 0.001 ? "Unmute" : "Mute")
+            .accessibilityLabel(shown < 0.001 ? String(localized: "Unmute") : String(localized: "Mute"))
 
             GeometryReader { geo in
                 let w = max(geo.size.width, 1)

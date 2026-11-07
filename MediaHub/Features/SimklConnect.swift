@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 /// "Connect to Simkl" with PIN login. One control, used by Integrations and by the Simkl page under "View profile".
@@ -18,7 +19,7 @@ struct SimklConnectControls: View {
                     Label(e, systemImage: "exclamationmark.triangle.fill").font(.footnote).foregroundStyle(.orange)
                 }
                 HStack(spacing: 16) {
-                    Button(simkl.isSyncing ? "Syncing…" : "Sync now") { Task { await simkl.sync(force: true) } }
+                    Button(simkl.isSyncing ? String(localized: "Syncing…") : String(localized: "Sync now")) { Task { await simkl.sync(force: true) } }
                         .disabled(simkl.isSyncing)
                     if !compact { Button("Disconnect", role: .destructive) { simkl.disconnect() } }
                 }
@@ -59,7 +60,7 @@ struct SimklConnectControls: View {
             }
             HStack(spacing: 8) {
                 ProgressView()
-                Text(simkl.loginStatus ?? "Waiting for authorisation…").font(.footnote).foregroundStyle(.secondary)
+                Text(simkl.loginStatus ?? String(localized: "Waiting for authorisation…")).font(.footnote).foregroundStyle(.secondary)
             }
             Button("Cancel", role: .cancel) { simkl.cancelLogin() }.font(.footnote)
         }

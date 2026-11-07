@@ -288,7 +288,7 @@ enum Fmt {
     /// 2460 -> "41 min left", 4500 -> "1h 15m left"
     static func remaining(_ s: Double) -> String {
         let m = max(Int((max(s, 0) / 60).rounded(.up)), 1)
-        if m >= 60 { return m % 60 == 0 ? "\(m / 60)h left" : "\(m / 60)h \(m % 60)m left" }
-        return "\(m) min left"
+        if m >= 60 { return m % 60 == 0 ? String(localized: "\(m / 60)h left") : String(localized: "\(m / 60)h \(m % 60)m left") }
+        return String(localized: "\(m) min left")
     }
 }

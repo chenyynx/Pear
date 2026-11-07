@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 /// Every external service in one place: API keys, the Simkl login, and what each one is used for.
@@ -13,13 +14,13 @@ struct IntegrationsView: View {
     var body: some View {
         Form {
             Section {
-                SecureField(TMDBClient.hasProxy ? "Your own TMDB key (optional)" : "TMDB API key", text: $tmdbKey)
+                SecureField(TMDBClient.hasProxy ? String(localized: "Your own TMDB key (optional)") : String(localized: "TMDB API key"), text: $tmdbKey)
                     .textInputAutocapitalization(.never).autocorrectionDisabled()
                 status(tmdbKey.isEmpty ? (TMDBClient.hasProxy ? "Built in" : nil) : "Using your key")
             } header: { Text("TMDB") } footer: {
                 Text(TMDBClient.hasProxy
-                     ? "Metadata, trending, Explore, recommendations, episode thumbnails, title logos and matching skip-intro timestamps. A TMDB key is built in, so you don't need one. If TMDB content ever fails to load, add your own free key from themoviedb.org/settings/api. This product uses the TMDB API but is not endorsed or certified by TMDB."
-                     : "Metadata, trending, Explore, recommendations, episode thumbnails, title logos and matching skip-intro timestamps. Free key at themoviedb.org/settings/api. This product uses the TMDB API but is not endorsed or certified by TMDB.")
+                     ? String(localized: "Metadata, trending, Explore, recommendations, episode thumbnails, title logos and matching skip-intro timestamps. A TMDB key is built in, so you don't need one. If TMDB content ever fails to load, add your own free key from themoviedb.org/settings/api. This product uses the TMDB API but is not endorsed or certified by TMDB.")
+                     : String(localized: "Metadata, trending, Explore, recommendations, episode thumbnails, title logos and matching skip-intro timestamps. Free key at themoviedb.org/settings/api. This product uses the TMDB API but is not endorsed or certified by TMDB."))
             }
 
             Section {
@@ -75,7 +76,7 @@ struct IntegrationsView: View {
     }
 
     @ViewBuilder private func status(_ text: String?) -> some View {
-        if let text { Label(text, systemImage: "checkmark.circle.fill").font(.footnote).foregroundStyle(.green) }
+        if let text { Label(L(text), systemImage: "checkmark.circle.fill").font(.footnote).foregroundStyle(.green) }
     }
 
     // MARK: Simkl (PIN login with MediaHub's own app: nothing to register, works inside LiveContainer)

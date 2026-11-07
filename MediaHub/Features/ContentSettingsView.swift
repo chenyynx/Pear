@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 /// Settings -> Content & catalogues: what shows up on Home, Explore and in recommendations.
@@ -99,14 +100,14 @@ struct ContentSettingsView: View {
     // MARK: Pieces
 
     private var pickerSummary: String {
-        if pickerAddons.isEmpty { return "Not set up" }
-        return addedCount == 0 ? "None on Home" : "\(addedCount) on Home"
+        if pickerAddons.isEmpty { return String(localized: "Not set up") }
+        return addedCount == 0 ? String(localized: "None on Home") : String(localized: "\(addedCount) on Home")
     }
 
     private var categoryFooter: String {
-        var text = "Hidden titles are removed from Home, Explore, recommendations and themed collections."
+        var text = String(localized: "Hidden titles are removed from Home, Explore, recommendations and themed collections.")
         if hidesAnimation && tmdbKey.isEmpty && !TMDBClient.hasProxy {
-            text += " Without a TMDB key (Settings → Integrations) anime and cartoons can't be told apart, so all animation is hidden while either is off."
+            text += String(localized: " Without a TMDB key (Settings → Integrations) anime and cartoons can't be told apart, so all animation is hidden while either is off.")
         }
         return text
     }
@@ -121,9 +122,9 @@ struct ContentSettingsView: View {
     }
 
     private var regionFooter: String {
-        var text = "Switch off the regions you don't want suggested. They only affect live-action: anime and cartoons are handled below. English-language titles are never hidden by these."
+        var text = String(localized: "Switch off the regions you don't want suggested. They only affect live-action: anime and cartoons are handled below. English-language titles are never hidden by these.")
         if rules.hidesRegions && tmdbKey.isEmpty && !TMDBClient.hasProxy {
-            text += " Add a TMDB key (Settings → Integrations): without one, titles from add-on catalogues can't be placed, so only TMDB-sourced rows are filtered."
+            text += String(localized: " Add a TMDB key (Settings → Integrations): without one, titles from add-on catalogues can't be placed, so only TMDB-sourced rows are filtered.")
         }
         return text
     }
@@ -134,12 +135,12 @@ struct ContentSettingsView: View {
 
     private func rowToggle(_ title: String, key: String, symbol: String) -> some View {
         Toggle(isOn: Binding(get: { !rules.isRowHidden(key) }, set: { prefs.setRowHidden(key, !$0) })) {
-            Label(title, systemImage: symbol)
+            Label(L(title), systemImage: symbol)
         }
     }
 
     private func catalogTitle(_ cat: AddonManifest.CatalogDef) -> String {
-        let kind = cat.type == "movie" ? "Movies" : cat.type == "series" ? "Series" : cat.type.capitalized
+        let kind = cat.type == "movie" ? String(localized: "Movies") : cat.type == "series" ? String(localized: "Series") : cat.type.capitalized
         return "\(cat.name ?? cat.id) · \(kind)"
     }
 }

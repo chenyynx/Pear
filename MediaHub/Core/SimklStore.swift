@@ -521,9 +521,9 @@ final class SimklStore {
             counts[id] = SimklEpisodeCount(watched: e.watchedEpisodesCount ?? 0, total: e.totalEpisodesCount ?? 0)
         }
         episodeCounts = counts
-        let sections: [(String, String, String)] = [("watching", "Watching", "eye.fill"),
-                                                    ("plantowatch", "Plan to Watch", "bookmark.fill"),
-                                                    ("completed", "Completed", "checkmark.circle.fill")]
+        let sections: [(String, String, String)] = [("watching", String(localized: "Watching"), "eye.fill"),
+                                                    ("plantowatch", String(localized: "Plan to Watch"), "bookmark.fill"),
+                                                    ("completed", String(localized: "Completed"), "checkmark.circle.fill")]
         library = sections.compactMap { s, t, sym in
             let i = items(s)
             return i.isEmpty ? nil : CatalogRow(id: "simkl-\(s)", title: t, items: i, symbol: sym)

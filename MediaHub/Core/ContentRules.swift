@@ -20,20 +20,20 @@ enum ContentCategory: String, CaseIterable, Identifiable, Sendable {
 
     var title: String {
         switch self {
-        case .anime: return "Anime"
-        case .cartoons: return "Cartoons & animation"
-        case .kids: return "Kids & family"
-        case .documentary: return "Documentaries"
-        case .reality: return "Reality TV"
-        case .talkNews: return "Talk shows & news"
-        case .soap: return "Soap operas"
-        case .horror: return "Horror"
-        case .romance: return "Romance"
-        case .asian: return "Asian film & TV"
-        case .indian: return "Indian & South Asian"
-        case .foreign: return "Other foreign-language"
-        case .music: return "Music & musicals"
-        case .tvMovies: return "TV movies"
+        case .anime: return String(localized: "Anime")
+        case .cartoons: return String(localized: "Cartoons & animation")
+        case .kids: return String(localized: "Kids & family")
+        case .documentary: return String(localized: "Documentaries")
+        case .reality: return String(localized: "Reality TV")
+        case .talkNews: return String(localized: "Talk shows & news")
+        case .soap: return String(localized: "Soap operas")
+        case .horror: return String(localized: "Horror")
+        case .romance: return String(localized: "Romance")
+        case .asian: return String(localized: "Asian film & TV")
+        case .indian: return String(localized: "Indian & South Asian")
+        case .foreign: return String(localized: "Other foreign-language")
+        case .music: return String(localized: "Music & musicals")
+        case .tvMovies: return String(localized: "TV movies")
         }
     }
 

@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 // MARK: - Avatar
@@ -193,7 +194,7 @@ struct ProfileSheet: View {
                     }
                     Text(footnote)
                         .font(.footnote).foregroundStyle(.secondary).multilineTextAlignment(.center)
-                    Button(managing ? "Done Editing" : "Manage Profiles") {
+                    Button(managing ? String(localized: "Done Editing") : String(localized: "Manage Profiles")) {
                         withAnimation(.snappy) { managing.toggle() }
                     }
                     .buttonStyle(.glass)
@@ -242,7 +243,7 @@ struct ProfileSheet: View {
                     .foregroundStyle(theme.accent).frame(width: 44, height: 44)
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Simkl").font(.headline)
-                    Text(simkl.isConnected ? "Connected" : "Log in to sync your library")
+                    Text(simkl.isConnected ? String(localized: "Connected") : String(localized: "Log in to sync your library"))
                         .font(.caption).foregroundStyle(simkl.isConnected ? Color.green : Color.secondary)
                 }
                 Spacer()
@@ -263,7 +264,8 @@ struct ProfileSheet: View {
                 Image(systemName: "arrow.down.circle.fill").font(.title2).foregroundStyle(theme.accent).frame(width: 44, height: 44)
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Downloads").font(.headline)
-                    Text(downloads.records.isEmpty ? "Watch offline" : "\(downloads.records.count) saved · \(DownloadFiles.sizeString(downloads.usedBytes))")
+                    Text(downloads.records.isEmpty ? String(localized: "Watch offline")
+                         : String(localized: "\(downloads.records.count) saved · \(DownloadFiles.sizeString(downloads.usedBytes))"))
                         .font(.caption).foregroundStyle(.secondary)
                 }
                 Spacer()
@@ -278,8 +280,8 @@ struct ProfileSheet: View {
 
     private var footnote: String {
         libraryPrefs.usesSimkl(simkl)
-            ? "Watch history and Continue Watching are kept separately for each profile. This profile's library comes from Simkl, so profiles set to Simkl share it. Switch a profile to its own library in Settings."
-            : "Each profile keeps its own watch history and library on this device. Connect Simkl in Settings to sync a library across devices."
+            ? String(localized: "Watch history and Continue Watching are kept separately for each profile. This profile's library comes from Simkl, so profiles set to Simkl share it. Switch a profile to its own library in Settings.")
+            : String(localized: "Each profile keeps its own watch history and library on this device. Connect Simkl in Settings to sync a library across devices.")
     }
 
     private func tile(_ p: Profile) -> some View {
@@ -306,7 +308,7 @@ struct ProfileSheet: View {
         }
         .buttonStyle(PressableStyle())
         .accessibilityLabel(simkl.name(for: p))
-        .accessibilityHint(managing ? "Edit profile" : "Switch to this profile")
+        .accessibilityHint(managing ? String(localized: "Edit profile") : String(localized: "Switch to this profile"))
         .accessibilityAddTraits(active ? .isSelected : [])
     }
 
@@ -428,7 +430,7 @@ struct ProfileEditor: View {
                     }
                 }
             }
-            .navigationTitle(existing == nil ? "New Profile" : "Edit Profile")
+            .navigationTitle(existing == nil ? String(localized: "New Profile") : String(localized: "Edit Profile"))
             .navigationBarTitleDisplayMode(.inline)
             .scrollDismissesKeyboard(.interactively)
             .toolbar {
@@ -436,7 +438,7 @@ struct ProfileEditor: View {
                 ToolbarItem(placement: .confirmationAction) { Button("Save") { save() }.disabled(trimmed.isEmpty) }
             }
             .onChange(of: name) { _, v in if v.count > 20 { name = String(v.prefix(20)) } }
-            .confirmationDialog("Delete \(existing?.name ?? "this profile")?", isPresented: $confirmDelete, titleVisibility: .visible) {
+            .confirmationDialog(String(localized: "Delete \(existing?.name ?? "this profile")?"), isPresented: $confirmDelete, titleVisibility: .visible) {
                 Button("Delete Profile", role: .destructive) {
                     if let p = existing { profiles.delete(p.id) }
                     dismiss()

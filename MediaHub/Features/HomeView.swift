@@ -165,11 +165,11 @@ final class HomeModel {
         let b = await TitleClassifier.shared.filter(rawB, rules: rules)
         var out: [CatalogRow] = []
         if let l = last, !b.isEmpty {
-            out.append(CatalogRow(id: "because", title: "Because you watched \(l.name)", items: b, symbol: "sparkles",
+            out.append(CatalogRow(id: "because", title: String(localized: "Because you watched \(l.name)"), items: b, symbol: "sparkles",
                                   prefKey: ContentRules.Builtin.because))
         }
-        if !m.isEmpty { out.append(CatalogRow(id: "trend-movie", title: "Trending Movies", items: m, source: .tmdbTrending("movie"), symbol: "flame.fill", prefKey: ContentRules.Builtin.trendingMovies)) }
-        if !t.isEmpty { out.append(CatalogRow(id: "trend-tv", title: "Trending Shows", items: t, source: .tmdbTrending("tv"), symbol: "flame.fill", prefKey: ContentRules.Builtin.trendingShows)) }
+        if !m.isEmpty { out.append(CatalogRow(id: "trend-movie", title: String(localized: "Trending Movies"), items: m, source: .tmdbTrending("movie"), symbol: "flame.fill", prefKey: ContentRules.Builtin.trendingMovies)) }
+        if !t.isEmpty { out.append(CatalogRow(id: "trend-tv", title: String(localized: "Trending Shows"), items: t, source: .tmdbTrending("tv"), symbol: "flame.fill", prefKey: ContentRules.Builtin.trendingShows)) }
         guard !Task.isCancelled else { return }
         // Both trending requests failed (no connection): keep the rows on screen rather than blanking them.
         if rawM == nil, rawT == nil, !suggested.isEmpty {

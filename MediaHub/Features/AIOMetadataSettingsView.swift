@@ -89,7 +89,7 @@ struct AIOMetadataSettingsView: View {
 
     private func header(for addon: Addon, on: Int) -> String {
         var s = addon.manifest.name
-        if !store.isEnabled(addon) { s += " (add-on is off)" }
+        if !store.isEnabled(addon) { s += String(localized: " (add-on is off)") }
         return s + " · \(on) on Home · \(simkl.name(for: profiles.active))"
     }
 

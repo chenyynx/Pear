@@ -177,7 +177,7 @@ struct PlayerInfoCard: View {
 
     private var synopsis: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text((info.overviewNote ?? "Synopsis").uppercased())
+            Text((info.overviewNote ?? String(localized: "Synopsis")).uppercased())
                 .font(.caption2.weight(.bold)).tracking(0.9).foregroundStyle(.white.opacity(0.5))
             if let o = info.overview, !o.isEmpty {
                 // Plain text when it fits; scrolls when a long synopsis would push the card off a landscape phone.

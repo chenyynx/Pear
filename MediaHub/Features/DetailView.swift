@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 import SafariServices
 
@@ -166,7 +167,7 @@ struct DetailView: View {
                 if isSeries { seasonSection }
                 if !trailers.isEmpty { trailersSection }
                 if !similar.isEmpty {
-                    CatalogRowView(row: CatalogRow(id: "similar-\(item.id)", title: "More like this", items: similar))
+                    CatalogRowView(row: CatalogRow(id: "similar-\(item.id)", title: String(localized: "More like this"), items: similar))
                         .padding(.top, 8)
                 }
                 detailsSection
@@ -186,7 +187,7 @@ struct DetailView: View {
                     if isSeries { seasonSection }
                     if !trailers.isEmpty { trailersSection }
                     if !similar.isEmpty {
-                        CatalogRowView(row: CatalogRow(id: "similar-\(item.id)", title: "More like this", items: similar))
+                        CatalogRowView(row: CatalogRow(id: "similar-\(item.id)", title: String(localized: "More like this"), items: similar))
                             .padding(.top, 8)
                     }
                     detailsSection
@@ -277,7 +278,7 @@ struct DetailView: View {
     private var actionBar: some View {
         HStack(spacing: 10) {
             Button { showSources = true } label: {
-                Label(isSeries ? "Play S\(season):E\(episode)" : "Play", systemImage: "play.fill")
+                Label(isSeries ? String(localized: "Play S\(season):E\(episode)") : String(localized: "Play"), systemImage: "play.fill")
                     .font(.headline).frame(maxWidth: .infinity)
                     .foregroundStyle(theme.onAccent)
             }
@@ -309,7 +310,7 @@ struct DetailView: View {
         .buttonStyle(.bordered)
         .buttonBorderShape(.circle)
         .disabled(viaSimkl && onWatchlist)
-        .accessibilityLabel(listSaved ? "Remove from watchlist" : "Add to watchlist")
+        .accessibilityLabel(listSaved ? String(localized: "Remove from watchlist") : String(localized: "Add to watchlist"))
     }
 
     /// Round checkmark button: marks the whole title watched, or unmarks it.
@@ -331,7 +332,7 @@ struct DetailView: View {
         }
         .buttonStyle(.bordered)
         .buttonBorderShape(.circle)
-        .accessibilityLabel(isWatched ? "Unmark as watched" : "Mark as watched")
+        .accessibilityLabel(isWatched ? String(localized: "Unmark as watched") : String(localized: "Mark as watched"))
     }
 
     private var isWatched: Bool { history.entry(for: item.id)?.isTitleWatched ?? false }
@@ -630,7 +631,7 @@ struct DetailView: View {
             Button("Download Season", systemImage: "arrow.down.circle") { downloadSeason(s) }
         }
         if !recs.isEmpty, let imdb = imdbID {
-            Button(recs.count == 1 ? "Delete 1 Downloaded Episode" : "Delete \(recs.count) Downloaded Episodes",
+            Button(recs.count == 1 ? String(localized: "Delete 1 Downloaded Episode") : String(localized: "Delete \(recs.count) Downloaded Episodes"),
                    systemImage: "trash", role: .destructive) { downloads.delete(imdb: imdb, season: s) }
         }
         if isSeasonWatched(s) {
@@ -654,11 +655,11 @@ struct DetailView: View {
         let size = ByteCountFormatter.string(fromByteCount: r.bytes, countStyle: .file)
         let text: String, symbol: String
         switch r.state {
-        case .done: text = "Downloaded · \(size)"; symbol = "arrow.down.circle.fill"
-        case .downloading: text = "Downloading \(Int(r.progress * 100))%"; symbol = "arrow.down.circle"
-        case .paused: text = r.progress > 0 ? "Paused \(Int(r.progress * 100))%" : "Paused"; symbol = "pause.circle"
-        case .queued: text = "Waiting to download"; symbol = "clock"
-        case .failed: text = r.error ?? "Download failed"; symbol = "exclamationmark.triangle.fill"
+        case .done: text = String(localized: "Downloaded · \(size)"); symbol = "arrow.down.circle.fill"
+        case .downloading: text = String(localized: "Downloading") + " \(Int(r.progress * 100))%"; symbol = "arrow.down.circle"
+        case .paused: text = r.progress > 0 ? String(localized: "Paused") + " \(Int(r.progress * 100))%" : String(localized: "Paused"); symbol = "pause.circle"
+        case .queued: text = String(localized: "Waiting to download"); symbol = "clock"
+        case .failed: text = r.error ?? String(localized: "Download failed"); symbol = "exclamationmark.triangle.fill"
         }
         return HStack(spacing: 0) {
             Label(text, systemImage: symbol)
@@ -693,7 +694,7 @@ struct DetailView: View {
     private var detailRows: [(String, String)] {
         guard let d = details else { return [] }
         var rows: [(String, String)] = []
-        func add(_ k: String, _ v: String?) { if let v, !v.isEmpty { rows.append((k, v)) } }
+        func add(_ k: String, _ v: String?) { if let v, !v.isEmpty { rows.append((L(k), v)) } }
         func names(_ a: [TMDBClient.Details.Named]?) -> String? { a?.map(\.name).joined(separator: ", ") }
         func money(_ n: Int?) -> String? {
             guard let n, n > 0 else { return nil }
@@ -737,7 +738,7 @@ struct DetailView: View {
         let rows = detailRows
         if !rows.isEmpty {
             VStack(alignment: .leading, spacing: 0) {
-                Text(isSeries ? "About the show" : "About the movie").font(.title3.bold()).padding(.bottom, 8)
+                Text(isSeries ? String(localized: "About the show") : String(localized: "About the movie")).font(.title3.bold()).padding(.bottom, 8)
                 ForEach(rows, id: \.0) { row in
                     VStack(alignment: .leading, spacing: 2) {
                         Text(row.0).font(.caption).foregroundStyle(.secondary)
@@ -823,7 +824,7 @@ struct DetailView: View {
         } label: {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(s.name ?? s.title ?? "Stream").font(.headline)
+                    Text(s.name ?? s.title ?? String(localized: "Stream")).font(.headline)
                     if let t = s.description ?? s.title { Text(t).font(.caption).foregroundStyle(.secondary) }
                 }
                 Spacer()
@@ -899,7 +900,7 @@ struct DetailView: View {
                         description: Text("Add a stream add-on or connect a media server in Settings."))
                 }
             }
-            .navigationTitle(downloadTarget != nil ? "Download from…" : "Sources")
+            .navigationTitle(downloadTarget != nil ? String(localized: "Download from…") : String(localized: "Sources"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 if streams.count > 1 {

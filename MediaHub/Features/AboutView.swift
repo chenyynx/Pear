@@ -65,9 +65,9 @@ struct AboutView: View {
     private func component(_ name: String, role: String, license: String, url: String, note: String? = nil) -> some View {
         VStack(alignment: .leading, spacing: 5) {
             Text(name).font(.headline)
-            Text(role).font(.subheadline).foregroundStyle(.secondary)
+            Text(L(role)).font(.subheadline).foregroundStyle(.secondary)
             Text(license).font(.footnote.weight(.semibold))
-            if let note { Text(note).font(.footnote).foregroundStyle(.secondary) }
+            if let note { Text(L(note)).font(.footnote).foregroundStyle(.secondary) }
             if let u = URL(string: url) {
                 Link(destination: u) { Label(u.host() ?? url, systemImage: "arrow.up.right.square") }
                     .font(.footnote)

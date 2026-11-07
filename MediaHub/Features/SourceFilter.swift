@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 /// Narrows a sources list to one add-on / provider. `id == nil` means "all add-ons".
@@ -17,7 +18,7 @@ struct AddonFilterMenu: View {
     var onDark = false
 
     private var selectedName: String {
-        guard let id = selection, let g = groups.first(where: { $0.0.id == id }) else { return "All add-ons" }
+        guard let id = selection, let g = groups.first(where: { $0.0.id == id }) else { return String(localized: "All add-ons") }
         return g.0.manifest.name
     }
 

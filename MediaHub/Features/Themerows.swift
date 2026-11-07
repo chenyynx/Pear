@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 /// Editorial-style collections for Home ("Small-Town Secrets"). Each theme is a set of TMDB keywords (and, for a few,
@@ -285,7 +286,7 @@ private struct ThemeCard: View {
         return parts.isEmpty ? nil : parts.joined(separator: " · ")
     }
     private var caption: String {
-        ([item.type == "series" ? "TV Show" : "Movie"] + entry.genres).joined(separator: " · ")
+        ([item.type == "series" ? String(localized: "TV Show") : String(localized: "Movie")] + entry.genres).joined(separator: " · ")
     }
 
     var body: some View {
