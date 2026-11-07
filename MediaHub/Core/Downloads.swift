@@ -368,7 +368,7 @@ final class DownloadManager {
                 preferAddonID: r.sourceAddonID ?? sibling?.sourceAddonID,
                 preferSignature: r.sourceSignature ?? sibling?.sourceSignature,
                 addons: store?.enabledAddons ?? [], pins: pins) else {
-                fail(id, "No HTTPS source found"); return
+                fail(id, String(localized: "No HTTPS source found")); return
             }
             r.remoteURL = found.url
             r.headers = found.stream.requestHeaders
@@ -393,7 +393,7 @@ final class DownloadManager {
             resumedNames.insert(name)
             r.state = .downloading; r.error = nil
         } else {
-            guard let url = r.remoteURL else { fail(id, "No HTTPS source found"); return }
+            guard let url = r.remoteURL else { fail(id, String(localized: "No HTTPS source found")); return }
             r.fileName = "\(UUID().uuidString.lowercased()).\(ext)"
             r.state = .downloading; r.error = nil; r.progress = 0; r.bytes = 0
             var req = URLRequest(url: url)
@@ -545,7 +545,7 @@ private final class SessionDelegate: NSObject, URLSessionDownloadDelegate {
         guard let name = downloadTask.taskDescription else { return }
         // A 403 / 404 arrives here as a "successful" download of the error page.
         if let http = downloadTask.response as? HTTPURLResponse, !(200..<300).contains(http.statusCode) {
-            Task { @MainActor in DownloadManager.shared.failed(name, "Server returned \(http.statusCode)") }
+            Task { @MainActor in DownloadManager.shared.failed(name, String(localized: "Server returned \(http.statusCode)")) }
             return
         }
         // The temp file is deleted when this method returns, so the move has to happen here.

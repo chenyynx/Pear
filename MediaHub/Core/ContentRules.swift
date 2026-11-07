@@ -39,20 +39,20 @@ enum ContentCategory: String, CaseIterable, Identifiable, Sendable {
 
     var detail: String {
         switch self {
-        case .anime: return "Japanese animation, films and series."
-        case .cartoons: return "Animated films and shows that aren't anime."
-        case .kids: return "Children's TV and family films."
-        case .documentary: return "Documentary films and series."
-        case .reality: return "Reality shows and competitions."
-        case .talkNews: return "Talk shows, late night and news."
-        case .soap: return "Soap operas and telenovelas."
-        case .horror: return "Horror films and series."
-        case .romance: return "Romance films and series."
-        case .asian: return "Live-action from Japan, Korea, China, Taiwan, Hong Kong and Southeast Asia (K-dramas, C-dramas, J-dramas). Anime has its own switch."
-        case .indian: return "Bollywood and South Indian cinema, plus other South Asian film and TV."
-        case .foreign: return "Live-action not made in English or in Asia: European, Latin American, Turkish, Middle Eastern, African."
-        case .music: return "Concerts, music documentaries, biopics and musicals."
-        case .tvMovies: return "Made-for-TV films."
+        case .anime: return String(localized: "Japanese animation, films and series.")
+        case .cartoons: return String(localized: "Animated films and shows that aren't anime.")
+        case .kids: return String(localized: "Children's TV and family films.")
+        case .documentary: return String(localized: "Documentary films and series.")
+        case .reality: return String(localized: "Reality shows and competitions.")
+        case .talkNews: return String(localized: "Talk shows, late night and news.")
+        case .soap: return String(localized: "Soap operas and telenovelas.")
+        case .horror: return String(localized: "Horror films and series.")
+        case .romance: return String(localized: "Romance films and series.")
+        case .asian: return String(localized: "Live-action from Japan, Korea, China, Taiwan, Hong Kong and Southeast Asia (K-dramas, C-dramas, J-dramas). Anime has its own switch.")
+        case .indian: return String(localized: "Bollywood and South Indian cinema, plus other South Asian film and TV.")
+        case .foreign: return String(localized: "Live-action not made in English or in Asia: European, Latin American, Turkish, Middle Eastern, African.")
+        case .music: return String(localized: "Concerts, music documentaries, biopics and musicals.")
+        case .tvMovies: return String(localized: "Made-for-TV films.")
         }
     }
 

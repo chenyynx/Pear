@@ -33,13 +33,13 @@ enum ServerError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .badAddress: return "That address doesn't look right."
-        case .notAServer: return "Nothing that looks like a Jellyfin server answered at that address."
-        case .unreachable: return "Couldn't reach the server."
-        case .unauthorized: return "The server refused the sign-in. Check the username and password."
-        case .quickConnectOff: return "Quick Connect isn't turned on for this server."
-        case .expired: return "The sign-in code expired. Try again."
-        case .http(let code): return "The server answered with an error (HTTP \(code))."
+        case .badAddress: return String(localized: "That address doesn't look right.")
+        case .notAServer: return String(localized: "Nothing that looks like a Jellyfin server answered at that address.")
+        case .unreachable: return String(localized: "Couldn't reach the server.")
+        case .unauthorized: return String(localized: "The server refused the sign-in. Check the username and password.")
+        case .quickConnectOff: return String(localized: "Quick Connect isn't turned on for this server.")
+        case .expired: return String(localized: "The sign-in code expired. Try again.")
+        case .http(let code): return String(localized: "The server answered with an error (HTTP \(code)).")
         }
     }
 }

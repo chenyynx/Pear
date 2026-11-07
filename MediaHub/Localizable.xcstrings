@@ -31,6 +31,46 @@
         }
       }
     },
+    " · External": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " · 外挂"
+          }
+        }
+      }
+    },
+    " · Forced": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " · 强制"
+          }
+        }
+      }
+    },
+    " · SDH": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " · 听障"
+          }
+        }
+      }
+    },
+    "%@ (add-on is off)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@（插件已停用）"
+          }
+        }
+      }
+    },
     "%@ catalogues": {
       "localizations": {
         "zh-Hans": {
@@ -77,6 +117,56 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@ · 本机"
+          }
+        }
+      }
+    },
+    "%@ · tap to retry": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · 点按重试"
+          }
+        }
+      }
+    },
+    "%@, %lld percent": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@，%lld 百分比"
+          }
+        }
+      }
+    },
+    "%@, %lld titles": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@，%lld 部影片"
+          }
+        }
+      }
+    },
+    "%lld AM": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上午 %lld"
+          }
+        }
+      }
+    },
+    "%lld PM": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下午 %lld"
           }
         }
       }
@@ -221,12 +311,32 @@
         }
       }
     },
+    "%lld percent": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 百分比"
+          }
+        }
+      }
+    },
     "%lld pinned": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "%lld 个已置顶"
+          }
+        }
+      }
+    },
+    "%lld saved · %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已保存 %lld 个 · %@"
           }
         }
       }
@@ -321,12 +431,102 @@
         }
       }
     },
+    "10 PM – 5 AM": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "22:00 – 5:00"
+          }
+        }
+      }
+    },
+    "11p": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "23时"
+          }
+        }
+      }
+    },
+    "12 – 5 PM": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "12:00 – 17:00"
+          }
+        }
+      }
+    },
+    "12a": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0时"
+          }
+        }
+      }
+    },
+    "12p": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "12时"
+          }
+        }
+      }
+    },
     "2. Enter this code": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "2. 输入此验证码"
+          }
+        }
+      }
+    },
+    "5 AM – 12 PM": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5:00 – 12:00"
+          }
+        }
+      }
+    },
+    "5 – 10 PM": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "17:00 – 22:00"
+          }
+        }
+      }
+    },
+    "6a": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "6时"
+          }
+        }
+      }
+    },
+    "6p": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "18时"
           }
         }
       }
@@ -681,6 +881,16 @@
         }
       }
     },
+    "Afternoon": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下午"
+          }
+        }
+      }
+    },
     "Airs on %@": {
       "localizations": {
         "zh-Hans": {
@@ -721,6 +931,16 @@
         }
       }
     },
+    "Already in sync.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已同步。"
+          }
+        }
+      }
+    },
     "Also filter search results": {
       "localizations": {
         "zh-Hans": {
@@ -757,6 +977,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "正在分析媒体库… %lld/%lld"
+          }
+        }
+      }
+    },
+    "Animated films and shows that aren't anime.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "非日本动漫的动画电影和剧集。"
           }
         }
       }
@@ -931,12 +1161,32 @@
         }
       }
     },
+    "Before 1990": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1990 年前"
+          }
+        }
+      }
+    },
     "Bold": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "粗体"
+          }
+        }
+      }
+    },
+    "Bollywood and South Indian cinema, plus other South Asian film and TV.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "宝莱坞和南印度电影，以及其他南亚影视。"
           }
         }
       }
@@ -1081,6 +1331,16 @@
         }
       }
     },
+    "Children's TV and family films.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "儿童节目和家庭电影。"
+          }
+        }
+      }
+    },
     "Choose lists": {
       "localizations": {
         "zh-Hans": {
@@ -1181,6 +1441,16 @@
         }
       }
     },
+    "Concerts, music documentaries, biopics and musicals.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "演唱会、音乐纪录片、音乐传记片和歌舞片。"
+          }
+        }
+      }
+    },
     "Configure": {
       "localizations": {
         "zh-Hans": {
@@ -1227,6 +1497,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "已连接"
+          }
+        }
+      }
+    },
+    "Connected read-only: scrobbling and Add to Watchlist need the media:write permission.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已连接（只读）：同步观看记录和「加入待看」需要 media:write 权限。"
           }
         }
       }
@@ -1311,12 +1591,22 @@
         }
       }
     },
+    "Couldn't find peers for this torrent. Try another source.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "找不到此种子的节点，请换一个片源。"
+          }
+        }
+      }
+    },
     "Couldn't load that manifest. Check the URL and try again.": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "无法加载该 manifest。请检查网址后重试。"
+            "value": "无法加载该插件。请检查网址后重试。"
           }
         }
       }
@@ -1326,7 +1616,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "无法加载该 manifest。请检查链接后重试。"
+            "value": "无法加载该插件。请检查链接后重试。"
           }
         }
       }
@@ -1377,6 +1667,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "无法连接 %@。请确认服务器已开启后重试。"
+          }
+        }
+      }
+    },
+    "Couldn't reach the server.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法连接服务器。"
+          }
+        }
+      }
+    },
+    "Couldn't send to Simkl. Received %lld; try again in a moment.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法发送到 Simkl。已接收 %lld 项，请稍后重试。"
           }
         }
       }
@@ -1476,7 +1786,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "删除 %lld 集已下载"
+            "value": "删除已下载的 %lld 集"
           }
         }
       }
@@ -1487,6 +1797,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "删除 %lld 集"
+          }
+        }
+      }
+    },
+    "Delete %lld download%@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除 %lld 个下载"
           }
         }
       }
@@ -1631,6 +1951,16 @@
         }
       }
     },
+    "Documentary films and series.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "纪录片和纪录剧集。"
+          }
+        }
+      }
+    },
     "Done": {
       "localizations": {
         "zh-Hans": {
@@ -1706,7 +2036,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "下载自…"
+            "value": "从…下载"
           }
         }
       }
@@ -1887,6 +2217,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "根据你的媒体库估算。随着你在 App 内观看，日均值会越来越精确。"
+          }
+        }
+      }
+    },
+    "Evening": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "傍晚"
           }
         }
       }
@@ -2091,6 +2431,16 @@
         }
       }
     },
+    "Frees %@.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "释放 %@。"
+          }
+        }
+      }
+    },
     "Genres": {
       "localizations": {
         "zh-Hans": {
@@ -2207,6 +2557,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "恐怖"
+          }
+        }
+      }
+    },
+    "Horror films and series.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恐怖电影和剧集。"
           }
         }
       }
@@ -2357,6 +2717,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "刚播出"
+          }
+        }
+      }
+    },
+    "Japanese animation, films and series.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日本动画、电影和剧集。"
           }
         }
       }
@@ -2521,6 +2891,26 @@
         }
       }
     },
+    "Live-action from Japan, Korea, China, Taiwan, Hong Kong and Southeast Asia (K-dramas, C-dramas, J-dramas). Anime has its own switch.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来自日本、韩国、中国内地、台湾、香港和东南亚的真人作品（韩剧、国产剧、日剧）。动漫有单独的开关。"
+          }
+        }
+      }
+    },
+    "Live-action not made in English or in Asia: European, Latin American, Turkish, Middle Eastern, African.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "非英语、非亚洲的真人作品：欧洲、拉美、土耳其、中东、非洲。"
+          }
+        }
+      }
+    },
     "Loading": {
       "localizations": {
         "zh-Hans": {
@@ -2581,6 +2971,16 @@
         }
       }
     },
+    "Lost the connection to Simkl. Try again.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "与 Simkl 的连接已断开，请重试。"
+          }
+        }
+      }
+    },
     "MDBList API key": {
       "localizations": {
         "zh-Hans": {
@@ -2597,6 +2997,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "MDBList 密钥"
+          }
+        }
+      }
+    },
+    "Made-for-TV films.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电视电影。"
           }
         }
       }
@@ -2767,6 +3177,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "更多类似内容"
+          }
+        }
+      }
+    },
+    "Morning": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上午"
           }
         }
       }
@@ -2971,6 +3391,26 @@
         }
       }
     },
+    "Night": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "深夜"
+          }
+        }
+      }
+    },
+    "No HTTPS source found": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未找到 HTTPS 片源"
+          }
+        }
+      }
+    },
     "No add-ons installed.": {
       "localizations": {
         "zh-Hans": {
@@ -3151,6 +3591,16 @@
         }
       }
     },
+    "Nothing that looks like a Jellyfin server answered at that address.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "该地址没有响应任何 Jellyfin 服务器。"
+          }
+        }
+      }
+    },
     "Nothing to show": {
       "localizations": {
         "zh-Hans": {
@@ -3327,6 +3777,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "随时可以打开完整 App。"
+          }
+        }
+      }
+    },
+    "Open the page below and enter the code.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开下方页面并输入验证码。"
           }
         }
       }
@@ -3631,6 +4091,36 @@
         }
       }
     },
+    "Peer-to-peer engine error: %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "P2P 引擎错误：%@"
+          }
+        }
+      }
+    },
+    "Peer-to-peer streaming is limited to Wi-Fi. Connect to Wi-Fi or change the setting.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "P2P 串流仅限 Wi-Fi。请连接 Wi-Fi 或更改设置。"
+          }
+        }
+      }
+    },
+    "Peer-to-peer streaming is turned off in Settings.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置中已关闭 P2P 串流。"
+          }
+        }
+      }
+    },
     "Peer-to-peer streams": {
       "localizations": {
         "zh-Hans": {
@@ -3726,7 +4216,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "计划观看"
+            "value": "待看"
           }
         }
       }
@@ -3816,7 +4306,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "正在画中画中播放"
+            "value": "正在画中画播放"
           }
         }
       }
@@ -3871,6 +4361,16 @@
         }
       }
     },
+    "Quick Connect isn't turned on for this server.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此服务器未开启快速连接。"
+          }
+        }
+      }
+    },
     "Quick Connect timed out. Try again.": {
       "localizations": {
         "zh-Hans": {
@@ -3887,6 +4387,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "真人秀"
+          }
+        }
+      }
+    },
+    "Reality shows and competitions.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "真人秀和竞赛节目。"
+          }
+        }
+      }
+    },
+    "Received %lld · Sent %lld": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "接收 %lld · 发送 %lld"
           }
         }
       }
@@ -4011,6 +4531,16 @@
         }
       }
     },
+    "Requesting a code…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在请求验证码…"
+          }
+        }
+      }
+    },
     "Reset": {
       "localizations": {
         "zh-Hans": {
@@ -4127,6 +4657,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "爱情"
+          }
+        }
+      }
+    },
+    "Romance films and series.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "爱情电影和剧集。"
           }
         }
       }
@@ -4287,6 +4827,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "服务器地址"
+          }
+        }
+      }
+    },
+    "Server returned %lld": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "服务器返回 %lld"
           }
         }
       }
@@ -4551,6 +5101,56 @@
         }
       }
     },
+    "Simkl answered HTTP %lld": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simkl 返回 HTTP %lld"
+          }
+        }
+      }
+    },
+    "Simkl asked the app to slow down. It will try again shortly.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simkl 要求降低请求频率，稍后会自动重试。"
+          }
+        }
+      }
+    },
+    "Simkl login expired. Disconnect and connect again.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simkl 登录已过期，请断开后重新连接。"
+          }
+        }
+      }
+    },
+    "Simkl rejected the saved login. Disconnect and connect again.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simkl 拒绝了已保存的登录，请断开后重新连接。"
+          }
+        }
+      }
+    },
+    "Simkl's device sign-in isn't available.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simkl 的设备登录不可用。"
+          }
+        }
+      }
+    },
     "Simkl's lists are your library, and what you watch is scrobbled to Simkl.": {
       "localizations": {
         "zh-Hans": {
@@ -4597,6 +5197,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "跳过片头"
+          }
+        }
+      }
+    },
+    "Skip Preview": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跳过预告"
           }
         }
       }
@@ -4667,6 +5277,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "肥皂剧"
+          }
+        }
+      }
+    },
+    "Soap operas and telenovelas.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "肥皂剧和拉美剧。"
           }
         }
       }
@@ -4991,6 +5611,16 @@
         }
       }
     },
+    "Talk shows, late night and news.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "脱口秀、深夜节目和新闻。"
+          }
+        }
+      }
+    },
     "Tap Add to Watchlist on any title to save it to %@'s library. Connect Simkl in Settings to sync across devices.": {
       "localizations": {
         "zh-Hans": {
@@ -5011,12 +5641,62 @@
         }
       }
     },
+    "That address doesn't look right.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "该地址似乎不正确。"
+          }
+        }
+      }
+    },
+    "That backup was made by a newer version of the app.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "该备份由更新版本的 App 创建。"
+          }
+        }
+      }
+    },
+    "That file couldn't be read.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法读取该文件。"
+          }
+        }
+      }
+    },
+    "That isn't a Pear settings backup.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这不是 Pear 的设置备份。"
+          }
+        }
+      }
+    },
     "The clipboard has no settings text.": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "剪贴板中没有设置文本。"
+          }
+        }
+      }
+    },
+    "The code expired. Tap Connect to get a new one.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "验证码已过期，点「连接」获取新的。"
           }
         }
       }
@@ -5037,6 +5717,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "链接可能已过期，或服务器拒绝了请求。试试其他片源，或用其他播放器打开这个。"
+          }
+        }
+      }
+    },
+    "The server answered with an error (HTTP %lld).": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "服务器返回错误（HTTP %lld）。"
+          }
+        }
+      }
+    },
+    "The server refused the sign-in. Check the username and password.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "服务器拒绝了登录，请检查用户名和密码。"
+          }
+        }
+      }
+    },
+    "The sign-in code expired. Try again.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录验证码已过期，请重试。"
           }
         }
       }
@@ -5131,6 +5841,16 @@
         }
       }
     },
+    "This torrent has no playable video file.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此种子没有可播放的视频文件。"
+          }
+        }
+      }
+    },
     "Titles in your own libraries show up as sources, ahead of your add-ons, whenever you open a movie or episode they have. Switch a server off to stop using it without signing out; touch and hold it to hide its rows from Home or remove it.": {
       "localizations": {
         "zh-Hans": {
@@ -5187,6 +5907,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "总观看时长"
+          }
+        }
+      }
+    },
+    "Track %lld": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "音轨 %lld"
           }
         }
       }
@@ -5287,6 +6017,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "接下来"
+          }
+        }
+      }
+    },
+    "Unknown year": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "年份未知"
           }
         }
       }

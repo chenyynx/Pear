@@ -291,7 +291,7 @@ struct ProfileDetailView: View {
                     .frame(height: 8)
                 }
                 .accessibilityElement(children: .ignore)
-                .accessibilityLabel("\(s.id), \(Int(s.percent.rounded())) percent")
+                .accessibilityLabel(String(localized: "\(s.id), \(Int(s.percent.rounded())) percent"))
             }
         }
     }
@@ -350,7 +350,7 @@ struct ProfileDetailView: View {
 
     private func hourLabel(_ h: Int) -> String {
         let h12 = h % 12 == 0 ? 12 : h % 12
-        return "\(h12) \(h < 12 ? String(localized: "AM") : String(localized: "PM"))"
+        return h < 12 ? String(localized: "\(h12) AM") : String(localized: "\(h12) PM")
     }
 
     private var whenCard: some View {

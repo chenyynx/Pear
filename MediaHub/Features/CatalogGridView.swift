@@ -83,7 +83,7 @@ struct CatalogGridView: View {
         let years = groups.keys.compactMap { $0 }.sorted { order == .newest ? $0 > $1 : $0 < $1 }
         var out = years.map { YearSection(title: String($0), items: groups[$0] ?? []) }
         if let unknown = groups[Int?.none], !unknown.isEmpty {
-            out.append(YearSection(title: "Unknown year", items: unknown))
+            out.append(YearSection(title: String(localized: "Unknown year"), items: unknown))
         }
         return out
     }

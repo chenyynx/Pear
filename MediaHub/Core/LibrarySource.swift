@@ -133,9 +133,9 @@ final class LibraryPrefs {
         if !failed { stored.lastSync = Date() }
         save()
 
-        if failed { report = "Couldn't send to Simkl. Received \(plan.pulls.count); try again in a moment." }
-        else if sent == 0 && plan.pulls.isEmpty { report = "Already in sync." }
-        else { report = "Received \(plan.pulls.count) · Sent \(sent)" }
+        if failed { report = String(localized: "Couldn't send to Simkl. Received \(plan.pulls.count); try again in a moment.") }
+        else if sent == 0 && plan.pulls.isEmpty { report = String(localized: "Already in sync.") }
+        else { report = String(localized: "Received \(plan.pulls.count) · Sent \(sent)") }
     }
 
     // MARK: Storage

@@ -162,7 +162,7 @@ struct VolumeSliderRow: View {
             .padding(.trailing, 16)
             .accessibilityElement()
             .accessibilityLabel("Volume")
-            .accessibilityValue("\(Int((shown * 100).rounded())) percent")
+            .accessibilityValue(String(localized: "\(Int((shown * 100).rounded())) percent"))
             .accessibilityAdjustableAction { direction in
                 switch direction {
                 case .increment: onChange(min(level + 0.0625, 1))

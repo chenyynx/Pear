@@ -37,11 +37,11 @@ final class P2PManager {
         case disabled, networkBlocked, noPeers, noVideo, engine(String)
         var errorDescription: String? {
             switch self {
-            case .disabled: return "Peer-to-peer streaming is turned off in Settings."
-            case .networkBlocked: return "Peer-to-peer streaming is limited to Wi-Fi. Connect to Wi-Fi or change the setting."
-            case .noPeers: return "Couldn't find peers for this torrent. Try another source."
-            case .noVideo: return "This torrent has no playable video file."
-            case .engine(let m): return "Peer-to-peer engine error: \(m)"
+            case .disabled: return String(localized: "Peer-to-peer streaming is turned off in Settings.")
+            case .networkBlocked: return String(localized: "Peer-to-peer streaming is limited to Wi-Fi. Connect to Wi-Fi or change the setting.")
+            case .noPeers: return String(localized: "Couldn't find peers for this torrent. Try another source.")
+            case .noVideo: return String(localized: "This torrent has no playable video file.")
+            case .engine(let m): return String(localized: "Peer-to-peer engine error: \(m)")
             }
         }
     }

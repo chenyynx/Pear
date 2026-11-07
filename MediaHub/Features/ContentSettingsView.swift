@@ -71,7 +71,7 @@ struct ContentSettingsView: View {
                         rowToggle(catalogTitle(cat), key: ContentRules.rowKey(addon, cat), symbol: "film.stack")
                     }
                 } header: {
-                    Text(store.isEnabled(addon) ? addon.manifest.name : "\(addon.manifest.name) (add-on is off)")
+                    Text(store.isEnabled(addon) ? addon.manifest.name : String(localized: "\(addon.manifest.name) (add-on is off)"))
                 } footer: {
                     if addon.id == catalogAddons.last?.id {
                         Text("Catalogues come from your add-ons. Switching one off here hides its row; the add-on itself stays installed.")

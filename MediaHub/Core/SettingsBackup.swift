@@ -27,9 +27,9 @@ enum SettingsBackup {
         case unreadable, notBackup, newer
         var errorDescription: String? {
             switch self {
-            case .unreadable: return "That file couldn't be read."
-            case .notBackup: return "That isn't a Pear settings backup."
-            case .newer: return "That backup was made by a newer version of the app."
+            case .unreadable: return String(localized: "That file couldn't be read.")
+            case .notBackup: return String(localized: "That isn't a Pear settings backup.")
+            case .newer: return String(localized: "That backup was made by a newer version of the app.")
             }
         }
     }

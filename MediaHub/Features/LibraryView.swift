@@ -176,7 +176,7 @@ struct LibraryView: View {
             .glassEffect(on ? .regular.tint(theme.accent).interactive() : .regular.interactive(), in: .capsule)
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("\(title), \(count) titles")
+        .accessibilityLabel(String(localized: "\(title), \(count) titles"))
         .accessibilityAddTraits(on ? .isSelected : [])
     }
 
@@ -199,7 +199,7 @@ struct LibraryView: View {
         }
         .buttonStyle(.plain)
         .disabled(!collapsible)
-        .accessibilityLabel("\(sec.title), \(sec.items.count) titles")
+        .accessibilityLabel(String(localized: "\(sec.title), \(sec.items.count) titles"))
         .accessibilityValue(collapsible ? (open ? String(localized: "Expanded") : String(localized: "Collapsed")) : "")
         .accessibilityHint(collapsible ? (open ? String(localized: "Double tap to collapse") : String(localized: "Double tap to expand")) : "")
     }

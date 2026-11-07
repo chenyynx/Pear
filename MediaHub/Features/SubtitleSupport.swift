@@ -81,15 +81,15 @@ enum Reflect {
         let id = int(value(t, "id")) ?? 0
         let lang = string(t, "language")
         let name = string(t, "name")
-        var base = "Track \(id)"
+        var base = String(localized: "Track \(id)")
         if let l = lang, !l.isEmpty, l.lowercased() != "und" {
             base = Locale.current.localizedString(forLanguageCode: l)?.capitalized ?? l.uppercased()
         } else if let n = name, !n.isEmpty { base = n }
         if let n = name, !n.isEmpty, n.caseInsensitiveCompare(base) != .orderedSame,
            n.caseInsensitiveCompare(lang ?? "") != .orderedSame { base += " (\(n))" }
-        if bool(t, "isForced") { base += " · Forced" }
-        if bool(t, "isHearingImpaired") { base += " · SDH" }
-        if bool(t, "isExternal") { base += " · External" }
+        if bool(t, "isForced") { base += String(localized: " · Forced") }
+        if bool(t, "isHearingImpaired") { base += String(localized: " · SDH") }
+        if bool(t, "isExternal") { base += String(localized: " · External") }
         return base
     }
 }

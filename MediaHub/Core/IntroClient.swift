@@ -12,7 +12,7 @@ struct SkipSegment: Equatable, Sendable, Identifiable {
         case .intro: return String(localized: "Skip Intro")
         case .recap: return String(localized: "Skip Recap")
         case .credits: return String(localized: "Skip Credits")
-        case .preview: return "Skip Preview"
+        case .preview: return String(localized: "Skip Preview")
         }
     }
 }

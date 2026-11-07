@@ -286,7 +286,7 @@ struct DownloadsView: View {
             VStack(alignment: .leading, spacing: 4) {
                 if r.progress > 0 { ProgressView(value: r.progress).tint(Color.secondary) }
                 Text(r.progress > 0 && r.expectedBytes > 0
-                     ? String(localized: "Paused") + " · \(Int(r.progress * 100))% · \(DownloadFiles.sizeString(r.bytes)) / \(DownloadFiles.sizeString(r.expectedBytes))"
+                     ? String(localized: "Paused") + " · \(Int(r.progress * 100))% · \(DownloadFiles.sizeString(r.bytes)) of \(DownloadFiles.sizeString(r.expectedBytes))"
                      : String(localized: "Paused · tap to resume"))
                     .font(.caption).monospacedDigit().foregroundStyle(.secondary)
                     .lineLimit(1).minimumScaleFactor(0.8)
@@ -307,8 +307,9 @@ struct DownloadsView: View {
 
     private func confirm(_ show: Show) {
         let n = show.records.count
-        pending = Pending(title: "Delete \(show.item.name)?", button: "Delete \(n) download\(n == 1 ? "" : "s")",
-                          message: "Frees \(DownloadFiles.sizeString(show.bytes)).",
+        pending = Pending(title: String(localized: "Delete \(show.item.name)?"),
+                          button: String(localized: "Delete \(n) download\(n == 1 ? "" : "s")"),
+                          message: String(localized: "Frees \(DownloadFiles.sizeString(show.bytes))."),
                           run: { downloads.delete(imdb: show.id) })
     }
 

@@ -84,8 +84,8 @@ private enum SimklError: LocalizedError {
     case v2Unavailable                      // the device flow isn't offered for this app: fall back to the classic PIN
     var errorDescription: String? {
         switch self {
-        case .v2Unavailable: return "Simkl's device sign-in isn't available."
-        case .http(let code, let body): return "Simkl answered HTTP \(code)" + (body.isEmpty ? "." : ": \(body)")
+        case .v2Unavailable: return String(localized: "Simkl's device sign-in isn't available.")
+        case .http(let code, let body): return String(localized: "Simkl answered HTTP \(code)") + (body.isEmpty ? "." : ": \(body)")
         case .message(let m): return m
         }
     }
@@ -308,13 +308,13 @@ final class SimklStore {
     private func runDeviceFlow() async {
         let cid = Self.builtInClientID
         do {
-            loginStatus = "Requesting a code…"
+            loginStatus = String(localized: "Requesting a code…")
             var classic = false
             let p: DeviceAuthorization
             do { p = try await requestDeviceCode() }
             catch SimklError.v2Unavailable { p = try await requestClassicPin(); classic = true }
             pin = p
-            loginStatus = "Open the page below and enter the code."
+            loginStatus = String(localized: "Open the page below and enter the code.")
             let deadline = Date().addingTimeInterval(Double(p.expiresIn))
             var wait = max(p.interval ?? 5, 1)          // never faster than the interval Simkl asked for
             var failures = 0
@@ -329,7 +329,7 @@ final class SimklStore {
                     pin = nil; loginStatus = nil; loginError = nil
                     await sync(force: true)
                     if let s = t.scope, !s.contains("media:write") {
-                        syncError = "Connected read-only: scrobbling and Add to Watchlist need the media:write permission."
+                        syncError = String(localized: "Connected read-only: scrobbling and Add to Watchlist need the media:write permission.")
                     }
                     return
                 case .pending:
@@ -342,11 +342,11 @@ final class SimklStore {
                     return
                 case .transient:
                     failures += 1
-                    if failures >= 6 { pin = nil; loginStatus = nil; loginError = "Lost the connection to Simkl. Try again."; return }
+                    if failures >= 6 { pin = nil; loginStatus = nil; loginError = String(localized: "Lost the connection to Simkl. Try again."); return }
                 }
             }
             pin = nil; loginStatus = nil
-            loginError = "The code expired. Tap Connect to get a new one."
+            loginError = String(localized: "The code expired. Tap Connect to get a new one.")
         } catch is CancellationError {
             pin = nil; loginStatus = nil
         } catch {
@@ -427,7 +427,7 @@ final class SimklStore {
         }
         if status == 400 || status == 401 {
             // Grant revoked or refresh token past its 180 days: only a new sign-in helps.
-            syncError = "Simkl login expired. Disconnect and connect again."
+            syncError = String(localized: "Simkl login expired. Disconnect and connect again.")
         }
         return false
     }
@@ -498,9 +498,9 @@ final class SimklStore {
             apply(entries)
         } catch {
             if case SimklError.http(let c, _) = error, c == 401 || c == 403 {
-                syncError = "Simkl rejected the saved login. Disconnect and connect again."
+                syncError = String(localized: "Simkl rejected the saved login. Disconnect and connect again.")
             } else if case SimklError.http(let c, _) = error, c == 429 {
-                syncError = "Simkl asked the app to slow down. It will try again shortly."
+                syncError = String(localized: "Simkl asked the app to slow down. It will try again shortly.")
             } else { syncError = error.localizedDescription }
         }
     }

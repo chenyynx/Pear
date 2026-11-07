@@ -132,7 +132,7 @@ struct ProfileStats {
         let rows: [(year: Int, w: Double)] = counted.filter { kind.includes($0) }.compactMap { t in t.year.map { (year: $0, w: t.minutes) } }
         let total = rows.reduce(0) { $0 + $1.w }
         guard total > 0 else { return nil }
-        let labels = ["Before 1990", "1990s", "2000s", "2010s", "2020s"]
+        let labels = [String(localized: "Before 1990"), "1990s", "2000s", "2010s", "2020s"]
         var w = Array(repeating: 0.0, count: labels.count)
         for r in rows { w[r.year < 1990 ? 0 : min((r.year - 1990) / 10 + 1, 4)] += r.w }
         var acc = 0.0
@@ -159,10 +159,10 @@ struct ProfileStats {
         guard total > 0 else { return [] }
         func pct(_ hours: [Int]) -> Double { hours.reduce(0) { $0 + hourSeconds[$1] } / total * 100 }
         return [
-            DayPart(id: "Morning", symbol: "sunrise.fill", range: "5 AM – 12 PM", percent: pct(Array(5..<12))),
-            DayPart(id: "Afternoon", symbol: "sun.max.fill", range: "12 – 5 PM", percent: pct(Array(12..<17))),
-            DayPart(id: "Evening", symbol: "sunset.fill", range: "5 – 10 PM", percent: pct(Array(17..<22))),
-            DayPart(id: "Night", symbol: "moon.stars.fill", range: "10 PM – 5 AM", percent: pct([22, 23] + Array(0..<5))),
+            DayPart(id: String(localized: "Morning"), symbol: "sunrise.fill", range: String(localized: "5 AM – 12 PM"), percent: pct(Array(5..<12))),
+            DayPart(id: String(localized: "Afternoon"), symbol: "sun.max.fill", range: String(localized: "12 – 5 PM"), percent: pct(Array(12..<17))),
+            DayPart(id: String(localized: "Evening"), symbol: "sunset.fill", range: String(localized: "5 – 10 PM"), percent: pct(Array(17..<22))),
+            DayPart(id: String(localized: "Night"), symbol: "moon.stars.fill", range: String(localized: "10 PM – 5 AM"), percent: pct([22, 23] + Array(0..<5))),
         ]
     }
 }
