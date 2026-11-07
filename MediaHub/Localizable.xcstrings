@@ -1071,6 +1071,16 @@
         }
       }
     },
+    "Choose lists": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择列表"
+          }
+        }
+      }
+    },
     "Choose the rows you want, and add Stremio add-ons for more catalogues.": {
       "localizations": {
         "zh-Hans": {
@@ -2501,6 +2511,16 @@
         }
       }
     },
+    "Loading": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加载中"
+          }
+        }
+      }
+    },
     "Loading…": {
       "localizations": {
         "zh-Hans": {
@@ -2901,6 +2921,26 @@
         }
       }
     },
+    "Newest": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最新"
+          }
+        }
+      }
+    },
+    "Newest first": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最新优先"
+          }
+        }
+      }
+    },
     "Next Episode": {
       "localizations": {
         "zh-Hans": {
@@ -3161,6 +3201,16 @@
         }
       }
     },
+    "Oldest first": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最早优先"
+          }
+        }
+      }
+    },
     "On a device that is already signed in to Jellyfin, open the user menu, choose Quick Connect and enter this code.": {
       "localizations": {
         "zh-Hans": {
@@ -3307,6 +3357,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "顺序"
+          }
+        }
+      }
+    },
+    "Original order": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原始顺序"
           }
         }
       }
@@ -3751,6 +3811,16 @@
         }
       }
     },
+    "Popular": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "热门"
+          }
+        }
+      }
+    },
     "Preview": {
       "localizations": {
         "zh-Hans": {
@@ -3767,6 +3837,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "用户"
+          }
+        }
+      }
+    },
+    "Queued": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "排队中"
           }
         }
       }
@@ -4286,7 +4366,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "剧集"
+            "value": "显示"
           }
         }
       }
@@ -4851,6 +4931,16 @@
         }
       }
     },
+    "TOP RATED": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "高分"
+          }
+        }
+      }
+    },
     "TV Show": {
       "localizations": {
         "zh-Hans": {
@@ -5001,6 +5091,16 @@
         }
       }
     },
+    "This is how subtitles look": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "字幕效果预览"
+          }
+        }
+      }
+    },
     "This is how your profile is shown. You can add more profiles later.": {
       "localizations": {
         "zh-Hans": {
@@ -5037,6 +5137,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "你在 Simkl 上添加的影片会显示在这里。"
+          }
+        }
+      }
+    },
+    "Top rated": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最高评分"
           }
         }
       }

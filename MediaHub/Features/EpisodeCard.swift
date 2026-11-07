@@ -89,7 +89,7 @@ struct EpisodeCard<Actions: View>: View {
                     .foregroundStyle(.white.opacity(0.65))
                 if ep.isTopRated {
                     Text("·").font(.system(size: 12, weight: .semibold)).foregroundStyle(.white.opacity(0.4))
-                    ShimmerText(text: "TOP RATED", symbol: "star.fill", color: Color(red: 1.0, green: 0.78, blue: 0.2))
+                    ShimmerText(text: String(localized: "TOP RATED"), symbol: "star.fill", color: Color(red: 1.0, green: 0.78, blue: 0.2))
                 }
             }
             .lineLimit(1)
@@ -143,11 +143,11 @@ struct EpisodeCard<Actions: View>: View {
     private func downloadBadge(_ d: DownloadRecord, below: Bool) -> some View {
         let symbol: String, label: String
         switch d.state {
-        case .done: symbol = "arrow.down.circle.fill"; label = "Downloaded"
+        case .done: symbol = "arrow.down.circle.fill"; label = String(localized: "Downloaded")
         case .downloading: symbol = "arrow.down.circle"; label = "\(Int(d.progress * 100))%"
-        case .paused: symbol = "pause.circle"; label = "Paused"
-        case .queued: symbol = "clock"; label = "Queued"
-        case .failed: symbol = "exclamationmark.triangle.fill"; label = "Failed"
+        case .paused: symbol = "pause.circle"; label = String(localized: "Paused")
+        case .queued: symbol = "clock"; label = String(localized: "Queued")
+        case .failed: symbol = "exclamationmark.triangle.fill"; label = String(localized: "Failed")
         }
         let done = d.state == .done
         return HStack(spacing: 4) { Image(systemName: symbol); Text(label).monospacedDigit() }

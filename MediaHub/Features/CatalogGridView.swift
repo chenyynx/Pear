@@ -114,7 +114,7 @@ struct CatalogGridView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Menu {
                     Picker("Order", selection: $order) {
-                        ForEach(Order.allCases) { Text($0.rawValue).tag($0) }
+                        ForEach(Order.allCases) { Text(L($0.rawValue)).tag($0) }
                     }
                 } label: { Image(systemName: "calendar") }
             }

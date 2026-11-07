@@ -32,7 +32,7 @@ struct PearAnimationView: View {
         }
         .aspectRatio(PearGeometry.canvas.width / PearGeometry.canvas.height, contentMode: .fit)
         .accessibilityElement()
-        .accessibilityLabel(mode == .loader ? "Loading" : "Pear")
+        .accessibilityLabel(mode == .loader ? String(localized: "Loading") : "Pear")
         .task {
             guard let total = PearGeometry.duration(of: mode), let onFinish else { return }
             // Reduced motion shows the final frame straight away, so only a short hold is needed.

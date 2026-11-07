@@ -262,7 +262,7 @@ struct ProfileDetailView: View {
                 Spacer()
             }
             Picker("Show", selection: $kind) {
-                ForEach(StatKind.allCases) { Text($0.rawValue).tag($0) }
+                ForEach(StatKind.allCases) { Text(L($0.rawValue)).tag($0) }
             }
             .pickerStyle(.segmented)
             genresCard

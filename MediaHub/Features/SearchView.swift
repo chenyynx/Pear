@@ -104,7 +104,7 @@ struct SearchView: View {
         }
         .searchable(text: $query, prompt: "Movies and shows")
         .searchScopes($scope) {
-            ForEach(Scope.allCases) { Text($0.rawValue).tag($0) }
+            ForEach(Scope.allCases) { Text(L($0.rawValue)).tag($0) }
         }
         .task(id: query + "|" + (contentPrefs.rules.filterSearch ? contentPrefs.rules.categoryKey : "")) {
             // Debounce: only the last keystroke in a 350 ms window hits the network.

@@ -239,7 +239,7 @@ struct ExploreView: View {
                 }
                 Menu {
                     Picker("Sort", selection: Binding(get: { model.sort }, set: { s in Task { await model.setSort(s) } })) {
-                        ForEach(DiscoverSort.allCases) { Text($0.rawValue).tag($0) }
+                        ForEach(DiscoverSort.allCases) { Text(L($0.rawValue)).tag($0) }
                     }
                 } label: {
                     menuLabel(model.sort.rawValue, symbol: "arrow.up.arrow.down", on: model.sort != .popular)
