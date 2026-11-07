@@ -881,6 +881,16 @@
         }
       }
     },
+    "After the End": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "末世之后"
+          }
+        }
+      }
+    },
     "Afternoon": {
       "localizations": {
         "zh-Hans": {
@@ -997,6 +1007,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "动漫"
+          }
+        }
+      }
+    },
+    "Anti-Heroes": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "反英雄"
           }
         }
       }
@@ -1121,6 +1141,16 @@
         }
       }
     },
+    "Based on True Stories": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "真实事件改编"
+          }
+        }
+      }
+    },
     "Based on the time you've actually spent playing in the app.": {
       "localizations": {
         "zh-Hans": {
@@ -1171,12 +1201,62 @@
         }
       }
     },
+    "Behind Bars": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "铁窗之后"
+          }
+        }
+      }
+    },
+    "Behind Closed Doors": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "门后秘密"
+          }
+        }
+      }
+    },
+    "Beyond the Stars": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "星辰之外"
+          }
+        }
+      }
+    },
+    "Boarding School Intrigue": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "寄宿学校疑云"
+          }
+        }
+      }
+    },
     "Bold": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "粗体"
+          }
+        }
+      }
+    },
+    "Bollywood & Beyond": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "宝莱坞之外"
           }
         }
       }
@@ -1401,6 +1481,36 @@
         }
       }
     },
+    "Code Blue": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "急诊时刻"
+          }
+        }
+      }
+    },
+    "Cold Case Obsessions": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "悬案迷踪"
+          }
+        }
+      }
+    },
+    "Cold War Tension": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "冷战风云"
+          }
+        }
+      }
+    },
     "Collapsed": {
       "localizations": {
         "zh-Hans": {
@@ -1417,6 +1527,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "颜色"
+          }
+        }
+      }
+    },
+    "Coming of Age": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "青春成长"
           }
         }
       }
@@ -1527,6 +1647,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "正在连接…"
+          }
+        }
+      }
+    },
+    "Conspiracies & Cover-Ups": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "阴谋与掩盖"
           }
         }
       }
@@ -1711,12 +1841,42 @@
         }
       }
     },
+    "Courtroom Drama": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "法庭风云"
+          }
+        }
+      }
+    },
     "Created by": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "主创"
+          }
+        }
+      }
+    },
+    "Creature Features": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "怪兽片场"
+          }
+        }
+      }
+    },
+    "Crowns & Conspiracies": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "王冠与阴谋"
           }
         }
       }
@@ -1731,12 +1891,32 @@
         }
       }
     },
+    "Cult Fascinations": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "邪典魅影"
+          }
+        }
+      }
+    },
     "Custom colour": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "自定义颜色"
+          }
+        }
+      }
+    },
+    "Cyberpunk Futures": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "赛博未来"
           }
         }
       }
@@ -1911,12 +2091,32 @@
         }
       }
     },
+    "Digital Danger": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "数字危机"
+          }
+        }
+      }
+    },
     "Director": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "导演"
+          }
+        }
+      }
+    },
+    "Disaster Zone": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "灾难现场"
           }
         }
       }
@@ -2181,6 +2381,16 @@
         }
       }
     },
+    "Epic Fantasy Worlds": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "史诗奇幻"
+          }
+        }
+      }
+    },
     "Episode %lld": {
       "localizations": {
         "zh-Hans": {
@@ -2411,6 +2621,16 @@
         }
       }
     },
+    "Follow the Money": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "金钱追踪"
+          }
+        }
+      }
+    },
     "Font": {
       "localizations": {
         "zh-Hans": {
@@ -2431,12 +2651,42 @@
         }
       }
     },
+    "Forbidden Love": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "禁忌之恋"
+          }
+        }
+      }
+    },
+    "Found Family": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "非血缘家人"
+          }
+        }
+      }
+    },
     "Frees %@.": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "释放 %@。"
+          }
+        }
+      }
+    },
+    "French Connection": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "法式风云"
           }
         }
       }
@@ -2481,12 +2731,32 @@
         }
       }
     },
+    "Ghost Stories": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鬼故事"
+          }
+        }
+      }
+    },
     "Heavy": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "特粗"
+          }
+        }
+      }
+    },
+    "Heists & Con Artists": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "劫案与骗局"
           }
         }
       }
@@ -2527,6 +2797,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "隐藏此栏目"
+          }
+        }
+      }
+    },
+    "High Seas": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "公海风云"
+          }
+        }
+      }
+    },
+    "Hitmen & Assassins": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "杀手世界"
           }
         }
       }
@@ -2761,6 +3051,16 @@
         }
       }
     },
+    "K-Drama Fever": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "韩剧热潮"
+          }
+        }
+      }
+    },
     "Keep Current Poster": {
       "localizations": {
         "zh-Hans": {
@@ -2807,6 +3107,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "影片类型"
+          }
+        }
+      }
+    },
+    "Kitchen Confidential": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后厨风云"
           }
         }
       }
@@ -2971,6 +3281,16 @@
         }
       }
     },
+    "Lost Worlds": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "失落世界"
+          }
+        }
+      }
+    },
     "Lost the connection to Simkl. Try again.": {
       "localizations": {
         "zh-Hans": {
@@ -2997,6 +3317,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "MDBList 密钥"
+          }
+        }
+      }
+    },
+    "Machines Rising": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "机器崛起"
+          }
+        }
+      }
+    },
+    "Made in Germany": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "德国制造"
           }
         }
       }
@@ -3091,6 +3431,16 @@
         }
       }
     },
+    "Martial Arts Mastery": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "功夫宗师"
+          }
+        }
+      }
+    },
     "Med": {
       "localizations": {
         "zh-Hans": {
@@ -3107,6 +3457,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "媒体服务器"
+          }
+        }
+      }
+    },
+    "Medieval Intrigue": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中世纪风云"
           }
         }
       }
@@ -3147,6 +3507,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "元数据、热门、发现、推荐、剧集缩略图、片名台标以及跳过片头的匹配时间点。免费密钥见 themoviedb.org/settings/api。本产品使用 TMDB API，但未获得 TMDB 的认可或认证。"
+          }
+        }
+      }
+    },
+    "Mind Games": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "心理博弈"
+          }
+        }
+      }
+    },
+    "Missing Without a Trace": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "人间蒸发"
+          }
+        }
+      }
+    },
+    "Mob Life": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "黑帮生涯"
           }
         }
       }
@@ -3247,6 +3637,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "静音"
+          }
+        }
+      }
+    },
+    "Myths & Legends": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "神话传说"
           }
         }
       }
@@ -3861,6 +4261,16 @@
         }
       }
     },
+    "Outbreak": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "疫情爆发"
+          }
+        }
+      }
+    },
     "Outline": {
       "localizations": {
         "zh-Hans": {
@@ -3907,6 +4317,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "下午"
+          }
+        }
+      }
+    },
+    "Parallel Worlds": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "平行世界"
           }
         }
       }
@@ -4311,6 +4731,16 @@
         }
       }
     },
+    "Politics & Power": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "政治与权力"
+          }
+        }
+      }
+    },
     "Popular": {
       "localizations": {
         "zh-Hans": {
@@ -4651,6 +5081,36 @@
         }
       }
     },
+    "Revenge Served Cold": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复仇冷盘"
+          }
+        }
+      }
+    },
+    "Road Trip Therapy": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "公路疗愈"
+          }
+        }
+      }
+    },
+    "Rock & Roll Stories": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "摇滚故事"
+          }
+        }
+      }
+    },
     "Romance": {
       "localizations": {
         "zh-Hans": {
@@ -4707,6 +5167,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "S%lld · E%lld · %@"
+          }
+        }
+      }
+    },
+    "Samurai & Shinobi": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "武士与忍者"
           }
         }
       }
@@ -5271,6 +5741,16 @@
         }
       }
     },
+    "Small-Town Secrets": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "小镇秘密"
+          }
+        }
+      }
+    },
     "Soap operas": {
       "localizations": {
         "zh-Hans": {
@@ -5311,6 +5791,16 @@
         }
       }
     },
+    "Spanish-Language Standouts": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "西语佳作"
+          }
+        }
+      }
+    },
     "Specials": {
       "localizations": {
         "zh-Hans": {
@@ -5327,6 +5817,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "速度"
+          }
+        }
+      }
+    },
+    "Spy Games": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "间谍游戏"
           }
         }
       }
@@ -5381,6 +5881,26 @@
         }
       }
     },
+    "Stop the Presses": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新闻风暴"
+          }
+        }
+      }
+    },
+    "Stranded": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "绝境漂流"
+          }
+        }
+      }
+    },
     "Stream": {
       "localizations": {
         "zh-Hans": {
@@ -5407,6 +5927,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "字幕"
+          }
+        }
+      }
+    },
+    "Superhero Origins": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "超级英雄起源"
+          }
+        }
+      }
+    },
+    "Survival Against the Odds": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "绝境求生"
           }
         }
       }
@@ -5851,6 +6391,16 @@
         }
       }
     },
+    "Time After Time": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "时间旅行"
+          }
+        }
+      }
+    },
     "Titles in your own libraries show up as sources, ahead of your add-ons, whenever you open a movie or episode they have. Switch a server off to stop using it without signing out; touch and hold it to hide its rows from Home or remove it.": {
       "localizations": {
         "zh-Hans": {
@@ -5931,6 +6481,16 @@
         }
       }
     },
+    "Treasure Hunters": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "寻宝猎人"
+          }
+        }
+      }
+    },
     "Trending %@": {
       "localizations": {
         "zh-Hans": {
@@ -5981,6 +6541,16 @@
         }
       }
     },
+    "Turkish Dramas": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "土耳其剧集"
+          }
+        }
+      }
+    },
     "Turn off": {
       "localizations": {
         "zh-Hans": {
@@ -6001,6 +6571,16 @@
         }
       }
     },
+    "Twist Endings": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "反转结局"
+          }
+        }
+      }
+    },
     "Type": {
       "localizations": {
         "zh-Hans": {
@@ -6017,6 +6597,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "接下来"
+          }
+        }
+      }
+    },
+    "Undead Obsessions": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不死之身"
+          }
+        }
+      }
+    },
+    "Undercover Operations": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卧底行动"
+          }
+        }
+      }
+    },
+    "Underdog Stories": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "逆袭故事"
           }
         }
       }
@@ -6281,6 +6891,26 @@
         }
       }
     },
+    "Wall Street Wolves": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "华尔街群狼"
+          }
+        }
+      }
+    },
+    "War Stories": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "战争故事"
+          }
+        }
+      }
+    },
     "Watch history and Continue Watching are kept separately for each profile. This profile's library comes from Simkl, so profiles set to Simkl share it. Switch a profile to its own library in Settings.": {
       "localizations": {
         "zh-Hans": {
@@ -6327,6 +6957,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "观看中"
+          }
+        }
+      }
+    },
+    "Wedding Season": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "婚礼季节"
           }
         }
       }
@@ -6411,12 +7051,32 @@
         }
       }
     },
+    "Whodunit Weekends": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "周末推理"
+          }
+        }
+      }
+    },
     "Wi-Fi only": {
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "仅 Wi-Fi"
+          }
+        }
+      }
+    },
+    "Wizards & Witchcraft": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "巫师与魔法"
           }
         }
       }

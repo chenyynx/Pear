@@ -168,7 +168,7 @@ enum ThemeCatalog {
                 group.addTask {
                     let items = await TMDBClient.shared.themed(keywords: t.keywords, language: t.language,
                                                                limit: limit, rules: rules)
-                    return (i, items.count >= 3 ? ThemeRow(id: "theme-\(t.title)", title: t.title, items: items) : nil)
+                    return (i, items.count >= 3 ? ThemeRow(id: "theme-\(t.title)", title: L(t.title), items: items) : nil)
                 }
             }
             for await (i, row) in group {
