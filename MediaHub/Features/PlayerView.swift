@@ -132,6 +132,11 @@ final class PlayerModel {
                 P2PManager.shared.stop() // switched from a torrent to a direct source: tear the engine down
             }
             var options = LoadOptions(httpHeaders: r.headers)
+            // Declare native subtitle renditions so the selected subtitle survives Picture in
+            // Picture: the PiP window carries only the AVPlayerLayer, where the SwiftUI overlay
+            // cannot draw. Embedded text tracks map to WebVTT renditions; tracks added after load
+            // (online subtitles) stay overlay-only.
+            options.prepareNativeSubtitles = PiPController.isEnabled
             // ~10 min of look-ahead (150 x ~4 s segments). That is the largest window the engine accepts without
             // opting out of its 2 GiB retention cap, so a seek or a reconnect never competes with a whole-film
             // download for bandwidth. Raise it if you'd rather trade disk and data for a longer cushion.

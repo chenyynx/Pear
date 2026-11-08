@@ -79,6 +79,9 @@ final class PiPController: NSObject {
         isActive = on
         // The engine keeps its pipeline alive while the window is open and hands items over in place on a next-episode load.
         engine?.pictureInPictureActive = on
+        // Hand the active subtitle to AVKit inside the PiP window and take it back (to the
+        // host overlay) when the video returns. A no-op for a track added after load.
+        engine?.setNativeSubtitleRendering(on)
     }
 }
 
