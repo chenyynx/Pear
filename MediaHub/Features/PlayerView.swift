@@ -137,6 +137,12 @@ final class PlayerModel {
             // cannot draw. Embedded text tracks map to WebVTT renditions; tracks added after load
             // (online subtitles) stay overlay-only.
             options.prepareNativeSubtitles = PiPController.isEnabled
+            // The native rendition AVKit can display must be the DEFAULT one; resolve it from the
+            // viewer's default subtitle language (plus ISO 639 aliases used by media files).
+            if let lang = preferredSubtitleLanguage,
+               let entry = SubLanguages.all.first(where: { $0.code == lang }) {
+                options.nativeSubtitlePreferredLanguages = [entry.code] + entry.aliases
+            }
             // ~10 min of look-ahead (150 x ~4 s segments). That is the largest window the engine accepts without
             // opting out of its 2 GiB retention cap, so a seek or a reconnect never competes with a whole-film
             // download for bandwidth. Raise it if you'd rather trade disk and data for a longer cushion.
