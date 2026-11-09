@@ -15,7 +15,7 @@ actor TMDBClient {
     /// don't re-ask TMDB about the same titles on every launch (each ask is a radio wake-up).
     private var idCache: [String: Int] = (UserDefaults.standard.dictionary(forKey: "tmdb.idCache") as? [String: Int]) ?? [:]
     private var networkCache: [String: NetworkBadge] = {
-        guard let raw = UserDefaults.standard.dictionary(forKey: "tmdb.networkCache") as? [String: [String]] else { return [:] }
+        guard let raw = UserDefaults.standard.dictionary(forKey: TMDBClient.networkCacheKey) as? [String: [String]] else { return [:] }
         return raw.compactMapValues { v in
             v.first.map { NetworkBadge(name: $0, logo: v.count > 1 ? URL(string: v[1]) : nil) }
         }
@@ -39,6 +39,36 @@ actor TMDBClient {
     static let proxyBase = "https://ilmsadjrawdqxgaxvjfk.supabase.co/functions/v1/tmdb"
     static let anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlsbXNhZGpyYXdkcXhnYXh2amZrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE1NjUxMTgsImV4cCI6MjEwNzE0MTExOH0.fSoWIHZbOrkA6G8CShILapwcteYQ_Gbo3GVVcEo5hYE"
     static var hasProxy: Bool { !proxyBase.isEmpty && !anonKey.isEmpty }
+
+    /// Metadata language, following the system language. TMDB wants `zh-CN` / `zh-TW` rather than a
+    /// script tag, and a language-region tag (`en-US`, `ja-JP`) elsewhere. Computed once: the process
+    /// has one language and changing it requires an app restart anyway.
+    static let metadataLanguage: String = {
+        let parts = Locale.current.identifier
+            .replacingOccurrences(of: "-", with: "_")
+            .split(separator: "_").map(String.init)
+        guard let code = parts.first, !code.isEmpty else { return "en" }
+        if code == "zh" {
+            let traditional = parts.contains("Hant")
+                || parts.contains { ["TW", "HK", "MO"].contains($0) }
+            return traditional ? "zh-TW" : "zh-CN"
+        }
+        if let region = parts.dropFirst().last(where: { $0.count == 2 && $0.allSatisfy(\.isUppercase) }) {
+            return "\(code)-\(region)"
+        }
+        return code
+    }()
+
+    /// Two-letter code the image and video endpoints expect (`zh`, `en`).
+    static let imageLanguage = String(metadataLanguage.prefix(2))
+
+    /// `include_image_language` / `include_video_language`: the system language first, then English
+    /// and language-less assets.
+    static let mediaLanguagePreference = imageLanguage == "en" ? "en,null" : "\(imageLanguage),en,null"
+
+    /// Network names are localized by TMDB, so the persisted cache is per language. An English name
+    /// cached by an older build must not survive a switch to Chinese.
+    static let networkCacheKey = "tmdb.networkCache.\(metadataLanguage)"
 
     /// The user's own key from Settings. When set, requests go straight to TMDB and the proxy is bypassed.
     nonisolated var apiKey: String { UserDefaults.standard.string(forKey: "tmdb.key") ?? "" }
@@ -88,7 +118,7 @@ actor TMDBClient {
         guard hasKey else { return [] }
         if let hit = videoCache[id] { return hit }
         guard let tid = try? await tmdbID(for: id, type: type),
-              let p: VideoPage = try? await get("/\(kind(type))/\(tid)/videos", ["include_video_language": "en,null"]) else { return [] }
+              let p: VideoPage = try? await get("/\(kind(type))/\(tid)/videos", ["include_video_language": Self.mediaLanguagePreference]) else { return [] }
         func rank(_ t: String) -> Int {
             switch t { case "Trailer": return 0; case "Teaser": return 1; case "Clip": return 2
             case "Featurette": return 3; case "Behind the Scenes": return 4; default: return 9 }
@@ -138,7 +168,7 @@ actor TMDBClient {
         let budget: Int?; let revenue: Int?
 
         struct Named: Decodable, Sendable { let name: String }
-        struct Language: Decodable, Sendable { let englishName: String? }
+        struct Language: Decodable, Sendable { let englishName: String?; let name: String? }
         struct Credits: Decodable, Sendable { let cast: [Person]?; let crew: [Person]? }
         struct Person: Decodable, Sendable { let name: String; let job: String? }
         var minutes: Int? { runtime ?? episodeRunTime?.first }
@@ -146,6 +176,9 @@ actor TMDBClient {
 
     private func get<T: Decodable>(_ path: String, _ query: [String: String] = [:]) async throws -> T {
         guard hasKey else { throw URLError(.userAuthenticationRequired) }
+        // Every TMDB request carries the metadata language, callers can override it explicitly.
+        var query = query
+        if query["language"] == nil { query["language"] = Self.metadataLanguage }
         let own = apiKey
         var req: URLRequest
         if !own.isEmpty {
@@ -172,7 +205,7 @@ actor TMDBClient {
 
     private func preview(_ i: Item, kind: String) -> MetaPreview {
         MetaPreview(id: "tmdb:\(i.id)", type: kind == "tv" ? "series" : "movie",
-            name: i.title ?? i.name ?? "Untitled",
+            name: i.title ?? i.name ?? String(localized: "Untitled"),
             poster: i.posterPath.map { Self.img + "w342" + $0 }, background: i.backdropPath.map { Self.img + "w780" + $0 },
             logo: nil, description: i.overview, releaseInfo: (i.releaseDate ?? i.firstAirDate).map { String($0.prefix(4)) },
             rating: (i.voteAverage ?? 0) > 0 ? i.voteAverage : nil,
@@ -277,14 +310,23 @@ actor TMDBClient {
         ArtworkPool.Raw(path: a.filePath, language: a.iso6391, width: a.width ?? 0, height: a.height ?? 0, votes: a.voteAverage ?? 0)
     }
 
-    /// Best title logo (transparent PNG): English or language-less, highest voted. SVGs are skipped (ImageIO can't draw them).
+    /// Best title logo (transparent PNG): the system language first, then English, then language-less,
+    /// highest voted within a rank. SVGs are skipped (ImageIO can't draw them).
     func logo(for id: String, type: String) async -> URL? {
         guard hasKey, let tid = try? await tmdbID(for: id, type: type),
-              let set: ImageSet = try? await get("/\(kind(type))/\(tid)/images", ["include_image_language": "en,null"]) else { return nil }
+              let set: ImageSet = try? await get("/\(kind(type))/\(tid)/images", ["include_image_language": Self.mediaLanguagePreference]) else { return nil }
         ArtworkPool.shared.ingest(id: id, posters: (set.posters ?? []).map(Self.raw), backdrops: (set.backdrops ?? []).map(Self.raw))
-        let usable = (set.logos ?? []).filter { !$0.filePath.lowercased().hasSuffix(".svg") && ($0.iso6391 == "en" || $0.iso6391 == nil) }
+        let usable = (set.logos ?? []).filter {
+            !$0.filePath.lowercased().hasSuffix(".svg")
+                && ($0.iso6391 == Self.imageLanguage || $0.iso6391 == "en" || $0.iso6391 == nil)
+        }
+        func rank(_ art: ImageSet.Art) -> Int {
+            if art.iso6391 == Self.imageLanguage { return 2 }
+            if art.iso6391 == "en" { return 1 }
+            return 0
+        }
         let best = usable.max { a, b in
-            let la = a.iso6391 == "en" ? 1 : 0, lb = b.iso6391 == "en" ? 1 : 0
+            let la = rank(a), lb = rank(b)
             if la != lb { return la < lb }
             if (a.voteAverage ?? 0) != (b.voteAverage ?? 0) { return (a.voteAverage ?? 0) < (b.voteAverage ?? 0) }
             return (a.width ?? 0) < (b.width ?? 0)
@@ -454,7 +496,7 @@ actor TMDBClient {
         UserDefaults.standard.set(idCache, forKey: "tmdb.idCache")
         UserDefaults.standard.set(imdbCache, forKey: "tmdb.imdbIDs")
         UserDefaults.standard.set(keywordCache, forKey: "tmdb.keywordIDs")
-        UserDefaults.standard.set(networkCache.mapValues { [$0.name, $0.logo?.absoluteString ?? ""] }, forKey: "tmdb.networkCache")
+        UserDefaults.standard.set(networkCache.mapValues { [$0.name, $0.logo?.absoluteString ?? ""] }, forKey: Self.networkCacheKey)
     }
 }
 

@@ -1941,7 +1941,7 @@ private struct EpisodePanel: View {
 
     private func card(_ ep: EpisodeItem) -> some View {
         let isCurrent = season == currentSeason && ep.id == currentEpisode
-        let extras = [ep.runtime.map { "\($0) min" }, ep.rating.map { String(format: "★ %.1f", $0) }]
+        let extras = [ep.runtime.map { String(localized: "\($0) min") }, ep.rating.map { String(format: "★ %.1f", $0) }]
             .compactMap { $0 }.joined(separator: " · ")
         return Button { onSelect(season, ep) } label: {
             VStack(alignment: .leading, spacing: 6) {

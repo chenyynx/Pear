@@ -68,7 +68,7 @@ struct DetailView: View {
     private var metaLine: String {
         var parts: [String] = []
         if let y = item.releaseInfo { parts.append(y) }
-        if let m = details?.minutes { parts.append("\(m) min") }
+        if let m = details?.minutes { parts.append(String(localized: "\(m) min")) }
         if let g = details?.genres?.prefix(2).map(\.name), !g.isEmpty { parts.append(g.joined(separator: ", ")) }
         return parts.joined(separator: "  ·  ")
     }
@@ -691,6 +691,21 @@ struct DetailView: View {
 
     // MARK: Details footer
 
+    /// TMDB's `status` is a fixed English enum even when the metadata language is set, so map the
+    /// values the UI shows instead of leaving one English word in a Chinese page.
+    private func statusLabel(_ raw: String?) -> String? {
+        switch raw {
+        case "Returning Series": return String(localized: "Status: Returning Series")
+        case "Ended": return String(localized: "Status: Ended")
+        case "Canceled": return String(localized: "Status: Canceled")
+        case "In Production": return String(localized: "Status: In Production")
+        case "Planned": return String(localized: "Status: Planned")
+        case "Pilot": return String(localized: "Status: Pilot")
+        case "Released": return String(localized: "Status: Released")
+        default: return raw
+        }
+    }
+
     private var detailRows: [(String, String)] {
         guard let d = details else { return [] }
         var rows: [(String, String)] = []
@@ -702,7 +717,7 @@ struct DetailView: View {
         }
         if isSeries {
             add("Network", names(d.networks))
-            add("Status", d.status)
+            add("Status", statusLabel(d.status))
             add("First aired", prettyDate(d.firstAirDate))
             add("Last aired", prettyDate(d.lastAirDate))
             add("Seasons", d.numberOfSeasons.map(String.init))
@@ -714,11 +729,11 @@ struct DetailView: View {
             add("Budget", money(d.budget))
             add("Box office", money(d.revenue))
         }
-        add("Runtime", d.minutes.map { "\($0) min" })
+        add("Runtime", d.minutes.map { String(localized: "\($0) min") })
         add("Genres", names(d.genres))
         add("Studio", names(d.productionCompanies))
         add("Country", names(d.productionCountries))
-        add("Languages", d.spokenLanguages?.compactMap(\.englishName).joined(separator: ", "))
+        add("Languages", d.spokenLanguages?.compactMap { $0.name ?? $0.englishName }.joined(separator: ", "))
         add("Cast", d.credits?.cast?.prefix(10).map(\.name).joined(separator: ", "))
         return rows
     }

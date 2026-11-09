@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 /// What the player's info card shows for the episode (or movie) that is playing now.
@@ -49,7 +50,7 @@ struct PlayerInfoCard: View {
 
     private var runtimeText: String? {
         guard let m = info.runtime, m > 0 else { return nil }
-        return m >= 60 ? (m % 60 == 0 ? "\(m / 60)h" : "\(m / 60)h \(m % 60)m") : "\(m) min"
+        return m >= 60 ? (m % 60 == 0 ? "\(m / 60)h" : "\(m / 60)h \(m % 60)m") : String(localized: "\(m) min")
     }
 
     var body: some View {
