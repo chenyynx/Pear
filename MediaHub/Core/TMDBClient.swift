@@ -320,7 +320,7 @@ actor TMDBClient {
             !$0.filePath.lowercased().hasSuffix(".svg")
                 && ($0.iso6391 == Self.imageLanguage || $0.iso6391 == "en" || $0.iso6391 == nil)
         }
-        func rank(_ art: ImageSet.Art) -> Int {
+        func rank(_ art: ImageSet.Logo) -> Int {
             if art.iso6391 == Self.imageLanguage { return 2 }
             if art.iso6391 == "en" { return 1 }
             return 0
