@@ -555,6 +555,8 @@ struct PlayerScreen: View {
     /// Torrent sources per add-on that are hidden because P2P is switched off.
     @State private var p2pOffCounts: [String: Int] = [:]
     @State private var loadingSources = false
+    /// The in-flight source lookup, so the panel's refresh button can replace it instead of stacking requests.
+    @State private var sourceTask: Task<Void, Never>?
     @State private var hideTask: Task<Void, Never>?
     @State private var scrobbled = false
     @State private var closing = false
@@ -607,7 +609,7 @@ struct PlayerScreen: View {
             if showSources { sourcesPanel.transition(.move(edge: .trailing).combined(with: .opacity)) }
             if showSpeed { speedLayer.transition(.move(edge: .bottom).combined(with: .opacity)) }
             if showInfo, let info { infoPanel(info).transition(.move(edge: .bottom).combined(with: .opacity)) }
-            if let e = model.error { errorCard(e) }
+            if let e = model.error, !showSources, !showEpisodes, !showSubtitles, !showSpeed, !showInfo { errorCard(e) }
             if let n = notice { toast(n) }
         }
         .preferredColorScheme(.dark)
@@ -719,11 +721,17 @@ struct PlayerScreen: View {
             VStack(spacing: 0) {
                 HStack { circleButton("xmark", size: 42, icon: 16) { close() }; Spacer() }
                 Spacer()
-                transport
-                Spacer()
                 bottomBar
             }
             .padding(.horizontal, 24).padding(.top, 4).padding(.bottom, 6)
+
+            // Transport is centred on the video itself. It used to sit between two Spacers in the
+            // same VStack as the bottom bar, which pushed it up by half the bottom bar's height
+            // (the top row is only the close button). Keep it a separate layer so the bars can
+            // grow without moving it.
+            transport
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .ignoresSafeArea()
         }
         .foregroundStyle(.white)
     }
@@ -1343,6 +1351,8 @@ struct PlayerScreen: View {
                     if sourceGroups.count > 1 {
                         AddonFilterMenu(groups: sourceGroups, selection: $sourceFilter, onDark: true)
                     }
+                    circleButton("arrow.clockwise", size: 34, icon: 13) { refreshSources() }
+                        .accessibilityLabel("Refresh sources")
                     circleButton("xmark", size: 34, icon: 13) { closeSources() }
                 }
                 ScrollView {
@@ -1414,10 +1424,21 @@ struct PlayerScreen: View {
         sourceFilter = nil
         p2pOffCounts = [:]
         withAnimation(.snappy(duration: 0.3)) { showSources = true; showSubtitles = false; showEpisodes = false; showSpeed = false; showInfo = false; showControls = false }
-        Task { await loadSources() }
+        sourceTask?.cancel()
+        sourceTask = Task { await loadSources() }
+    }
+
+    /// Re-asks every add-on for this title / episode and rebuilds the list (dead links, an add-on that timed out).
+    private func refreshSources() {
+        sourceTask?.cancel()
+        sourceGroups = []
+        sourceFilter = nil
+        p2pOffCounts = [:]
+        sourceTask = Task { await loadSources() }
     }
 
     private func closeSources() {
+        sourceTask?.cancel()
         withAnimation(.snappy(duration: 0.3)) { showSources = false; showControls = true }
         scheduleHide()
     }
@@ -1450,7 +1471,13 @@ struct PlayerScreen: View {
     /// Same episode, different stream: carries the position over and keeps the saved progress.
     private func selectSource(_ addon: Addon, _ s: StreamItem) {
         guard let t = s.playTarget else { return }
-        if addon.id == current.sourceAddonID && s.signature == current.sourceSignature { closeSources(); return }
+        // Tapping the source that is already playing reloads it from the current position: the
+        // manual retry for a stalled or expired stream (the close button is right there).
+        if addon.id == current.sourceAddonID && s.signature == current.sourceSignature {
+            closeSources()
+            retryCurrent()
+            return
+        }
         let resume = model.playhead.position
         save()
         let next = PlayRequest(url: t.url, headers: s.requestHeaders, item: current.item, key: current.key, imdb: current.imdb,
@@ -1577,6 +1604,11 @@ struct PlayerScreen: View {
             Text("The link may have expired or the server may be refusing the request. Try another source, or open this one in another player.")
                 .font(.caption).foregroundStyle(.secondary).multilineTextAlignment(.center)
             HStack {
+                Button("Retry") { retryCurrent() }
+                Button("Change source") { openSources() }
+            }
+            .buttonStyle(.glass)
+            HStack {
                 Button("Open in VLC") { open("vlc-x-callback://x-callback-url/stream?url=") }
                 Button("Open in Infuse") { open("infuse://x-callback-url/play?url=") }
             }
@@ -1594,6 +1626,17 @@ struct PlayerScreen: View {
         model.configure(defaultSubtitleLanguage: subLang == "off" ? nil : subLang)
         await model.start(current, resume: resumePoint(for: current))
         scheduleHide()
+    }
+
+    /// Reopens the source that is already selected, at the current position. The error card's Retry,
+    /// and what tapping the current source in the Sources panel does (covers a stuck buffer too).
+    private func retryCurrent() {
+        let resume = model.playhead.position
+        save()
+        Task {
+            await model.start(current, resume: resume > 1 ? resume : nil, replacing: true, exact: true)
+            scheduleHide()
+        }
     }
 
     private func resumePoint(for r: PlayRequest) -> Double? {

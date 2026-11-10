@@ -1451,6 +1451,16 @@
         }
       }
     },
+    "Change source": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "换源"
+          }
+        }
+      }
+    },
     "Choose your colour": {
       "localizations": {
         "zh-Hans": {
@@ -4907,6 +4917,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "重新加载目录"
+          }
+        }
+      }
+    },
+    "Refresh sources": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "刷新片源"
           }
         }
       }
