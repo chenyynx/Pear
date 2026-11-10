@@ -24,8 +24,16 @@ final class PiPController: NSObject {
     private(set) var isActive = false
     /// The system refused to open the window.
     @ObservationIgnored var onFailure: (() -> Void)?
+    /// The window opened. The player minimises itself, so the app is usable straight away.
+    @ObservationIgnored var onStarted: (() -> Void)?
+    /// The window's restore button was tapped: bring the full-screen player back before PiP stops.
+    @ObservationIgnored var onRestoreUI: (() -> Void)?
+    /// The window closed (X, or the system ended it). The player uses this to shut a hidden session down.
+    @ObservationIgnored var onStopped: (() -> Void)?
 
     @ObservationIgnored private var controller: AVPictureInPictureController?
+    /// The window is stopping because the user asked to return to the app, not because it was closed.
+    @ObservationIgnored private var restoring = false
     @ObservationIgnored private var possibleObservation: NSKeyValueObservation?
     @ObservationIgnored private weak var layer: AVPlayerLayer?
     @ObservationIgnored private weak var engine: AetherEngine?
@@ -65,6 +73,7 @@ final class PiPController: NSObject {
     /// Closes the window and drops the controller. The player screen calls this when it goes away.
     func teardown() {
         possibleObservation = nil
+        restoring = false
         if let controller {
             controller.delegate = nil
             if controller.isPictureInPictureActive { controller.stopPictureInPicture() }
@@ -91,8 +100,28 @@ extension PiPController: AVPictureInPictureControllerDelegate {
         MainActor.assumeIsolated { setActive(true) }
     }
 
+    nonisolated func pictureInPictureControllerDidStartPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {
+        MainActor.assumeIsolated { onStarted?() }
+    }
+
     nonisolated func pictureInPictureControllerDidStopPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {
-        MainActor.assumeIsolated { setActive(false) }
+        MainActor.assumeIsolated {
+            setActive(false)
+            let wasRestoring = restoring
+            restoring = false
+            if !wasRestoring { onStopped?() }
+        }
+    }
+
+    /// The user tapped the window's restore button. Present the player BEFORE letting PiP stop, so the
+    /// video has a visible surface to land on. The completion handler must be called exactly once.
+    nonisolated func pictureInPictureController(_ pictureInPictureController: AVPictureInPictureController,
+                                                restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @escaping (Bool) -> Void) {
+        MainActor.assumeIsolated {
+            restoring = true
+            onRestoreUI?()
+            completionHandler(true)
+        }
     }
 
     nonisolated func pictureInPictureController(_ pictureInPictureController: AVPictureInPictureController,

@@ -522,6 +522,7 @@ struct PlayerScreen: View {
     @Environment(LibraryPrefs.self) private var libraryPrefs
     @Environment(ThemeStore.self) private var theme
     @Environment(AddonStore.self) private var store
+    @Environment(PlayerPresenter.self) private var playerPresenter
     @Environment(\.openURL) private var openURL
     @Environment(\.scenePhase) private var scenePhase
     @AppStorage(SubtitleStyle.storageKey) private var subJSON = ""
@@ -612,9 +613,9 @@ struct PlayerScreen: View {
             if let e = model.error, !showSources, !showEpisodes, !showSubtitles, !showSpeed, !showInfo { errorCard(e) }
             if let n = notice { toast(n) }
         }
-        .preferredColorScheme(.dark)
-        .statusBarHidden(!showControls)
-        .persistentSystemOverlays(showControls ? .automatic : .hidden)
+        .preferredColorScheme(playerPresenter.minimized ? nil : .dark)
+        .statusBarHidden(playerPresenter.minimized ? false : !showControls)
+        .persistentSystemOverlays(playerPresenter.minimized ? .automatic : (showControls ? .automatic : .hidden))
         .animation(.snappy(duration: 0.25), value: notice)
         .task { await begin() }
         .task(id: current.id) { await loadAux() }
@@ -658,6 +659,8 @@ struct PlayerScreen: View {
         // Same for leaving the app while playing (PiP, background audio): the system may end it without notice.
         .onChange(of: scenePhase) { _, p in
             if p == .background { logPlayTime(); save(isFinal: false) }
+            // Coming back to an empty hidden session (PiP was ended while away) closes it.
+            if p == .active, playerPresenter.minimized, !pip.isActive { playerPresenter.close() }
         }
         .onChange(of: model.error) { _, _ in updateIdleTimer() }
         .onChange(of: showControls, initial: true) { _, shown in
@@ -679,14 +682,45 @@ struct PlayerScreen: View {
             volume.startObserving()
             OrientationLock.set(.landscape)          // landscape only, free to flip 180°
             pip.onFailure = { flash(String(localized: "Picture in Picture isn't available right now")) }
+            // Restore brings the full-screen player back; a window closed while minimised ends the
+            // session (the root removes this screen, which tears the engine down).
+            pip.onStarted = { minimizeToPiP() }
+            pip.onRestoreUI = { playerPresenter.restore() }
+            pip.onStopped = { if playerPresenter.minimized { playerPresenter.close() } }
+        }
+        // Minimised = PiP is playing and this screen is transparent behind the app. Hand the
+        // orientation and the idle timer back to the rest of the app; reverse it on restore.
+        .onChange(of: playerPresenter.minimized) { _, minimized in
+            if minimized {
+                OrientationLock.set(OrientationLock.appMask)
+                UIApplication.shared.isIdleTimerDisabled = false
+                volume.stopObserving()
+                hideTask?.cancel()
+            } else {
+                OrientationLock.set(.landscape)
+                volume.startObserving()
+                updateIdleTimer()
+                withAnimation(.easeInOut(duration: 0.2)) { showControls = true }
+                scheduleHide()
+            }
+        }
+        // A hidden session whose PiP window disappeared without the delegate (system ended it,
+        // app was away) must not leave an orphaned player behind.
+        .onChange(of: pip.isActive) { _, active in
+            if !active, playerPresenter.minimized { playerPresenter.close() }
         }
         .onDisappear {
-            UIApplication.shared.isIdleTimerDisabled = false
+            // A new playback replacing this one must not have its landscape/idle-timer setup undone
+            // by the outgoing screen's teardown (onAppear/onDisappear order is not guaranteed).
+            let replaced = playerPresenter.request != nil && playerPresenter.request?.id != current.id
+            if !replaced {
+                UIApplication.shared.isIdleTimerDisabled = false
+                volume.stopObserving()
+                OrientationLock.set(OrientationLock.appMask)   // back to what the rest of the app allows
+            }
             volumeTask?.cancel()
             pillTask?.cancel()
-            volume.stopObserving()
             pip.teardown()
-            OrientationLock.set(OrientationLock.appMask)   // back to what the rest of the app allows
             // Normal exit goes through close(); this covers any other way the screen can go away.
             if !closing { finalizeCurrent(); model.shutdown() }
         }
@@ -1708,9 +1742,14 @@ struct PlayerScreen: View {
         if d > 0, libraryPrefs.usesSimkl(simkl) { simkl.scrobble("stop", current, progress: model.playhead.position / d * 100) }
     }
 
-    /// X button. Dismisses first so it always responds instantly, then tears the engine down a moment later.
+    /// X button. With PiP open this gives the app back and keeps the window playing; otherwise it
+    /// dismisses first so it always responds instantly, then tears the engine down a moment later.
     private func close() {
         guard !closing else { return }
+        if pip.isActive {
+            minimizeToPiP()
+            return
+        }
         closing = true
         finalizeCurrent()
         let m = model
@@ -1719,6 +1758,20 @@ struct PlayerScreen: View {
             try? await Task.sleep(for: .milliseconds(250))
             m.shutdown()
         }
+    }
+
+    /// Bank progress, hide this screen behind the app, and leave the engine + PiP window running.
+    /// The orientation change is what makes the rest of the app usable again.
+    private func minimizeToPiP() {
+        logPlayTime()
+        watchLog.flush()
+        save(isFinal: false)
+        playerPresenter.minimize()
+        OrientationLock.set(OrientationLock.appMask)
+        UIApplication.shared.isIdleTimerDisabled = false
+        volume.stopObserving()
+        hideTask?.cancel()
+        withAnimation(.easeInOut(duration: 0.2)) { showControls = false }
     }
 
     private func open(_ prefix: String) {

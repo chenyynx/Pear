@@ -37,7 +37,7 @@ struct DownloadsView: View {
     @Environment(DownloadManager.self) private var downloads
     @Environment(Connectivity.self) private var connectivity
     @Environment(ThemeStore.self) private var theme
-    @State private var playRequest: PlayRequest?
+    @Environment(PlayerPresenter.self) private var playerPresenter
     @State private var pending: Pending?
 
     private struct Pending {
@@ -103,9 +103,6 @@ struct DownloadsView: View {
                             titleVisibility: .visible, presenting: pending) { p in
             Button(p.button, role: .destructive) { p.run() }
         } message: { p in Text(p.message) }
-        .fullScreenCover(item: $playRequest) { r in
-            PlayerScreen(request: r, provider: downloads.provider(for: r.imdb), onClose: { playRequest = nil })
-        }
     }
 
     // MARK: Storage
@@ -302,7 +299,7 @@ struct DownloadsView: View {
     // MARK: Actions
 
     private func play(_ r: DownloadRecord) {
-        if let req = r.playRequest() { playRequest = req }
+        if let req = r.playRequest() { playerPresenter.play(req, provider: downloads.provider(for: r.imdb)) }
     }
 
     private func confirm(_ show: Show) {

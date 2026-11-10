@@ -129,6 +129,8 @@ struct MediaHubApp: App {
     @State private var downloads = DownloadManager.shared
     @State private var connectivity = Connectivity.shared
     @State private var mediaServers = MediaServerStore.shared
+    /// Which playback the root should present, and whether it is minimised into PiP.
+    @State private var playerPresenter = PlayerPresenter()
     /// First launch only: the setup flow (see `Onboarding`).
     @State private var showOnboarding = Onboarding.needed
 
@@ -139,13 +141,28 @@ struct MediaHubApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootView()
-                .fullScreenCover(isPresented: $showOnboarding) { OnboardingView { showOnboarding = false } }
-                .environment(store).environment(history).environment(simkl).environment(pins).environment(theme)
-                .environment(profiles).environment(library).environment(watchLog).environment(libraryPrefs)
-                .environment(contentPrefs).environment(downloads).environment(connectivity).environment(mediaServers)
-                .preferredColorScheme(Theme.forceDark ? .dark : nil)
-                .pearLaunchScreen()
+            // The player is a sibling of the app, not a fullScreenCover owned by the page that
+            // started it. While PiP is open the player is kept mounted but transparent, so the app
+            // underneath stays usable and the engine keeps feeding the window. `.id` gives every
+            // new playback a fresh PlayerScreen (and tears the previous one down when replaced).
+            ZStack {
+                RootView()
+                    .fullScreenCover(isPresented: $showOnboarding) { OnboardingView { showOnboarding = false } }
+                if let request = playerPresenter.request {
+                    PlayerScreen(request: request, provider: playerPresenter.provider,
+                                 onClose: { playerPresenter.close() })
+                        .id(request.id)
+                        .opacity(playerPresenter.minimized ? 0 : 1)
+                        .allowsHitTesting(!playerPresenter.minimized)
+                        .accessibilityHidden(playerPresenter.minimized)
+                }
+            }
+            .environment(store).environment(history).environment(simkl).environment(pins).environment(theme)
+            .environment(profiles).environment(library).environment(watchLog).environment(libraryPrefs)
+            .environment(contentPrefs).environment(downloads).environment(connectivity).environment(mediaServers)
+            .environment(playerPresenter)
+            .preferredColorScheme(Theme.forceDark ? .dark : nil)
+            .pearLaunchScreen()
         }
     }
 }

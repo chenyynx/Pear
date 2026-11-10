@@ -29,6 +29,7 @@ struct DetailView: View {
     @Environment(ThemeStore.self) private var theme
     @Environment(DownloadManager.self) private var downloads
     @Environment(ContentPrefs.self) private var contentPrefs
+    @Environment(PlayerPresenter.self) private var playerPresenter
     @Environment(\.wideLayout) private var wide
     @State private var imdbID: String?
     @State private var onWatchlist = false
@@ -44,7 +45,6 @@ struct DetailView: View {
     private struct DownloadTarget { let season: Int?; let episode: Int?; let ep: EpisodeItem? }
     /// Add-on id the sources sheet is narrowed to; nil = all add-ons.
     @State private var sourceFilter: String?
-    @State private var playRequest: PlayRequest?
     @State private var upNext: UpNextItem?
     @State private var userPicked = false
     /// Bumped when the opening episode is restored from history, so the strip scrolls to it even if the season did not change.
@@ -110,11 +110,6 @@ struct DetailView: View {
         .ignoresSafeArea(edges: .top)
         .toolbarTitleDisplayMode(.inline)
         .sheet(isPresented: $showSources, onDismiss: { downloadTarget = nil; startPendingPlayback() }) { sourceSheet }
-        // Presented from the page itself (not from inside the sources sheet): the sheet closes first,
-        // then the player opens. This keeps dismissing the player reliable.
-        .fullScreenCover(item: $playRequest) { r in
-            PlayerScreen(request: r, provider: makeProvider(), onClose: { playRequest = nil })
-        }
         .task {
             // Native metadata + suggestions (no-ops without a TMDB key).
             async let d = try? TMDBClient.shared.details(for: item.id, type: item.type)
@@ -806,7 +801,7 @@ struct DetailView: View {
         pendingPlay = nil
         Task {
             try? await Task.sleep(for: .milliseconds(80))
-            playRequest = p
+            playerPresenter.play(p, provider: makeProvider())
         }
     }
 
