@@ -40,8 +40,13 @@ jobs:
       - run: brew install xcodegen && xcodegen
       - name: Build (unsigned)
         run: |
+          # Real, reproducible build number: the number of commits on the branch.
+          # It lands in CFBundleVersion and in the file name we deliver.
+          BUILD_NUMBER=$(git rev-list --count HEAD)
+          echo "Build number: $BUILD_NUMBER"
           xcodebuild -project MediaHub.xcodeproj -scheme MediaHub -configuration Release \
             -sdk iphoneos -destination 'generic/platform=iOS' -derivedDataPath build \
+            CURRENT_PROJECT_VERSION="$BUILD_NUMBER" \
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" build
       - name: Package IPA
         run: |
