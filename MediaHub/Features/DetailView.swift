@@ -156,9 +156,9 @@ struct DetailView: View {
                 ParallaxHero(height: Self.heroHeight) {
                     RotatingArtwork(item: item, kind: .detail, size: 800)
                 } info: {
-                    heroInfo.padding(.horizontal, DS.Space.page)
+                    heroInfo.padding(.horizontal, 20)
                 }
-                header.padding(.horizontal, DS.Space.page)
+                header.padding(.horizontal, 20)
                 if isSeries { seasonSection }
                 if !trailers.isEmpty { trailersSection }
                 if !similar.isEmpty {
@@ -222,16 +222,12 @@ struct DetailView: View {
     // MARK: Header
 
     /// Title, facts and ratings: anchored to the bottom of the parallax hero, over the fade into the page.
-    /// Centered like the Home hero and the reference, with the title leading and the facts underneath.
     private var heroInfo: some View {
-        VStack(spacing: 10) {
-            TitleArt(item: item, maxWidth: 300, maxHeight: 100,
-                     font: .system(size: 40, weight: .heavy, design: .rounded), alignment: .center)
+        VStack(alignment: .leading, spacing: 10) {
+            TitleArt(item: item, maxWidth: 280, maxHeight: 100, font: .largeTitle.bold())
             if !metaLine.isEmpty || networkText != nil { metaRow }
             if !allRatings.isEmpty { ratingsRow }
         }
-        .multilineTextAlignment(.center)
-        .frame(maxWidth: .infinity, alignment: .center)
     }
 
     /// Below the hero, two calm groups with room between them: what to do (buttons), then what it's about
@@ -265,7 +261,6 @@ struct DetailView: View {
             if let n = networkText { Text("\(lead)\(Image(systemName: icon)) \(n)") } else { Text(metaLine) }
         }
         .font(.subheadline).foregroundStyle(.secondary).lineLimit(2)
-        .multilineTextAlignment(.center)
     }
 
     private var descriptionText: String? {
@@ -358,8 +353,6 @@ struct DetailView: View {
             }
         }
         .scrollIndicators(.hidden)
-        // Centers the strip when it fits (the usual case) and still scrolls when a title has many ratings.
-        .defaultScrollAnchor(.center)
     }
 
     // MARK: Up next / continue
@@ -391,9 +384,9 @@ struct DetailView: View {
     // MARK: Seasons + episodes
 
     private var seasonSection: some View {
-        VStack(alignment: .leading, spacing: DS.Space.s) {
+        VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Text("Seasons").font(DS.TypeStyle.rowTitle)
+                Text("Seasons").font(.title3.bold())
                 Spacer()
                 if seasonChips.contains(where: { $0.poster != nil }) {
                     Button { withAnimation(.snappy) { seasonsExpanded.toggle() } } label: {
@@ -405,7 +398,7 @@ struct DetailView: View {
                     }
                 }
             }
-            .padding(.horizontal, DS.Space.page)
+            .padding(.horizontal, 20)
             seasonPills
             if seasonsExpanded { seasonPosters.transition(.opacity.combined(with: .move(edge: .top))) }
             episodeCarousel
@@ -438,7 +431,7 @@ struct DetailView: View {
                     }
                 }
             }
-            .padding(.horizontal, DS.Space.page)
+            .padding(.horizontal, 20)
         }
         .scrollIndicators(.hidden)
     }
@@ -477,7 +470,7 @@ struct DetailView: View {
 
     private var seasonPosters: some View {
         ScrollView(.horizontal) {
-            HStack(alignment: .top, spacing: DS.Card.gap) {
+            HStack(alignment: .top, spacing: 12) {
                 ForEach(seasonChips) { c in
                     Button { select(season: c.id) } label: {
                         VStack(alignment: .leading, spacing: 6) {
@@ -501,7 +494,7 @@ struct DetailView: View {
                     .contextMenu { seasonMenu(c.id) }
                 }
             }
-            .padding(.horizontal, DS.Space.page)
+            .padding(.horizontal, 20)
         }
         .scrollIndicators(.hidden)
     }
@@ -510,15 +503,15 @@ struct DetailView: View {
         VStack(alignment: .leading, spacing: 10) {
             ScrollViewReader { proxy in
                 ScrollView(.horizontal) {
-                    LazyHStack(spacing: DS.Card.gap) {
+                    LazyHStack(spacing: 12) {
                         if loadingEpisodes && episodes.isEmpty {
-                            ProgressView().frame(width: EpisodeCard<EmptyView>.placeholderWidth, height: EpisodeCard<EmptyView>.placeholderHeight)
+                            ProgressView().frame(width: EpisodeCard<EmptyView>.width, height: EpisodeCard<EmptyView>.height)
                         }
                         ForEach(episodes) { episodeCard($0).id($0.id) }
                     }
                     .scrollTargetLayout()
                 }
-                .contentMargins(.horizontal, DS.Space.page, for: .scrollContent)
+                .contentMargins(.horizontal, 20, for: .scrollContent)
                 .scrollTargetBehavior(.viewAligned)
                 .scrollIndicators(.hidden)
                 // A fresh strip per season, so switching seasons starts at the first episode instead of keeping the old offset.
@@ -532,7 +525,7 @@ struct DetailView: View {
             }
             // No TMDB/TVDB data: keep a manual way to pick the episode.
             if episodes.isEmpty && !loadingEpisodes {
-                Stepper("Episode \(episode)", value: $episode, in: 1...99).padding(.horizontal, DS.Space.page)
+                Stepper("Episode \(episode)", value: $episode, in: 1...99).padding(.horizontal, 20)
             }
         }
     }
@@ -674,15 +667,15 @@ struct DetailView: View {
     // MARK: Trailers
 
     private var trailersSection: some View {
-        VStack(alignment: .leading, spacing: DS.Space.s) {
-            Text("Trailers & Extras").font(DS.TypeStyle.rowTitle).padding(.horizontal, DS.Space.page)
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Trailers & Extras").font(.title3.bold()).padding(.horizontal, 20)
             ScrollView(.horizontal) {
-                LazyHStack(spacing: DS.Card.gap) {
+                LazyHStack(spacing: 12) {
                     ForEach(trailers) { v in TrailerCard(video: v) { openTrailer = v } }
                 }
                 .scrollTargetLayout()
             }
-            .contentMargins(.horizontal, DS.Space.page, for: .scrollContent)
+            .contentMargins(.horizontal, 20, for: .scrollContent)
             .scrollTargetBehavior(.viewAligned)
             .scrollIndicators(.hidden)
         }
@@ -755,7 +748,7 @@ struct DetailView: View {
         let rows = detailRows
         if !rows.isEmpty {
             VStack(alignment: .leading, spacing: 0) {
-                Text(isSeries ? String(localized: "About the show") : String(localized: "About the movie")).font(DS.TypeStyle.rowTitle).padding(.bottom, 8)
+                Text(isSeries ? String(localized: "About the show") : String(localized: "About the movie")).font(.title3.bold()).padding(.bottom, 8)
                 ForEach(rows, id: \.0) { row in
                     VStack(alignment: .leading, spacing: 2) {
                         Text(row.0).font(.caption).foregroundStyle(.secondary)
@@ -765,7 +758,7 @@ struct DetailView: View {
                     Divider()
                 }
             }
-            .padding(.horizontal, DS.Space.page).padding(.top, 8)
+            .padding(.horizontal, 20).padding(.top, 8)
         }
     }
 

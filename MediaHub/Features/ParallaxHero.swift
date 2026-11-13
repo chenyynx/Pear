@@ -7,12 +7,6 @@ private let heroFadeStops: [Gradient.Stop] = (0...10).map { i in
     return .init(color: Color(.systemBackground).opacity(t * t * (3 - 2 * t)), location: t)
 }
 
-/// Same eased curve over a much shorter distance: the last strip that hands the hero over to the page.
-private let heroBottomStops: [Gradient.Stop] = (0...8).map { i in
-    let t = Double(i) / 8
-    return .init(color: Color(.systemBackground).opacity(t * t * (3 - 2 * t)), location: t)
-}
-
 /// Apple TV-style collapsing hero for the details page.
 ///
 /// - The artwork sits in a fixed window and slides through it at `parallax` x the scroll speed, so it travels more
@@ -53,23 +47,11 @@ struct ParallaxHero<Art: View, Info: View>: View {
                     .frame(width: geo.size.width, height: window)
                     .offset(y: reduceMotion ? 0 : scrolled * parallax)
                     .opacity(1 - 0.6 * progress)
-                // Melt the artwork towards the page colour over the bottom third.
                 LinearGradient(stops: heroFadeStops, startPoint: .top, endPoint: .bottom)
                     .frame(height: min(fadeHeight, height))
                     .allowsHitTesting(false)
-                // Dark backing for the white title block. Invisible in dark mode; in light mode it keeps
-                // the title readable instead of putting white text on the white page background.
-                LinearGradient(stops: [.init(color: .clear, location: 0),
-                                       .init(color: .black.opacity(0.72), location: 1)],
-                               startPoint: .top, endPoint: .bottom)
-                    .frame(height: min(height * 0.7, 360))
-                    .allowsHitTesting(false)
-                // A short final blend into the page, under the title block, so the hero still ends softly.
-                LinearGradient(stops: heroBottomStops, startPoint: .top, endPoint: .bottom)
-                    .frame(height: 86)
-                    .allowsHitTesting(false)
                 info()
-                    .padding(.bottom, 96)
+                    .padding(.bottom, 10)
                     .opacity(infoOpacity)
             }
             .frame(width: geo.size.width, height: window, alignment: .bottom)
