@@ -276,11 +276,6 @@ struct HomeView: View {
     @State private var model = HomeModel()
     /// Colour pulled from the current hero artwork; washes softly behind the first rows.
     @State private var tint: Color?
-    /// The current hero artwork itself, blurred into the page wash (see `HeroBackdrop`).
-    @State private var heroArt: UIImage?
-    @State private var heroArtKey = ""
-    /// Scroll position in points (clamped), so the wash drifts as the feed moves.
-    @State private var scrollOffset: CGFloat = 0
     /// Reloads the add-on rows when the add-ons, the catalogues chosen for Home, or the content filter change.
     /// `pickerKey` covers an add-on being switched to / from picking its catalogues by hand.
     private var addonTaskID: [String] {
@@ -343,13 +338,8 @@ struct HomeView: View {
                 .padding(.bottom, 40)
                 .animation(loadAnimation, value: heroDeps)
         }
-        // Fixed behind the feed: the whole page takes the hero artwork's colour. The wash drifts a
-        // little with the scroll, so the colour changes as you move; a new hero crossfades to its own.
-        .background { HeroBackdrop(image: heroArt, key: heroArtKey, tint: tint, scroll: scrollOffset) }
-        .onScrollGeometryChange(for: CGFloat.self) { g in
-            let y = g.contentOffset.y + g.contentInsets.top
-            return (min(max(y, 0), 1200) / 40).rounded() * 40
-        } action: { _, y in scrollOffset = y }
+        // The whole page takes the colour of the row under the focal line (see AmbientStore).
+        .background { AmbientBackdrop() }
         .ignoresSafeArea(edges: .top)
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackgroundVisibility(.hidden, for: .navigationBar)
@@ -384,7 +374,7 @@ struct HomeView: View {
     private var rows: some View {
         LazyVStack(alignment: .leading, spacing: DS.Space.section) {
             let hero = model.hero
-            if !hero.isEmpty { HeroCarousel(items: hero, tint: $tint, backdrop: $heroArt, backdropKey: $heroArtKey) }
+            if !hero.isEmpty { HeroCarousel(items: hero, tint: $tint) }
             feedRows
         }
     }
@@ -393,20 +383,58 @@ struct HomeView: View {
     @ViewBuilder private var feedRows: some View {
         if !history.continueEntries.isEmpty || !model.upNext.isEmpty {
             ContinueRow(entries: history.continueEntries, upNext: model.upNext)
+                .ambientSource(id: "continue", url: continueAmbientURL)
         }
-        if let t = themeRow(0) { ThemeCarousel(row: t) }
-        ForEach(visible(model.suggested)) { CatalogRowView(row: $0) }
-        if let t = themeRow(1) { ThemeCarousel(row: t) }
-        ForEach(model.lists) { CatalogRowView(row: $0) }
-        if let t = themeRow(2) { ThemeCarousel(row: t) }
+        if let t = themeRow(0) {
+            ThemeCarousel(row: t)
+                .ambientSource(id: "theme-\(t.id)", url: ambientURL(t.items.first?.item))
+        }
+        ForEach(visible(model.suggested)) { row in
+            CatalogRowView(row: row)
+                .ambientSource(id: "row-\(row.id)", url: ambientURL(row.items.first))
+        }
+        if let t = themeRow(1) {
+            ThemeCarousel(row: t)
+                .ambientSource(id: "theme-\(t.id)", url: ambientURL(t.items.first?.item))
+        }
+        ForEach(model.lists) { row in
+            CatalogRowView(row: row)
+                .ambientSource(id: "row-\(row.id)", url: ambientURL(row.items.first))
+        }
+        if let t = themeRow(2) {
+            ThemeCarousel(row: t)
+                .ambientSource(id: "theme-\(t.id)", url: ambientURL(t.items.first?.item))
+        }
         // The rest of the themes are spread through the add-on rows: one after every second row.
         let addonRows = visible(model.rows)
         ForEach(Array(addonRows.enumerated()), id: \.element.id) { i, row in
             CatalogRowView(row: row)
-            if i % 2 == 1, let t = themeRow(3 + i / 2) { ThemeCarousel(row: t) }
+                .ambientSource(id: "row-\(row.id)", url: ambientURL(row.items.first))
+            if i % 2 == 1, let t = themeRow(3 + i / 2) {
+                ThemeCarousel(row: t)
+                    .ambientSource(id: "theme-\(t.id)", url: ambientURL(t.items.first?.item))
+            }
         }
         // Themes that found no slot between add-on rows (few or no add-on rows) close the feed.
-        ForEach(trailingThemes(addonRowCount: addonRows.count)) { ThemeCarousel(row: $0) }
+        ForEach(trailingThemes(addonRowCount: addonRows.count)) { t in
+            ThemeCarousel(row: t)
+                .ambientSource(id: "theme-\(t.id)", url: ambientURL(t.items.first?.item))
+        }
+    }
+
+    /// Artwork that represents a row in the page wash.
+    private func ambientURL(_ item: MetaPreview?) -> URL? {
+        item?.backdropURL ?? item?.posterURL
+    }
+
+    private var continueAmbientURL: URL? {
+        if let e = history.continueEntries.first {
+            return e.thumb.flatMap(URL.init(string:)) ?? e.item.backdropURL ?? e.item.posterURL
+        }
+        if let n = model.upNext.first {
+            return n.thumb ?? n.item.backdropURL ?? n.item.posterURL
+        }
+        return nil
     }
 
     /// The i-th themed row of today, or nil when themes are switched off or fewer than that loaded.
@@ -468,8 +496,6 @@ struct HomeView: View {
 struct HeroCarousel: View {
     let items: [MetaPreview]
     @Binding var tint: Color?
-    @Binding var backdrop: UIImage?
-    @Binding var backdropKey: String
     @Environment(\.horizontalSizeClass) private var hSize
     @Environment(\.pageActive) private var pageActive
     @Environment(\.scenePhase) private var scenePhase
@@ -534,6 +560,7 @@ struct HeroCarousel: View {
             }
         }
         .task(id: currentID) { await updateTint() }
+        .ambientTop(id: "hero")
     }
 
     @MainActor private func updateTint() async {
@@ -543,12 +570,10 @@ struct HeroCarousel: View {
         guard !Task.isCancelled else { return }
         if let c { withAnimation(.easeInOut(duration: 0.9)) { tint = Color(uiColor: c) } }
         // A small copy is enough: it is blurred into a colour field, never shown as a picture.
-        if let art = await ImagePipeline.shared.image(for: url, maxPixel: 420), !Task.isCancelled {
-            withAnimation(.easeInOut(duration: 0.9)) {
-                backdrop = art
-                backdropKey = item.id
-            }
-        }
+        let art = await ImagePipeline.shared.image(for: url, maxPixel: 420)
+        guard !Task.isCancelled else { return }
+        AmbientStore.shared.register(id: "hero", key: item.id,
+                                     color: c.map { Color(uiColor: $0) }, image: art)
     }
 }
 
