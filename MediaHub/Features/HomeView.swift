@@ -542,9 +542,11 @@ private struct HeroPage: View {
                     KenBurns(active: active) {
                         RotatingArtwork(item: item, kind: .hero(wide: wide), size: wide ? 1200 : 800)
                     }
-                    LinearGradient.easedFade(start: 0.52, from: 0, to: 0.66)
+                    LinearGradient.easedFade(start: 0.42, from: 0, to: 0.74)
                 }
-                .mask { LinearGradient.easedFade(start: 0.88, from: 1, to: 0) }
+                // Keep the artwork under the title block; only the last strip dissolves into the page,
+                // so white text never lands on a light background in light mode.
+                .mask { LinearGradient.easedFade(start: 0.93, from: 1, to: 0) }
                 info
             }
             .frame(height: height)
@@ -555,16 +557,18 @@ private struct HeroPage: View {
 
     private var info: some View {
         VStack(spacing: 10) {
-            HStack(spacing: 8) {
-                Label(item.typeLabel.uppercased(), systemImage: item.type == "series" ? "tv" : "film")
-                    .font(.caption2.weight(.heavy)).tracking(1.2)
-                    .padding(.horizontal, 9).padding(.vertical, 4)
-                    .background(.white.opacity(0.18), in: Capsule())
-                if let y = item.year { Text(String(y)).font(.subheadline.weight(.semibold)).opacity(0.9) }
-            }
             // Logo when we have one, title text otherwise (text shows first, then swaps once the logo has loaded).
+            // The title leads, then the facts, exactly like the reference: a badge above the logo reads as a
+            // floating button and collides with artwork that already has the title baked in.
             TitleArt(item: item, maxWidth: 300, maxHeight: 92,
                      font: .system(size: 40, weight: .heavy, design: .rounded), alignment: .center)
+            HStack(spacing: 6) {
+                Text(item.typeLabel)
+                if item.year != nil { Text("·") }
+                if let y = item.year { Text(String(y)) }
+            }
+            .font(.subheadline.weight(.medium))
+            .opacity(0.9)
             InlineRatings(item: item)
             if let d = item.description, !d.isEmpty {
                 Text(d).font(.subheadline).lineLimit(2).opacity(0.9)
@@ -575,7 +579,7 @@ private struct HeroPage: View {
         .foregroundStyle(.white)
         .multilineTextAlignment(.center)
         .frame(maxWidth: .infinity, alignment: .center)
-        .padding(.horizontal, 24).padding(.bottom, 40)
+        .padding(.horizontal, 24).padding(.bottom, 44)
         // Text slides slightly faster than the artwork while paging, and fades out as it leaves.
         .scrollTransition(axis: .horizontal) { content, phase in
             content.opacity(1 - min(abs(phase.value) * 1.6, 1)).offset(x: phase.value * 70)
