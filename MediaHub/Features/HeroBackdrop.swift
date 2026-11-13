@@ -10,6 +10,8 @@ struct HeroBackdrop: View {
     /// Identity of the shown artwork; changing it crossfades the layer.
     let key: String
     let tint: Color?
+    /// Scroll position of the feed, clamped by the caller. Drifts the wash a little as you move.
+    var scroll: CGFloat = 0
     @Environment(\.colorScheme) private var scheme
 
     var body: some View {
@@ -21,10 +23,11 @@ struct HeroBackdrop: View {
                         .resizable()
                         .scaledToFill()
                         .frame(width: geo.size.width, height: geo.size.height)
-                        .clipped()
                         // Overscan and blur hide the image's own edges; the result is a colour field,
                         // not a picture, so it can sit under text without competing with it.
-                        .scaleEffect(1.18)
+                        .scaleEffect(1.4)
+                        .offset(y: -min(scroll, 1200) * 0.12)
+                        .clipped()
                         .blur(radius: 60)
                         // Veil: stronger in light mode, where a raw wash would fight black text.
                         .overlay { DS.Palette.background.opacity(scheme == .dark ? 0.5 : 0.62) }

@@ -279,6 +279,8 @@ struct HomeView: View {
     /// The current hero artwork itself, blurred into the page wash (see `HeroBackdrop`).
     @State private var heroArt: UIImage?
     @State private var heroArtKey = ""
+    /// Scroll position in points (clamped), so the wash drifts as the feed moves.
+    @State private var scrollOffset: CGFloat = 0
     /// Reloads the add-on rows when the add-ons, the catalogues chosen for Home, or the content filter change.
     /// `pickerKey` covers an add-on being switched to / from picking its catalogues by hand.
     private var addonTaskID: [String] {
@@ -341,9 +343,13 @@ struct HomeView: View {
                 .padding(.bottom, 40)
                 .animation(loadAnimation, value: heroDeps)
         }
-        // Fixed behind the feed: the whole page takes the hero artwork's colour, and scrolling
-        // reveals different parts of the wash. A new hero crossfades to its own colour.
-        .background { HeroBackdrop(image: heroArt, key: heroArtKey, tint: tint) }
+        // Fixed behind the feed: the whole page takes the hero artwork's colour. The wash drifts a
+        // little with the scroll, so the colour changes as you move; a new hero crossfades to its own.
+        .background { HeroBackdrop(image: heroArt, key: heroArtKey, tint: tint, scroll: scrollOffset) }
+        .onScrollGeometryChange(for: CGFloat.self) { g in
+            let y = g.contentOffset.y + g.contentInsets.top
+            return (min(max(y, 0), 1200) / 40).rounded() * 40
+        } action: { _, y in scrollOffset = y }
         .ignoresSafeArea(edges: .top)
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackgroundVisibility(.hidden, for: .navigationBar)
