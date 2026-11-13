@@ -1,8 +1,8 @@
 import SwiftUI
 
-/// Apple TV-style episode card: the still fades into a dark, softly tinted panel with
-/// "EPISODE 1", the title, a short description, the runtime and a "..." menu.
-/// The tint is the still's average colour (cached by ImagePipeline), so each card gets its own mood for one tiny request.
+/// Episode card in the same landscape unit as Continue Watching: a 16:9 still with badges,
+/// then the episode number, title, a two-line synopsis and the runtime on the page background.
+/// The tint is the still's average colour (cached by ImagePipeline), so each card gets its own mood.
 struct EpisodeCard<Actions: View>: View {
     let ep: EpisodeItem
     let selected: Bool
@@ -13,11 +13,14 @@ struct EpisodeCard<Actions: View>: View {
     let onTap: () -> Void
     @ViewBuilder let actions: () -> Actions
     @Environment(ThemeStore.self) private var theme
+    @Environment(\.wideLayout) private var wide
     @State private var tint: Color?
 
-    static var width: CGFloat { 250 }
-    static var height: CGFloat { 292 }
-    private let radius: CGFloat = 22
+    /// The loading placeholder in the carousel reserves the phone row; the real card follows `wide`.
+    static var placeholderWidth: CGFloat { DS.Card.landscapeWidthPhone }
+    static var placeholderHeight: CGFloat { DS.Card.landscapeWidthPhone * 9 / 16 + 96 }
+
+    private var width: CGFloat { DS.Card.landscapeWidth(wide: wide) }
 
     /// Not aired yet: the artwork is greyed out and the card says when it comes out.
     private var upcoming: Bool { ep.isUpcoming }
@@ -28,52 +31,12 @@ struct EpisodeCard<Actions: View>: View {
     }
 
     var body: some View {
-        ZStack(alignment: .top) {
-            Color(white: 0.09)
-            if let tint { tint.opacity(0.3).transition(.opacity) }
-            // Still across the top ~60%, dissolving into the panel instead of ending at an edge.
-            StillImage(url: ep.image, size: Self.height * 0.62 * 16 / 9)
-                // Only the artwork fades: the panel stays dark so the white text keeps its contrast.
-                .saturation(upcoming ? 0.1 : 1)
-                .opacity(upcoming ? 0.5 : 1)
-                .frame(width: Self.width, height: Self.height * 0.62)
-                .mask {
-                    LinearGradient(stops: [.init(color: .black, location: 0), .init(color: .black, location: 0.5),
-                                           .init(color: .clear, location: 1)], startPoint: .top, endPoint: .bottom)
-                }
+        VStack(alignment: .leading, spacing: 8) {
+            art
+            text
         }
-        .frame(width: Self.width, height: Self.height)
-        .overlay(alignment: .topLeading) {
-            VStack(alignment: .leading, spacing: 0) {
-                if watched { badge("checkmark.circle.fill", "Watched") }
-                else if upNext { badge(nil, "UP NEXT", fill: theme.accent, text: theme.onAccent) }
-                if let download { downloadBadge(download, below: watched || upNext) }
-            }
-        }
-        .overlay(alignment: .topTrailing) {
-            VStack(alignment: .trailing, spacing: 0) {
-                if let r = ep.rating, r > 0 { ratingBadge(r) }
-            }
-        }
-        .overlay(alignment: .bottomLeading) { text }
-        .clipShape(RoundedRectangle(cornerRadius: radius, style: .continuous))
-        .overlay {
-            RoundedRectangle(cornerRadius: radius, style: .continuous)
-                .strokeBorder(.white.opacity(0.1), lineWidth: 1)
-        }
-        // Deliberately faint: the card is already busy with artwork and text, so the selection should whisper.
-        .selectionRing(selected, radius: radius, width: 1, intensity: 0.35)
-        // Whole card opens the sources sheet; the "..." sits on top so it takes its own taps.
-        .overlay { Button(action: onTap) { Color.clear.contentShape(Rectangle()) }.buttonStyle(PressableStyle()) }
-        .overlay(alignment: .bottomTrailing) {
-            Menu { actions() } label: {
-                Image(systemName: "ellipsis").font(.system(size: 16, weight: .bold)).foregroundStyle(.white.opacity(0.85))
-                    .frame(width: 44, height: 40).contentShape(Rectangle())
-            }
-            .padding(.trailing, 6).padding(.bottom, 6)
-        }
+        .frame(width: width, alignment: .leading)
         .contextMenu { actions() }
-        .contentShape(RoundedRectangle(cornerRadius: radius, style: .continuous))
         .animation(.easeOut(duration: 0.3), value: tint == nil)
         .task(id: ep.image) {
             tint = nil
@@ -82,47 +45,89 @@ struct EpisodeCard<Actions: View>: View {
         }
     }
 
-    private var text: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            HStack(spacing: 6) {
-                Text("EPISODE \(ep.id)").font(.system(size: 12, weight: .semibold)).tracking(0.8)
-                    .foregroundStyle(.white.opacity(0.65))
-                if ep.isTopRated {
-                    Text("·").font(.system(size: 12, weight: .semibold)).foregroundStyle(.white.opacity(0.4))
-                    ShimmerText(text: String(localized: "TOP RATED"), symbol: "star.fill", color: Color(red: 1.0, green: 0.78, blue: 0.2))
+    private var art: some View {
+        Color.clear
+            .aspectRatio(DS.Card.landscapeAspect, contentMode: .fit)
+            .frame(width: width)
+            .overlay { StillImage(url: ep.image, size: width) }
+            // The still's own colour washes the bottom, so the card still carries the episode's mood.
+            .overlay { if let tint { tint.opacity(0.16).transition(.opacity) } }
+            .overlay {
+                LinearGradient(stops: [.init(color: .clear, location: 0.55),
+                                       .init(color: .black.opacity(0.5), location: 1)],
+                               startPoint: .top, endPoint: .bottom)
+            }
+            .saturation(upcoming ? 0.1 : 1)
+            .opacity(upcoming ? 0.65 : 1)
+            .overlay(alignment: .topLeading) {
+                VStack(alignment: .leading, spacing: 0) {
+                    if watched { badge("checkmark.circle.fill", "Watched") }
+                    else if upNext { badge(nil, "UP NEXT", fill: theme.accent, text: theme.onAccent) }
+                    if let download { downloadBadge(download, below: watched || upNext) }
                 }
             }
+            .overlay(alignment: .topTrailing) {
+                if let r = ep.rating, r > 0 { ratingBadge(r) }
+            }
+            .clipShape(RoundedRectangle(cornerRadius: DS.Radius.landscape, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: DS.Radius.landscape, style: .continuous)
+                    .strokeBorder(.white.opacity(0.08), lineWidth: 1)
+            }
+            // Deliberately faint: the card is already busy with artwork and text, so the selection should whisper.
+            .selectionRing(selected, radius: DS.Radius.landscape, width: 1, intensity: 0.35)
+            // Whole card opens the sources sheet; the "..." sits on top so it takes its own taps.
+            .overlay { Button(action: onTap) { Color.clear.contentShape(Rectangle()) }.buttonStyle(PressableStyle()) }
+            .overlay(alignment: .bottomTrailing) {
+                Menu { actions() } label: {
+                    Image(systemName: "ellipsis").font(.system(size: 15, weight: .bold)).foregroundStyle(.white.opacity(0.85))
+                        .frame(width: 44, height: 40).contentShape(Rectangle())
+                }
+                .padding(.trailing, 4).padding(.bottom, 2)
+            }
+            .contentShape(RoundedRectangle(cornerRadius: DS.Radius.landscape, style: .continuous))
+    }
+
+    private var text: some View {
+        VStack(alignment: .leading, spacing: 3) {
+            HStack(spacing: 6) {
+                Text("EPISODE \(ep.id)").font(.system(size: 11, weight: .semibold)).tracking(0.8)
+                    .foregroundStyle(.secondary)
+                if ep.isTopRated {
+                    ShimmerText(text: String(localized: "TOP RATED"), symbol: "star.fill",
+                                color: Color(red: 0.92, green: 0.62, blue: 0.05), size: 11, tracking: 0.3)
+                }
+                Spacer(minLength: 0)
+            }
             .lineLimit(1)
-            Text(ep.name).font(.system(size: 18, weight: .bold)).lineLimit(1)
+            Text(ep.name).font(DS.TypeStyle.cardTitle).lineLimit(1)
                 .opacity(upcoming ? 0.7 : 1)
             if let o = ep.overview, !o.isEmpty {
-                Text(o).font(.system(size: 13)).foregroundStyle(.white.opacity(upcoming ? 0.5 : 0.7)).lineLimit(3)
+                Text(o).font(DS.TypeStyle.caption).foregroundStyle(.secondary).lineLimit(2)
                     .multilineTextAlignment(.leading)
             }
             Group {
                 if let airs = ep.airsOn {
                     Label("Airs on \(airs)", systemImage: "calendar")
-                        .font(.system(size: 14, weight: .semibold)).foregroundStyle(.white.opacity(0.9))
+                        .font(.system(size: 12, weight: .medium)).foregroundStyle(.secondary)
                 } else {
                     // New episodes announce themselves in words until you've watched them, like "Airs on" does.
                     let fresh = watched ? nil : ep.freshness
                     HStack(spacing: 6) {
                         if let f = fresh {
-                            ShimmerText(text: f.text, symbol: "sparkles", color: Color(red: 1.0, green: 0.55, blue: 0.5),
-                                        size: 14, weight: .semibold, tracking: 0)
-                            if runtime != nil { Text("·").foregroundStyle(.white.opacity(0.4)) }
+                            ShimmerText(text: f.text, symbol: "sparkles",
+                                        color: Color(red: 0.92, green: 0.32, blue: 0.28), size: 12, weight: .medium, tracking: 0)
+                            if runtime != nil { Text("·").foregroundStyle(.tertiary) }
                         }
-                        Text(runtime ?? (fresh == nil ? " " : "")).font(.system(size: 14, weight: .medium))
-                            .foregroundStyle(.white.opacity(0.85))
+                        Text(runtime ?? (fresh == nil ? " " : "")).font(.system(size: 12, weight: .medium))
+                            .foregroundStyle(.secondary)
                     }
                     .lineLimit(1)
                 }
             }
-            .padding(.top, 6)
+            .padding(.top, 2)
         }
-        .foregroundStyle(.white)
-        .padding(.horizontal, 16).padding(.bottom, 14)
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(width: width, alignment: .leading)
         .allowsHitTesting(false)
     }
 
