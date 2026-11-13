@@ -340,7 +340,11 @@ struct HomeView: View {
         }
         // The whole page takes the colour of the row under the focal line (see AmbientStore).
         .background { AmbientBackdrop() }
-        .ignoresSafeArea(edges: .top)
+        // iOS 26 gives scroll content a default 16pt margin. The feed owns its own page margins,
+        // so clear it here; otherwise the full-bleed hero is inset into a visible frame.
+        .contentMargins(.horizontal, 0, for: .scrollContent)
+        .contentMargins(.top, 0, for: .scrollContent)
+        .ignoresSafeArea(.container, edges: .top)
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackgroundVisibility(.hidden, for: .navigationBar)
         .scrollEdgeEffectHidden(true, for: .top)
@@ -525,6 +529,8 @@ struct HeroCarousel: View {
             }
             .scrollTargetLayout()
         }
+        // Same default margin on the paging scroll view: without this every hero page is 32pt narrow.
+        .contentMargins(.horizontal, 0, for: .scrollContent)
         .scrollTargetBehavior(.paging)
         .scrollPosition(id: $page)
         .scrollIndicators(.hidden)
@@ -595,11 +601,11 @@ private struct HeroPage: View {
                     KenBurns(active: active) {
                         RotatingArtwork(item: item, kind: .hero(wide: wide), size: wide ? 1200 : 800)
                     }
-                    LinearGradient.easedFade(start: 0.42, from: 0, to: 0.74)
+                    LinearGradient.easedFade(start: 0.45, from: 0, to: 0.8)
                 }
                 // Keep the artwork under the title block; only the last strip dissolves into the page,
                 // so white text never lands on a light background in light mode.
-                .mask { LinearGradient.easedFade(start: 0.93, from: 1, to: 0) }
+                .mask { LinearGradient.easedFade(start: 0.82, from: 1, to: 0) }
                 info
             }
             .frame(height: height)
@@ -630,6 +636,7 @@ private struct HeroPage: View {
             }
         }
         .foregroundStyle(.white)
+        .shadow(color: .black.opacity(0.55), radius: 10, y: 2)
         .multilineTextAlignment(.center)
         .frame(maxWidth: .infinity, alignment: .center)
         .padding(.horizontal, 24).padding(.bottom, 44)
