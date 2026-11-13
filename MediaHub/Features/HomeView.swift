@@ -429,9 +429,16 @@ struct HomeView: View {
         // so it drops to a third of its strength there.
         let top = colorScheme == .dark ? 0.7 : 0.3
         let middle = colorScheme == .dark ? 0.25 : 0.09
-        LinearGradient(colors: [t.opacity(top), t.opacity(middle), .clear], startPoint: .top, endPoint: .bottom)
-            .frame(height: 1100)
-            .allowsHitTesting(false)
+        // Two layers: the artwork's average colour down the page, and a neighbouring hue in the corner.
+        // Together they read like the reference's ambient wash without re-sampling the artwork per frame.
+        ZStack(alignment: .top) {
+            LinearGradient(colors: [t.opacity(top), t.opacity(middle), .clear],
+                           startPoint: .top, endPoint: .bottom)
+            RadialGradient(colors: [theme.accent2.opacity(middle), .clear],
+                           center: .topTrailing, startRadius: 8, endRadius: 620)
+        }
+        .frame(height: 1100)
+        .allowsHitTesting(false)
     }
 
     private func refresh() async {
