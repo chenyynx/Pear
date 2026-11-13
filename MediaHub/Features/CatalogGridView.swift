@@ -60,7 +60,7 @@ struct CatalogGridView: View {
     @Environment(ContentPrefs.self) private var contentPrefs
     @State private var model: GridModel
     @State private var order: Order = .original
-    private let columns = [GridItem(.adaptive(minimum: 104, maximum: 160), spacing: 12, alignment: .top)]
+    private let columns = DS.Card.gridColumns
 
     enum Order: String, CaseIterable, Identifiable {
         case original = "Original order"

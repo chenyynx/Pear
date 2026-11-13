@@ -107,8 +107,10 @@ struct ProfileToolbar: ViewModifier {
 
     private var homeHeader: some View {
         HStack(alignment: .center, spacing: 0) {
-            PearWordmark(height: Self.logoHeight)
-                .shadow(color: .black.opacity(0.35), radius: 6)
+            // The Home header lives on top of the hero artwork, in both appearances, so the
+            // wordmark stays cream instead of flipping to black on a light page.
+            PearWordmark(height: Self.logoHeight, color: Brand.cream)
+                .shadow(color: .black.opacity(0.45), radius: 6)
                 .padding(.leading, 20)
                 .allowsHitTesting(false)
                 .accessibilityHidden(true)

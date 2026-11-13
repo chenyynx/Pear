@@ -191,8 +191,8 @@ struct SidebarShell: View {
         .frame(maxHeight: .infinity)
         .background {
             ZStack(alignment: .trailing) {
-                Color(white: 0.07)
-                Rectangle().fill(.white.opacity(0.07)).frame(width: 0.5)
+                DS.Palette.surface
+                Rectangle().fill(DS.Palette.separator).frame(width: 0.5)
             }
             .ignoresSafeArea()
         }

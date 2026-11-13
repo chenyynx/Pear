@@ -18,7 +18,7 @@ struct LibraryView: View {
     @State private var filter = "all"
     /// Comma-separated ids of the collapsed sections; remembered between launches.
     @AppStorage("library.collapsed") private var collapsedRaw = ""
-    private let columns = [GridItem(.adaptive(minimum: 104, maximum: 160), spacing: 12, alignment: .top)]
+    private let columns = DS.Card.gridColumns
 
     private struct LibSection: Identifiable {
         let id: String; let title: String; let symbol: String; let items: [MetaPreview]
@@ -75,7 +75,9 @@ struct LibraryView: View {
 
     private func make(_ raw: [(String, String, String, [MetaPreview])]) -> [LibSection] {
         raw.compactMap { id, title, symbol, items in
-            items.isEmpty ? nil : LibSection(id: id, title: title, symbol: symbol, items: items)
+            // Section names travel as `String` values, and `Text` only localizes literals: without
+            // `L()` the headers and chips stayed English in a Chinese build.
+            items.isEmpty ? nil : LibSection(id: id, title: L(title), symbol: symbol, items: items)
         }
     }
 
@@ -153,7 +155,7 @@ struct LibraryView: View {
         return ScrollView(.horizontal) {
             GlassEffectContainer(spacing: 8) {
                 HStack(spacing: 8) {
-                    chip(id: "all", title: "All", symbol: "square.grid.2x2.fill", count: total, active: active)
+                    chip(id: "all", title: L("All"), symbol: "square.grid.2x2.fill", count: total, active: active)
                     ForEach(secs) { chip(id: $0.id, title: $0.title, symbol: $0.symbol, count: $0.items.count, active: active) }
                 }
             }

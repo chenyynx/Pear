@@ -256,27 +256,30 @@ private struct SplitMix64: RandomNumberGenerator {
 
 struct ThemeCarousel: View {
     let row: ThemeRow
+    @Environment(\.wideLayout) private var wide
+    private var cardWidth: CGFloat { DS.Card.landscapeWidth(wide: wide) }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text(row.title).font(.title2.bold()).padding(.horizontal, 16)
+        VStack(alignment: .leading, spacing: DS.Space.s) {
+            Text(row.title).font(DS.TypeStyle.rowTitle).padding(.horizontal, DS.Space.page)
             ScrollView(.horizontal) {
-                LazyHStack(spacing: 14) {
-                    ForEach(row.items) { ThemeCard(entry: $0) }
+                LazyHStack(spacing: DS.Card.gap) {
+                    ForEach(row.items) { ThemeCard(entry: $0, width: cardWidth) }
                 }
                 .scrollTargetLayout()
             }
-            .contentMargins(.horizontal, 16, for: .scrollContent)
+            .contentMargins(.horizontal, DS.Space.page, for: .scrollContent)
             .scrollTargetBehavior(.viewAligned)
             .scrollIndicators(.hidden)
         }
     }
 }
 
-/// Big 4:5 card: key art, a small tag, the title logo and "TV Show · Thriller · Mystery". The next card peeks in.
+/// The curated row's card: the same 16:9 unit as Continue Watching, with the title logo laid
+/// into a bottom gradient. One size for every theme row, so the feed never jumps between scales.
 private struct ThemeCard: View {
     let entry: ThemedTitle
-    @Environment(\.wideLayout) private var wide
+    let width: CGFloat
     private var item: MetaPreview { entry.item }
 
     private var tag: String? {
@@ -292,39 +295,40 @@ private struct ThemeCard: View {
     var body: some View {
         NavigationLink(value: item) {
             Color.clear
-                .aspectRatio(4.0 / 5.0, contentMode: .fit)
-                .containerRelativeFrame(.horizontal) { w, _ in wide ? 270 : min(w - 56, 440) }
-                .overlay { RotatingArtwork(item: item, kind: .hero(wide: false), size: 440) }
+                .aspectRatio(DS.Card.landscapeAspect, contentMode: .fit)
+                .frame(width: width)
+                .overlay { RotatingArtwork(item: item, kind: .hero(wide: false), size: 700) }
                 .overlay {
-                    LinearGradient(stops: [.init(color: .clear, location: 0.4), .init(color: .black.opacity(0.85), location: 1)],
+                    LinearGradient(stops: [.init(color: .clear, location: 0.35), .init(color: .black.opacity(0.85), location: 1)],
                                    startPoint: .top, endPoint: .bottom)
                 }
                 .overlay(alignment: .bottomLeading) { info }
-                .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
-                .overlay { RoundedRectangle(cornerRadius: 28, style: .continuous).strokeBorder(.white.opacity(0.15), lineWidth: 1) }
+                .clipShape(RoundedRectangle(cornerRadius: DS.Radius.landscape, style: .continuous))
+                .overlay { RoundedRectangle(cornerRadius: DS.Radius.landscape, style: .continuous).strokeBorder(.white.opacity(0.15), lineWidth: 1) }
         }
         .buttonStyle(PressableStyle())
         .posterContextMenu(item)
     }
 
     private var info: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 6) {
             if let tag {
-                Text(tag).font(.subheadline.weight(.semibold))
-                    .padding(.horizontal, 14).padding(.vertical, 7)
+                Text(tag).font(.system(size: 11, weight: .semibold))
+                    .padding(.horizontal, 8).padding(.vertical, 3)
                     .background(.black.opacity(0.35), in: Capsule())
                     .overlay(Capsule().strokeBorder(.white.opacity(0.25), lineWidth: 1))
             }
-            TitleArt(item: item, maxWidth: 260, maxHeight: 72, font: .system(size: 30, weight: .heavy, design: .rounded))
-            HStack(spacing: 8) {
+            TitleArt(item: item, maxWidth: width - 36, maxHeight: 42,
+                     font: .system(size: 20, weight: .heavy, design: .rounded))
+            HStack(spacing: 6) {
                 Image(systemName: item.type == "series" ? "tv" : "film")
-                    .font(.system(size: 12, weight: .bold))
-                    .frame(width: 26, height: 26).background(.black.opacity(0.35), in: Circle())
-                Text(caption).font(.subheadline.weight(.medium)).lineLimit(1)
+                    .font(.system(size: 10, weight: .bold))
+                    .frame(width: 20, height: 20).background(.black.opacity(0.35), in: Circle())
+                Text(caption).font(.system(size: 12, weight: .medium)).lineLimit(1)
             }
         }
         .foregroundStyle(.white)
-        .padding(16)
+        .padding(12)
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

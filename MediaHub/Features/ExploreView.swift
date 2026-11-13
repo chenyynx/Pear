@@ -119,7 +119,7 @@ struct ExploreView: View {
     @Environment(AddonStore.self) private var store
     @State private var model = ExploreModel()
     @AppStorage("tmdb.key") private var tmdbKey = ""
-    private let columns = [GridItem(.adaptive(minimum: 104, maximum: 160), spacing: 12, alignment: .top)]
+    private let columns = DS.Card.gridColumns
     private let years: [Int] = {
         let now = Calendar.current.component(.year, from: .now)
         return Array((1950...(now + 1)).reversed())

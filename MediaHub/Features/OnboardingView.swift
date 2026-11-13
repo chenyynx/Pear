@@ -41,7 +41,9 @@ struct OnboardingView: View {
             }
         }
         .tint(theme.accent)
-        .preferredColorScheme(Theme.forceDark ? .dark : nil)
+        // The setup flow is a brand splash built around the dark pear animation: it stays dark
+        // whatever appearance the app itself is set to.
+        .preferredColorScheme(.dark)
         .interactiveDismissDisabled()
         .animation(.easeInOut(duration: 0.25), value: step)
         .onChange(of: simkl.account) { _, a in if a != nil { useSimkl = true } }

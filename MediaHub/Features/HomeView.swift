@@ -269,6 +269,7 @@ struct HomeView: View {
     @Environment(ContentPrefs.self) private var contentPrefs
     @Environment(\.scenePhase) private var phase
     @Environment(\.wideLayout) private var wide
+    @Environment(\.colorScheme) private var colorScheme
     @AppStorage("tmdb.key") private var tmdbKey = ""
     @AppStorage("mdblist.key") private var mdbKey = ""
     @AppStorage("mdblist.lists") private var mdbLists = ""
@@ -356,7 +357,7 @@ struct HomeView: View {
             WideHeroPanel(items: model.hero, tint: $tint)
         } pane: { ctx in
             PaneScroll(ctx: ctx, refresh: refresh) {
-                LazyVStack(alignment: .leading, spacing: 30) { feedRows }
+                LazyVStack(alignment: .leading, spacing: DS.Space.section) { feedRows }
                     .padding(.leading, 14)
                     .animation(loadAnimation, value: heroDeps)
                     .background(alignment: .top, content: { ambient })
@@ -370,7 +371,7 @@ struct HomeView: View {
     }
 
     private var rows: some View {
-        LazyVStack(alignment: .leading, spacing: 30) {
+        LazyVStack(alignment: .leading, spacing: DS.Space.section) {
             let hero = model.hero
             if !hero.isEmpty { HeroCarousel(items: hero, tint: $tint) }
             feedRows
@@ -424,7 +425,11 @@ struct HomeView: View {
 
     @ViewBuilder private var ambient: some View {
         let t = tint ?? theme.accent
-        LinearGradient(colors: [t.opacity(0.7), t.opacity(0.25), .clear], startPoint: .top, endPoint: .bottom)
+        // The coloured wash reads as light in dark mode and as a dirty stain on paper in light mode,
+        // so it drops to a third of its strength there.
+        let top = colorScheme == .dark ? 0.7 : 0.3
+        let middle = colorScheme == .dark ? 0.25 : 0.09
+        LinearGradient(colors: [t.opacity(top), t.opacity(middle), .clear], startPoint: .top, endPoint: .bottom)
             .frame(height: 1100)
             .allowsHitTesting(false)
     }
@@ -458,7 +463,7 @@ struct HeroCarousel: View {
     private var wide: Bool { hSize == .regular }
     /// On screen, in the foreground, and not a hidden page: auto-advance, the zoom and the progress bar all follow it.
     private var running: Bool { visible && pageActive && scenePhase == .active && !LayoutState.shared.pagesCovered }
-    private var height: CGFloat { wide ? 640 : 600 }
+    private var height: CGFloat { wide ? DS.Hero.heightWide : DS.Hero.heightPhone }
     private var currentID: String { page ?? items.first?.id ?? "" }
     private var index: Int { items.firstIndex(where: { $0.id == currentID }) ?? 0 }
 
@@ -527,17 +532,19 @@ private struct HeroPage: View {
 
     var body: some View {
         NavigationLink(value: item) {
-            ZStack(alignment: .bottomLeading) {
+            ZStack(alignment: .bottom) {
                 // Slow Ken Burns zoom while this page is showing. The darkening scrim sits on the artwork and both
                 // are faded out together along one eased curve, so the art melts into the page background with no
                 // visible start line and no hard edge where the hero ends. One static mask, nothing animated.
+                // The mask starts late so the artwork stays behind the title and ratings in both appearances;
+                // only the last strip fades into the page, which is what keeps white text readable on light mode.
                 ZStack {
                     KenBurns(active: active) {
                         RotatingArtwork(item: item, kind: .hero(wide: wide), size: wide ? 1200 : 800)
                     }
-                    LinearGradient.easedFade(start: 0.4, from: 0, to: 0.6)
+                    LinearGradient.easedFade(start: 0.52, from: 0, to: 0.66)
                 }
-                .mask { LinearGradient.easedFade(start: 0.42, from: 1, to: 0) }
+                .mask { LinearGradient.easedFade(start: 0.88, from: 1, to: 0) }
                 info
             }
             .frame(height: height)
@@ -547,7 +554,7 @@ private struct HeroPage: View {
     }
 
     private var info: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(spacing: 10) {
             HStack(spacing: 8) {
                 Label(item.typeLabel.uppercased(), systemImage: item.type == "series" ? "tv" : "film")
                     .font(.caption2.weight(.heavy)).tracking(1.2)
@@ -556,21 +563,19 @@ private struct HeroPage: View {
                 if let y = item.year { Text(String(y)).font(.subheadline.weight(.semibold)).opacity(0.9) }
             }
             // Logo when we have one, title text otherwise (text shows first, then swaps once the logo has loaded).
-            TitleArt(item: item, maxWidth: 270, maxHeight: 86, font: .system(size: 38, weight: .heavy, design: .rounded))
+            TitleArt(item: item, maxWidth: 300, maxHeight: 92,
+                     font: .system(size: 40, weight: .heavy, design: .rounded), alignment: .center)
             InlineRatings(item: item)
             if let d = item.description, !d.isEmpty {
-                Text(d).font(.subheadline).lineLimit(2).opacity(0.85)
+                Text(d).font(.subheadline).lineLimit(2).opacity(0.9)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: 560)
             }
-            // Flat on purpose: live glass over artwork that is moving would be re-sampled every frame.
-            Text("Details")
-                .font(.subheadline.weight(.semibold)).padding(.horizontal, 18).padding(.vertical, 10)
-                .background(.white.opacity(0.2), in: Capsule())
-                .overlay(Capsule().strokeBorder(.white.opacity(0.28), lineWidth: 0.5))
-                .padding(.top, 2)
         }
         .foregroundStyle(.white)
-        .padding(.horizontal, 20).padding(.bottom, 46)
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .multilineTextAlignment(.center)
+        .frame(maxWidth: .infinity, alignment: .center)
+        .padding(.horizontal, 24).padding(.bottom, 40)
         // Text slides slightly faster than the artwork while paging, and fades out as it leaves.
         .scrollTransition(axis: .horizontal) { content, phase in
             content.opacity(1 - min(abs(phase.value) * 1.6, 1)).offset(x: phase.value * 70)
@@ -739,14 +744,14 @@ struct ContinueRow: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack(spacing: 8) {
+        VStack(alignment: .leading, spacing: DS.Space.s) {
+            HStack(spacing: DS.Space.xs) {
                 Image(systemName: "play.circle.fill").font(.system(size: 15, weight: .bold)).foregroundStyle(theme.accent2)
-                Text("Continue Watching").font(.title3.bold())
+                Text("Continue Watching").font(DS.TypeStyle.rowTitle)
             }
-            .padding(.horizontal, 16)
+            .padding(.horizontal, DS.Space.page)
             ScrollView(.horizontal) {
-                LazyHStack(spacing: 14) {
+                LazyHStack(spacing: DS.Card.gap) {
                     ForEach(cards) { card in
                         switch card {
                         case .resume(let e): ContinueCard(entry: e)
@@ -756,7 +761,7 @@ struct ContinueRow: View {
                 }
                 .scrollTargetLayout()
             }
-            .contentMargins(.horizontal, 16, for: .scrollContent)
+            .contentMargins(.horizontal, DS.Space.page, for: .scrollContent)
             .scrollTargetBehavior(.viewAligned)
             .scrollIndicators(.hidden)
         }
@@ -768,7 +773,8 @@ private struct ContinueCard: View {
     let entry: WatchHistory.Entry
     @Environment(WatchHistory.self) private var history
     @Environment(ThemeStore.self) private var theme
-    private let width: CGFloat = 270
+    @Environment(\.wideLayout) private var wide
+    private var width: CGFloat { DS.Card.landscapeWidth(wide: wide) }
 
     private var thumb: URL? {
         entry.thumb.flatMap(URL.init(string:)) ?? entry.item.backdropURL ?? entry.item.posterURL
@@ -794,10 +800,10 @@ private struct ContinueCard: View {
                             .background(.black.opacity(0.62), in: Capsule()).padding(8)
                     }
                     .overlay(alignment: .bottom) { progressBar }
-                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: DS.Radius.landscape, style: .continuous))
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(entry.item.name).font(.subheadline.weight(.semibold)).lineLimit(1)
-                    Text(subtitle).font(.caption).foregroundStyle(.secondary).lineLimit(1)
+                    Text(entry.item.name).font(DS.TypeStyle.cardTitle).lineLimit(1)
+                    Text(subtitle).font(DS.TypeStyle.caption).foregroundStyle(.secondary).lineLimit(1)
                 }
                 .frame(width: width, alignment: .leading)
             }
@@ -829,7 +835,8 @@ private struct UpNextCard: View {
     let entry: UpNextItem
     @Environment(WatchHistory.self) private var history
     @Environment(ThemeStore.self) private var theme
-    private let width: CGFloat = 270
+    @Environment(\.wideLayout) private var wide
+    private var width: CGFloat { DS.Card.landscapeWidth(wide: wide) }
 
     var body: some View {
         NavigationLink(value: ResumeTarget(item: entry.item, season: entry.season, episode: entry.episode)) {
@@ -844,10 +851,10 @@ private struct UpNextCard: View {
                             .padding(.horizontal, 8).padding(.vertical, 4)
                             .background(theme.accent, in: Capsule()).padding(8)
                     }
-                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: DS.Radius.landscape, style: .continuous))
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(entry.item.name).font(.subheadline.weight(.semibold)).lineLimit(1)
-                    Text("S\(entry.season) · E\(entry.episode) · \(entry.title)").font(.caption).foregroundStyle(.secondary).lineLimit(1)
+                    Text(entry.item.name).font(DS.TypeStyle.cardTitle).lineLimit(1)
+                    Text("S\(entry.season) · E\(entry.episode) · \(entry.title)").font(DS.TypeStyle.caption).foregroundStyle(.secondary).lineLimit(1)
                 }
                 .frame(width: width, alignment: .leading)
             }
@@ -869,40 +876,34 @@ struct CatalogRowView: View {
     let row: CatalogRow
     @Environment(ThemeStore.self) private var theme
     @Environment(\.wideLayout) private var wide
-    /// Bigger posters in the sidebar layout.
-    private var posterWidth: CGFloat { wide ? 140 : 102 }
+    /// One poster unit in both layouts; the sidebar layout only makes it bigger.
+    private var posterWidth: CGFloat { DS.Card.posterWidth(wide: wide) }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            // Tapping the title opens the full list for this row.
+        VStack(alignment: .leading, spacing: DS.Space.s) {
+            // Tapping the header opens the full list for this row; the chevron says so without
+            // spending a whole card on it at the end of the row.
             NavigationLink(value: row) {
-                HStack(spacing: 8) {
+                HStack(spacing: DS.Space.xs) {
                     if let s = row.symbol {
                         Image(systemName: s).font(.system(size: 15, weight: .bold)).foregroundStyle(row.accent(theme))
                     }
-                    Text(row.title).font(.title3.bold())
-                    Image(systemName: "chevron.right").font(.footnote.weight(.bold)).foregroundStyle(.secondary)
+                    Text(row.title).font(DS.TypeStyle.rowTitle)
+                    Spacer(minLength: DS.Space.xs)
+                    Image(systemName: "chevron.right").font(.footnote.weight(.bold)).foregroundStyle(.tertiary)
                 }
             }
-            .buttonStyle(.plain).padding(.horizontal, 16)
+            .buttonStyle(.plain).padding(.horizontal, DS.Space.page)
             .modifier(HideRowMenu(key: row.prefKey))
             ScrollView(.horizontal) {
-                LazyHStack(spacing: 12) {
+                LazyHStack(spacing: DS.Card.gap) {
                     ForEach(row.items) { item in
                         PosterCard(item: item, width: posterWidth)
                     }
-                    NavigationLink(value: row) {
-                        VStack(spacing: 8) {
-                            Image(systemName: "arrow.right.circle").font(.title)
-                            Text("See all").font(.footnote.weight(.semibold))
-                        }
-                        .foregroundStyle(.secondary).frame(width: 78, height: posterWidth * 1.5)   // matches the poster height
-                    }
-                    .buttonStyle(.plain)
                 }
                 .scrollTargetLayout()
             }
-            .contentMargins(.horizontal, 16, for: .scrollContent)
+            .contentMargins(.horizontal, DS.Space.page, for: .scrollContent)
             .scrollTargetBehavior(.viewAligned)
             .scrollIndicators(.hidden)
         }
@@ -940,20 +941,21 @@ struct PressableStyle: ButtonStyle {
     }
 }
 
-/// Poster with a rating chip and an optional network icon (shows only). `width: nil` fills its grid column.
-/// `showsTitle` adds the title and year underneath (grids and search).
+/// The one poster card: 2:3 artwork, title and year underneath.
+/// `width: nil` fills its grid cell — the cell, not the artwork, decides the width, so every card
+/// in a row or grid is exactly the same size.
 /// Tap opens the detail page; long tap shows the actions dropdown (watched / library / details).
 struct PosterCard: View {
     let item: MetaPreview
-    var width: CGFloat? = 102         // was 87; the original 130 was too big, 87 a bit too small
-    var showsTitle = false
+    var width: CGFloat? = nil
+    var showsTitle = true
     @Environment(WatchHistory.self) private var history
     @Environment(ThemeStore.self) private var theme
     @AppStorage("ui.networkBadges") private var showNetwork = true
     @State private var network: TMDBClient.NetworkBadge?
 
     /// Small row posters get slightly smaller badges so they don't cover the artwork.
-    private var compact: Bool { (width ?? 130) < 115 }
+    private var compact: Bool { (width ?? 120) < 115 }
 
     private var caption: String {
         [item.year.map(String.init), item.typeLabel].compactMap { $0 }.joined(separator: " · ")
@@ -986,10 +988,12 @@ struct PosterCard: View {
     private var poster: some View {
         NavigationLink(value: item) {
             VStack(alignment: .leading, spacing: 7) {
-                RotatingArtwork(item: item, kind: .poster, size: (width ?? 120) * 1.5)
-                    .aspectRatio(2.0 / 3.0, contentMode: .fit)
-                    .frame(width: width)
-                    .clipShape(RoundedRectangle(cornerRadius: compact ? 9 : 12, style: .continuous))
+                // A clear base gives the card its aspect ratio and width; the artwork is an overlay,
+                // so a poster with unusual artwork dimensions can never change the card's size.
+                Color.clear
+                    .aspectRatio(DS.Card.posterAspect, contentMode: .fit)
+                    .overlay { RotatingArtwork(item: item, kind: .poster, size: (width ?? 120) * 1.5) }
+                    .clipShape(RoundedRectangle(cornerRadius: DS.Radius.card, style: .continuous))
                     .overlay(alignment: .topLeading) { watchedBadge }
                     .overlay(alignment: .topLeading) {
                         if let logo = network?.logo {
@@ -1003,9 +1007,9 @@ struct PosterCard: View {
                     }
                 if showsTitle {
                     VStack(alignment: .leading, spacing: 2) {
-                        Text(item.name).font(.footnote.weight(.semibold))
-                            .lineLimit(2, reservesSpace: true).multilineTextAlignment(.leading)
-                        Text(caption).font(.caption2).foregroundStyle(.secondary).lineLimit(1)
+                        Text(item.name).font(DS.TypeStyle.cardTitle)
+                            .lineLimit(1).multilineTextAlignment(.leading)
+                        Text(caption).font(DS.TypeStyle.caption).foregroundStyle(.secondary).lineLimit(1)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }

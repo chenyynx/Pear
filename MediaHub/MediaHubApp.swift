@@ -10,8 +10,34 @@ enum Theme {
         ("Violet", "#7D5CFF"), ("Pink", "#FF5C8D"), ("Blue", "#2F80FF"), ("Cyan", "#14B8D4"),
         ("Green", "#22C55E"), ("Gold", "#F5B301"), ("Orange", "#FF8A1F"), ("Red", "#EF4444"),
     ]
-    /// Colourful glows and hero art read best on black. Set to false to follow the system appearance.
-    static let forceDark = true
+}
+
+/// How the app picks light or dark. Stored under `ui.appearance`; the player and the
+/// onboarding splash stay dark on purpose, because both are built around artwork and video.
+enum Appearance: String, CaseIterable, Identifiable {
+    case system, light, dark
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .system: return "Follow System"
+        case .light: return "Light"
+        case .dark: return "Dark"
+        }
+    }
+
+    var colorScheme: ColorScheme? {
+        switch self {
+        case .system: return nil
+        case .light: return .light
+        case .dark: return .dark
+        }
+    }
+
+    static var stored: Appearance {
+        Appearance(rawValue: UserDefaults.standard.string(forKey: "ui.appearance") ?? "") ?? .system
+    }
 }
 
 /// The user's accent colour. Views read it from the environment, so changing it in Settings updates the whole app live.
@@ -133,6 +159,8 @@ struct MediaHubApp: App {
     @State private var playerPresenter = PlayerPresenter()
     /// First launch only: the setup flow (see `Onboarding`).
     @State private var showOnboarding = Onboarding.needed
+    /// Light / dark / follow the system.
+    @AppStorage("ui.appearance") private var appearanceRaw = Appearance.system.rawValue
 
     init() {
         // Builds the "pear." animation outlines in the background so the intro starts on its first frame.
@@ -161,7 +189,7 @@ struct MediaHubApp: App {
             .environment(profiles).environment(library).environment(watchLog).environment(libraryPrefs)
             .environment(contentPrefs).environment(downloads).environment(connectivity).environment(mediaServers)
             .environment(playerPresenter)
-            .preferredColorScheme(Theme.forceDark ? .dark : nil)
+            .preferredColorScheme(Appearance(rawValue: appearanceRaw)?.colorScheme)
             .pearLaunchScreen()
         }
     }

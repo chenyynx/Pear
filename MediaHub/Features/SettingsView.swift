@@ -18,6 +18,7 @@ struct SettingsView: View {
     @AppStorage("mdblist.key") private var mdbKey = ""
     @AppStorage("ui.networkBadges") private var networkBadges = true
     @AppStorage("ui.titleLogos") private var titleLogos = true
+    @AppStorage("ui.appearance") private var appearanceRaw = Appearance.system.rawValue
     @AppStorage(WideLayout.phoneKey) private var landscapeLayout = false
     @AppStorage("player.glass") private var glass = true
     @AppStorage("player.autoplayNext") private var autoplayNext = true
@@ -95,6 +96,12 @@ struct SettingsView: View {
                 }
 
                 Section {
+                    Picker("Appearance", selection: $appearanceRaw) {
+                        ForEach(Appearance.allCases) { option in
+                            Text(L(option.title)).tag(option.rawValue)
+                        }
+                    }
+                    .pickerStyle(.segmented)
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Accent colour").font(.subheadline.weight(.medium))
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 40), spacing: 12)], spacing: 12) {

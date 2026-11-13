@@ -67,7 +67,7 @@ struct SearchView: View {
     @State private var query = ""
     @State private var scope: Scope = .all
     @State private var model = SearchModel()
-    private let columns = [GridItem(.adaptive(minimum: 104, maximum: 160), spacing: 12, alignment: .top)]
+    private let columns = DS.Card.gridColumns
 
     enum Scope: String, CaseIterable, Identifiable {
         case all = "All", movies = "Movies", shows = "Shows"
