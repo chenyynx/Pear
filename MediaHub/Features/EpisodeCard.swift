@@ -36,6 +36,10 @@ struct EpisodeCard<Actions: View>: View {
             text
         }
         .frame(width: width, alignment: .leading)
+        .contentShape(Rectangle())
+        // The artwork has its own button; this makes the caption block open the sources too,
+        // so the whole card stays tappable like it was before the redesign.
+        .onTapGesture(perform: onTap)
         .contextMenu { actions() }
         .animation(.easeOut(duration: 0.3), value: tint == nil)
         .task(id: ep.image) {
@@ -128,7 +132,6 @@ struct EpisodeCard<Actions: View>: View {
             .padding(.top, 2)
         }
         .frame(width: width, alignment: .leading)
-        .allowsHitTesting(false)
     }
 
     /// Episode ratings come from TMDB, so the badge carries the TMDB mark.
